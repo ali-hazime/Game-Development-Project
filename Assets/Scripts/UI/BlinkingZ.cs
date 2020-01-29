@@ -5,23 +5,18 @@ using UnityEngine.UI;
 
 public class BlinkingZ : MonoBehaviour
 {
-    Text flashingText;
+    public Text flashingText;
 
-    void Start()
+    void OnEnable()
     {
-
-        flashingText = GetComponent<Text>();
-
         StartCoroutine(BlinkText());
     }
 
     //function to blink the text 
     public IEnumerator BlinkText()
     {
-
         while (true)
         {
-
             flashingText.text = "";
 
             yield return new WaitForSeconds(.5f);

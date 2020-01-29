@@ -20,9 +20,9 @@ public class PlayerStatsDisplay : MonoBehaviour
 
         pAbilityPower.text = " " + p.playerAbilityPower;
 
-        pAttackSpeed.text = " " + Mathf.Round(p.playerAttackSpeed * 100f) / 100f;
+        pAttackSpeed.text = " " + (Mathf.Round(p.playerAttackSpeed * 100f) / 100f);
 
-        pMovementSpeed.text = " " + Mathf.Round(p.playerMovementSpeed * 100f) / 100f;
+        pMovementSpeed.text = " " + (Mathf.Round(p.playerMovementSpeed * 100f) / 100f);
 
         pHealth.text = " " + p.playerMaxHealth;
 

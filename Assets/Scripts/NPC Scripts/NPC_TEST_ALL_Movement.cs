@@ -18,6 +18,7 @@ public class NPC_TEST_ALL_Movement : MonoBehaviour
 
 
     //Diff for each NPC
+    //START AT -4, 6, 0
     private Vector3 pos0 = new Vector3(-4, 6, 0);
     private Vector3 pos1 = new Vector3(2, 6, 0);
     private Vector3 pos2 = new Vector3(5, 6, 0);

@@ -22,6 +22,10 @@ public class HealthBar : MonoBehaviour
     {
         scale = (float)pc.playerCurrentHealth / (float)pc.playerMaxHealth;
         transform.localScale = new Vector3(scale, 1, 1);
-        healthNumber.text = Mathf.Round(scale*100)  + "%";
+        //For Health Percent
+        //healthNumber.text = Mathf.Round(scale*100)  + "%";
+
+        //For Health Numbers
+        healthNumber.text = pc.playerCurrentHealth + "/" + pc.playerMaxHealth;
     }
 }

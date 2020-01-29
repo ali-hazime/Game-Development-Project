@@ -6,17 +6,28 @@ using UnityEngine;
 public class EquipmentMenu : MonoBehaviour
 {
     [SerializeField] Transform equipmentSlotsParent;
-    [SerializeField] EquipmentSlots[] equipmentSlots;
+    public EquipmentSlots[] equipmentSlots;
 
-    public event Action<Item> OnItemRightClickedEvent;
+    public event Action<BaseItemSlots> OnBeginDragEvent;
+    public event Action<BaseItemSlots> OnEndDragEvent;
+    public event Action<BaseItemSlots> OnDragEvent;
+    public event Action<BaseItemSlots> OnDropEvent;
+    public event Action<BaseItemSlots> OnPointerEnterEvent;
+    public event Action<BaseItemSlots> OnPointerExitEvent;
+    public event Action<BaseItemSlots> OnRightClickEvent;
+   
 
     private void Awake()
     {
-        int i = 0;
-
-        for (; i < equipmentSlots.Length; i++)
+        for (int i=0; i < equipmentSlots.Length; i++)
         {
-            equipmentSlots[i].OnRightClickEvent += OnItemRightClickedEvent;
+            equipmentSlots[i].OnBeginDragEvent += slot => OnBeginDragEvent(slot);
+            equipmentSlots[i].OnEndDragEvent += slot => OnEndDragEvent(slot);
+            equipmentSlots[i].OnDragEvent += slot => OnDragEvent(slot);
+            equipmentSlots[i].OnDropEvent += slot => OnDropEvent(slot);
+            equipmentSlots[i].OnPointerEnterEvent += slot => OnPointerEnterEvent(slot);
+            equipmentSlots[i].OnPointerExitEvent += slot => OnPointerExitEvent(slot);
+            equipmentSlots[i].OnRightClickEvent += slot => OnRightClickEvent(slot);
         }
     }
     private void OnValidate()
@@ -26,13 +37,13 @@ public class EquipmentMenu : MonoBehaviour
 
     public bool AddItem(EquipableItem item, out EquipableItem previousItem)
     {
-        int i = 0;
-        for (; i < equipmentSlots.Length; i++)
+        for (int i=0; i < equipmentSlots.Length; i++)
         {
             if (equipmentSlots[i].EquipmentType == item.ItemType)
             {
                 previousItem = (EquipableItem)equipmentSlots[i].Item;
                 equipmentSlots[i].Item = item;
+                equipmentSlots[i].Amount = 1;
                 return true;
             }
         }
@@ -48,6 +59,7 @@ public class EquipmentMenu : MonoBehaviour
             if (equipmentSlots[i].Item == item)
             {
                 equipmentSlots[i].Item = null;
+                equipmentSlots[i].Amount = 0;
                 return true;
             }
         }

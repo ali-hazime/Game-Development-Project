@@ -8,13 +8,21 @@ public class ItemPickup : MonoBehaviour
     [SerializeField] Inventory inventory;
 
     public bool inRange;
-    public Inventory i;
+    //public Inventory i;
 
+    public void OnValidate()
+    {
+        if (inventory == null)
+        {
+            inventory = FindObjectOfType<Inventory>();
+        }
+
+    }
     void Update()
     {
         if (inRange)
         {
-            if (inventory.AddItem(item))
+            if (inventory.AddItem(item.GetCopy()))
             {
                 Destroy(this.gameObject);
             }

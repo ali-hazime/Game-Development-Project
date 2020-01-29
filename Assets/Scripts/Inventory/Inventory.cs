@@ -2,72 +2,53 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Inventory : MonoBehaviour
-{
-    [SerializeField] List<Item> items;
-    [SerializeField] Transform itemsParent;
-    [SerializeField] ItemSlots[] itemSlots;
 
-    public event Action<Item> OnItemRightClickedEvent;
+public class Inventory : ItemContainer
+{
+    [SerializeField] protected Item[] startingItems;
+    [SerializeField] protected Transform itemsParent;
+
+    public event Action<BaseItemSlots> OnBeginDragEvent;
+    public event Action<BaseItemSlots> OnEndDragEvent;
+    public event Action<BaseItemSlots> OnDragEvent;
+    public event Action<BaseItemSlots> OnDropEvent;
+    public event Action<BaseItemSlots> OnPointerEnterEvent;
+    public event Action<BaseItemSlots> OnPointerExitEvent;
+    public event Action<BaseItemSlots> OnRightClickEvent;
+    
 
     private void Awake()
     {
-        int i = 0;
-
-        for (; i < itemSlots.Length; i++)
+        for (int i=0; i < itemSlots.Length; i++)
         {
-            itemSlots[i].OnRightClickEvent += OnItemRightClickedEvent;
+            itemSlots[i].OnBeginDragEvent += slot => OnBeginDragEvent(slot);
+            itemSlots[i].OnEndDragEvent += slot => OnEndDragEvent(slot);
+            itemSlots[i].OnDragEvent += slot => OnDragEvent(slot);
+            itemSlots[i].OnDropEvent += slot => OnDropEvent(slot);
+            itemSlots[i].OnPointerEnterEvent += slot => OnPointerEnterEvent(slot);
+            itemSlots[i].OnPointerExitEvent += slot => OnPointerExitEvent(slot);
+            itemSlots[i].OnRightClickEvent += slot => OnRightClickEvent(slot);
+            
         }
 
-        RefreshUI();
+        SetStartingItems();
     }
     private void OnValidate()
     {
         if (itemsParent != null)
             itemSlots = itemsParent.GetComponentsInChildren<ItemSlots>();
 
-        RefreshUI();
+        SetStartingItems();
     }
 
-    private void RefreshUI()
+    private void SetStartingItems()
     {
-        int i = 0;
-
-        for (; i < items.Count && i < itemSlots.Length; i++)
+        Clear();
+        foreach (Item item in startingItems)
         {
-            itemSlots[i].Item = items[i];
-        }
-
-        for (; i < itemSlots.Length; i++)
-        {
-            itemSlots[i].Item = null;
+            AddItem(item.GetCopy());
         }
     }
 
-    public bool AddItem(Item item)
-    {
-        if (isFull())
-        {
-            return false;
-        }
 
-        items.Add(item);
-        RefreshUI();
-        return true;
-    }
-
-    public bool RemoveItem(Item item)
-    {
-        if (items.Remove(item))
-        {
-            RefreshUI();
-            return true;
-        }
-        return false;
-    }
-
-    public bool isFull()
-    {
-        return items.Count >= itemSlots.Length;
-    }
 }
