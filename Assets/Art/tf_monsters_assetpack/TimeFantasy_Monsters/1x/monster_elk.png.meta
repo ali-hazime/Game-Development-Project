@@ -1,7 +1,43 @@
 fileFormatVersion: 2
 guid: 648e206d574177f4781d5cb366d0dbe6
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -1153546415738687125
+    second: monster_elk_0
+  - first:
+      213: -7974644392793943116
+    second: monster_elk_1
+  - first:
+      213: 1869808927958560125
+    second: monster_elk_2
+  - first:
+      213: 7976448082472049846
+    second: monster_elk_3
+  - first:
+      213: -7505100358445115921
+    second: monster_elk_4
+  - first:
+      213: 4827073570169407738
+    second: monster_elk_5
+  - first:
+      213: -2580475078424075185
+    second: monster_elk_6
+  - first:
+      213: 2232045155644615204
+    second: monster_elk_7
+  - first:
+      213: 7192954056343602332
+    second: monster_elk_8
+  - first:
+      213: -1042466209404819868
+    second: monster_elk_9
+  - first:
+      213: -2550064469453121934
+    second: monster_elk_10
+  - first:
+      213: -1680041934349879168
+    second: monster_elk_11
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -31,7 +67,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
+    filterMode: 0
     aniso: -1
     mipBias: -100
     wrapU: 1
@@ -40,12 +76,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -60,10 +96,22 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 512
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 512
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -72,7 +120,259 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: monster_elk_0
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 198
+        width: 31
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6178f985a7cdffe0800000000000000
+      internalID: -1153546415738687125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_elk_1
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 198
+        width: 31
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b3d47d1d2f545190800000000000000
+      internalID: -7974644392793943116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_elk_2
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 198
+        width: 31
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7de2d43055e2f910800000000000000
+      internalID: 1869808927958560125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_elk_3
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 132
+        width: 50
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6bc971d154902be60800000000000000
+      internalID: 7976448082472049846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_elk_4
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 132
+        width: 50
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe5d83bdcf688d790800000000000000
+      internalID: -7505100358445115921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_elk_5
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 132
+        width: 51
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af8cf9e46d53df240800000000000000
+      internalID: 4827073570169407738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_elk_6
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 66
+        width: 51
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f44e8ce869f403cd0800000000000000
+      internalID: -2580475078424075185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_elk_7
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 66
+        width: 50
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42a24d04e31d9fe10800000000000000
+      internalID: 2232045155644615204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_elk_8
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 66
+        width: 50
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c94c016ba9182d360800000000000000
+      internalID: 7192954056343602332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_elk_9
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 0
+        width: 31
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 466e31a718a6881f0800000000000000
+      internalID: -1042466209404819868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_elk_10
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 0
+        width: 31
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 276d6e730e95c9cd0800000000000000
+      internalID: -2550064469453121934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_elk_11
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 0
+        width: 31
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 088b05f03ca4fa8e0800000000000000
+      internalID: -1680041934349879168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

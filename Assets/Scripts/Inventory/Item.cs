@@ -13,6 +13,8 @@ public class Item : ScriptableObject
     public Sprite Icon;
     [Range(1, 99)]
     public int MaxStacks = 1;
+    public int ItemPrice;
+    public int SellItemPrice;
 
     protected static readonly StringBuilder sb = new StringBuilder();
 
@@ -20,6 +22,7 @@ public class Item : ScriptableObject
     {
         string path = AssetDatabase.GetAssetPath(this);
         id = AssetDatabase.AssetPathToGUID(path);
+        SellItemPrice = ItemPrice / 3;
     }
 
     public virtual Item GetCopy()

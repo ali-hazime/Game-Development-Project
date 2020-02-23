@@ -212,7 +212,7 @@ public class GrassLandsBoss : MonoBehaviour
     public void WalkToCenter()
     {
         getBack += Time.deltaTime;
-        transform.position = Vector3.Lerp(myLocation, centerPos, (20) / 100.0f);
+        transform.position = Vector3.MoveTowards(myLocation, centerPos, 0.03f);
         if(myLocation == centerPos)
             isCentered = true;
         

@@ -5,12 +5,14 @@ using UnityEngine;
 public class followPlayer : MonoBehaviour
 {
 
-    public Transform Player;
-
+    private Transform player;
+    private void Start()
+    {
+        player = FindObjectOfType<PlayerChar>().transform;
+    }
     private void LateUpdate()
     {
-        transform.position = new Vector3(Player.position.x + 0.01f, Player.position.y, -10);
-
+        transform.position = new Vector3(player.position.x + 0.01f, player.position.y, -10);
     }
 
 

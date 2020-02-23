@@ -1,7 +1,43 @@
 fileFormatVersion: 2
 guid: 032d6802f3acacd408b1be68de5c1040
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 8123771613361037403
+    second: monster_raptor2_0
+  - first:
+      213: 8777216027267248537
+    second: monster_raptor2_1
+  - first:
+      213: 4058713752305762320
+    second: monster_raptor2_2
+  - first:
+      213: 2510190675580848412
+    second: monster_raptor2_3
+  - first:
+      213: -6575449857172834350
+    second: monster_raptor2_4
+  - first:
+      213: 1935856996416995531
+    second: monster_raptor2_5
+  - first:
+      213: 7568640454059599818
+    second: monster_raptor2_6
+  - first:
+      213: -1708109595775772798
+    second: monster_raptor2_7
+  - first:
+      213: 6910608459096643630
+    second: monster_raptor2_8
+  - first:
+      213: 7964162358811662024
+    second: monster_raptor2_9
+  - first:
+      213: 1350156553569948965
+    second: monster_raptor2_10
+  - first:
+      213: -1612482986531010528
+    second: monster_raptor2_11
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -31,7 +67,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
+    filterMode: 0
     aniso: -1
     mipBias: -100
     wrapU: 1
@@ -40,12 +76,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -60,10 +96,22 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 512
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 512
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -72,7 +120,259 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: monster_raptor2_0
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 150
+        width: 27
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5069c2ad3f6db070800000000000000
+      internalID: 8123771613361037403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_raptor2_1
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 150
+        width: 27
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 991312e197feec970800000000000000
+      internalID: 8777216027267248537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_raptor2_2
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 150
+        width: 27
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0108d2b57a2735830800000000000000
+      internalID: 4058713752305762320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_raptor2_3
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 100
+        width: 40
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c198e70be1df5d220800000000000000
+      internalID: 2510190675580848412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_raptor2_4
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 100
+        width: 40
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d7f1d0713f4fb4a0800000000000000
+      internalID: -6575449857172834350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_raptor2_5
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 100
+        width: 40
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc0c36f7eab8dda10800000000000000
+      internalID: 1935856996416995531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_raptor2_6
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 50
+        width: 40
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac7afd08466390960800000000000000
+      internalID: 7568640454059599818
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_raptor2_7
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 50
+        width: 40
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28759526f539b48e0800000000000000
+      internalID: -1708109595775772798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_raptor2_8
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 50
+        width: 40
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e28d34297c967ef50800000000000000
+      internalID: 6910608459096643630
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_raptor2_9
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 0
+        width: 27
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c6918a2873668e60800000000000000
+      internalID: 7964162358811662024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_raptor2_10
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 0
+        width: 27
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 525d3b66b38bcb210800000000000000
+      internalID: 1350156553569948965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_raptor2_11
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 0
+        width: 27
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 028457d544f4f99e0800000000000000
+      internalID: -1612482986531010528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

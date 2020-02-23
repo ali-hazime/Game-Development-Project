@@ -6,26 +6,31 @@ using UnityEngine.UI;
 public class HealthBar : MonoBehaviour
 {
 
-    public PlayerChar pc;
+    private PlayerChar pc;
     public GameObject healthBar;
     public Text healthNumber;
 
-    public float scale;
-    // Start is called before the first frame update
+    public Slider slider;
+    public Gradient gradient;
+    public Image healthFill;
+
     void Start()
     {
-        
+        pc = FindObjectOfType<PlayerChar>();
+        gradient.Evaluate(pc.playerCurrentHealth);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        scale = (float)pc.playerCurrentHealth / (float)pc.playerMaxHealth;
-        transform.localScale = new Vector3(scale, 1, 1);
-        //For Health Percent
-        //healthNumber.text = Mathf.Round(scale*100)  + "%";
+        slider.maxValue = pc.playerMaxHealth;
+        slider.value = pc.playerCurrentHealth;
+        healthFill.color = gradient.Evaluate(slider.normalizedValue);
 
         //For Health Numbers
         healthNumber.text = pc.playerCurrentHealth + "/" + pc.playerMaxHealth;
+        if (pc.playerCurrentHealth <= 0)
+        {
+            healthNumber.text = "0";
+        }  
     }
 }

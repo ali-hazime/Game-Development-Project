@@ -65,7 +65,7 @@ public class NPC_TEST_NS_Movement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.collider.tag == "Player")
+        if (other.collider.CompareTag("Player"))
         {
             touchingPlayer = true;
             isMoving = false;

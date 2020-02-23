@@ -26,7 +26,7 @@ public class VoidFlyerCombat : MonoBehaviour
 
             if (attackCD <= 0)
             {
-                playerChar.takeDamage(attackDamage);
+                playerChar.TakeDamage(attackDamage);
                 attackCD = 2f;
             }
             else
@@ -38,15 +38,15 @@ public class VoidFlyerCombat : MonoBehaviour
     //Deals damage to the player
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.collider.tag == "Player")
+        if (other.collider.CompareTag("Player"))
         {
-            other.gameObject.GetComponent<PlayerChar>().takeDamage(attackDamage);
+            other.gameObject.GetComponent<PlayerChar>().TakeDamage(attackDamage);
         }
     }
 
     private void OnCollisionStay2D(Collision2D other)
     {
-        if (other.collider.tag == "Player")
+        if (other.collider.CompareTag("Player"))
         {
             isAttacking = true;
         }

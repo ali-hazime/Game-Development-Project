@@ -1,7 +1,43 @@
 fileFormatVersion: 2
 guid: 6045590b49411d84a8a10e5c366fb85d
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 5114045039527216862
+    second: monster_treantCORRUPT_0
+  - first:
+      213: 960341836311103569
+    second: monster_treantCORRUPT_1
+  - first:
+      213: 6899913498072181424
+    second: monster_treantCORRUPT_2
+  - first:
+      213: 4692538032096435207
+    second: monster_treantCORRUPT_3
+  - first:
+      213: 6304516423262123037
+    second: monster_treantCORRUPT_4
+  - first:
+      213: -2002031074937382075
+    second: monster_treantCORRUPT_5
+  - first:
+      213: -5521819848157560744
+    second: monster_treantCORRUPT_6
+  - first:
+      213: -8546501143501662758
+    second: monster_treantCORRUPT_7
+  - first:
+      213: 3882994607101311483
+    second: monster_treantCORRUPT_8
+  - first:
+      213: -2744691690783221256
+    second: monster_treantCORRUPT_9
+  - first:
+      213: -6560015972355684215
+    second: monster_treantCORRUPT_10
+  - first:
+      213: 4983621560036324325
+    second: monster_treantCORRUPT_11
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -31,7 +67,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
+    filterMode: 0
     aniso: -1
     mipBias: -100
     wrapU: 1
@@ -40,12 +76,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -60,10 +96,22 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 1024
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -72,7 +120,259 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: monster_treantCORRUPT_0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 150
+        width: 40
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed64e5a3edcb8f640800000000000000
+      internalID: 5114045039527216862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_treantCORRUPT_1
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 150
+        width: 40
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 50}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1580540efc1d35d00800000000000000
+      internalID: 960341836311103569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_treantCORRUPT_2
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 150
+        width: 40
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0bae389e4ca61cf50800000000000000
+      internalID: 6899913498072181424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_treantCORRUPT_3
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 100
+        width: 36
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70c5e126a7e3f1140800000000000000
+      internalID: 4692538032096435207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_treantCORRUPT_4
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 100
+        width: 36
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d14b721c8442e7750800000000000000
+      internalID: 6304516423262123037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_treantCORRUPT_5
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 50
+        width: 36
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54b5015385b5734e0800000000000000
+      internalID: -2002031074937382075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_treantCORRUPT_6
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 50
+        width: 36
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8500edc9a1e8e53b0800000000000000
+      internalID: -5521819848157560744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_treantCORRUPT_7
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 0
+        width: 40
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad51d15cd7ab46980800000000000000
+      internalID: -8546501143501662758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_treantCORRUPT_8
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 40
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf9f70da50b23e530800000000000000
+      internalID: 3882994607101311483
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_treantCORRUPT_9
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 100
+        width: 36
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f956e00375e8e9d0800000000000000
+      internalID: -2744691690783221256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_treantCORRUPT_10
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 50
+        width: 36
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 988c9d6ca3426f4a0800000000000000
+      internalID: -6560015972355684215
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monster_treantCORRUPT_11
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 0
+        width: 40
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e371fc8761692540800000000000000
+      internalID: 4983621560036324325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

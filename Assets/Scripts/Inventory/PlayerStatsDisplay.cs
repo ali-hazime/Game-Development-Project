@@ -14,6 +14,10 @@ public class PlayerStatsDisplay : MonoBehaviour
     [SerializeField] Text pHealth;
     [SerializeField] Text pArmour;
 
+    private void OnValidate()
+    {
+        p = FindObjectOfType<PlayerChar>();
+    }
     void Update()
     {
         pAttackDamage.text = " " + p.playerAttackDamage;

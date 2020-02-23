@@ -10,7 +10,7 @@ public class ItemPickup : MonoBehaviour
     public bool inRange;
     //public Inventory i;
 
-    public void OnValidate()
+    public void Awake()
     {
         if (inventory == null)
         {
@@ -32,7 +32,7 @@ public class ItemPickup : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
 
     {
-        if (other.tag == "Player")
+        if (other.CompareTag("Player"))
         {
             inRange = true;
         }

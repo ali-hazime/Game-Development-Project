@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 808571071172054915}
   - component: {fileID: 808571071172055036}
   - component: {fileID: 7576612652442011982}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: water_middle
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46,6 +46,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -68,7 +69,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 494010201
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 1796212280717025147, guid: 2e9489a8175b894488b4f8c2ea0c4ac6,
     type: 3}

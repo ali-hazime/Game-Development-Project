@@ -1,0 +1,17 @@
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.EventSystems;
+
+public class SellItemArea : MonoBehaviour, IDropHandler
+{
+    public event Action OnItemDropEvent;
+    public void OnDrop(PointerEventData eventData)
+    {
+        if (OnItemDropEvent != null)
+        {
+            OnItemDropEvent();
+        }
+    }
+}

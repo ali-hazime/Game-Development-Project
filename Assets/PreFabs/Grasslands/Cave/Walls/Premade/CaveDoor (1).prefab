@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1405578557936868460}
   - component: {fileID: 4264706764577305683}
   - component: {fileID: 7077695126572936928}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: doors_90
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,6 +46,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -117,9 +118,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2132589541364727173}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: CaveDoor (1)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -151,7 +152,7 @@ GameObject:
   - component: {fileID: 2937271329427138046}
   - component: {fileID: 1138844012340667167}
   - component: {fileID: 6345871033982320828}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: doors_78
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -186,6 +187,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:

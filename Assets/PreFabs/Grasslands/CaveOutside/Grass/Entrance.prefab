@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 9049413234010484258}
   - component: {fileID: 6468539391176033054}
   - component: {fileID: 2353098683668926465}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: terrain_467
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,6 +46,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -68,7 +69,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1170572659
-  m_SortingLayer: 6
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_Sprite: {fileID: 3167852559576396568, guid: 7b1ebb7815b42904288b3341cff80852,
     type: 3}
@@ -119,7 +120,7 @@ GameObject:
   - component: {fileID: 5907065779245910433}
   - component: {fileID: 7106280754477883056}
   - component: {fileID: 957692260733314176}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: terrain_499
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -154,6 +155,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -176,7 +178,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1170572659
-  m_SortingLayer: 6
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_Sprite: {fileID: 1666173868449364385, guid: 7b1ebb7815b42904288b3341cff80852,
     type: 3}
@@ -225,9 +227,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4825344910339809164}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Entrance
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

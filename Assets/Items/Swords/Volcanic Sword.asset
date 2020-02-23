@@ -12,13 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: Volcanic Sword
   m_EditorClassIdentifier: Assembly-CSharp::EquipableItem
+  id: ad147de3e1618d543aca4967cc3a1d20
   ItemName: Volcanic Sword
   Icon: {fileID: 21300000, guid: 03dd1ef6fb163214c9e1ac0242dab3ba, type: 3}
-  bonusAttackDamage: 50
+  MaxStacks: 1
+  ItemPrice: 50000
+  SellItemPrice: 16666
+  bonusAttackDamage: 25
   bonusAbilityPower: 0
-  bonusAttackSpeed: 0.5
-  bonusMovementSpeed: 0.5
-  bonusHealth: 25
+  bonusAttackSpeed: 0.25
+  bonusMovementSpeed: 0.25
+  bonusHealth: 15
   bonusArmour: 0
   ItemType: 3
   isSword: 1

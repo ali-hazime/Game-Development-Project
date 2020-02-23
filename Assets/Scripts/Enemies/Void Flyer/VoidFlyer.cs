@@ -10,7 +10,6 @@ public class VoidFlyer : MonoBehaviour
     public float aggroMaxRange;
     public float aggroMinRange;
     public float speed;
-    //private int maxHealth = 100;
     public int attackDamage = 25;
     // Start is called before the first frame update
     void Start()

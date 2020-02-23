@@ -29,13 +29,26 @@ public class staffProjectiles : MonoBehaviour
             //Destroy(me);
 
         }
-
-        if (other.tag == "GLBoss")
+        else if (other.CompareTag("GLBoss"))
         {
             GrassLandsBoss glBoss;
             glBoss = other.gameObject.GetComponent<GrassLandsBoss>();
             glBoss.BossHits();
             //Destroy(me);
+        }
+        else if (other.tag == "DBoss")
+        {
+            DesertBossHealth DBoss;
+            DBoss = other.gameObject.GetComponent<DesertBossHealth>();
+
+            DBoss.damageEnemy(playerDamage);
+        }
+        else if (other.tag == "FBoss")
+        {
+            ForestBossHealth FBoss;
+            FBoss = other.gameObject.GetComponent<ForestBossHealth>();
+
+            FBoss.damageEnemy(playerDamage);
         }
 
         Destroy(me);

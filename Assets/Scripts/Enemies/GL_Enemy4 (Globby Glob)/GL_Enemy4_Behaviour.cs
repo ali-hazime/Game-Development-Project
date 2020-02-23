@@ -6,10 +6,10 @@ public class GL_Enemy4_Behaviour : MonoBehaviour
 {
     private Transform playerTarget;
     private Animator anim;
-    public GameObject player;
-    // public GameObject NPCtextbox;
-    // public NPC_Dialogue Dialogue;
-
+    [Space]
+    public int damage = 50;
+    public GameObject explosion;
+    [Space]
     public float aggroMaxRange = 7;
     public float aggroMinRange = 0;
     public float countingTime = 0;
@@ -18,9 +18,7 @@ public class GL_Enemy4_Behaviour : MonoBehaviour
     public bool moveVert = false;
     public bool isMoving = true;
     public bool touchingPlayer = false;
-
-
-    //Diff for each NPC
+    [Space]
     public Vector3 startPos = new Vector3(0, 0, 0);
     public bool dest0 = false;
     public bool dest1 = true;
@@ -34,11 +32,11 @@ public class GL_Enemy4_Behaviour : MonoBehaviour
 
     public bool once = true;
     public bool once2 = true;
-
-    public float test;
-    public Vector3 TESTME;
+    public bool isAggroed = false;
 
     public float newPlace;
+    [Space]
+    public bool isColliding = false;
 
     void Start()
     {
@@ -48,18 +46,37 @@ public class GL_Enemy4_Behaviour : MonoBehaviour
         anim.SetBool("isMoving", true);
     }
 
-    void Update()
+    private void FixedUpdate()
     {
-        TESTME = transform.position;
-        test = startPos.x + transform.position.x;
 
+        //Linecast to check for wall/other enemies between monster and player
+        RaycastHit2D hit = Physics2D.Linecast(transform.position, playerTarget.position, 1 << 15 | 1 << 9);
 
+        if (hit.collider != null)
+        {
+            isColliding = true;
+            //Debug.DrawLine(transform.position, playerTarget.position, Color.red);
+        }
+        else
+        {
+            isColliding = false;
+            //Debug.DrawLine(transform.position, playerTarget.position, Color.green);
+        }
 
-        if (touchingPlayer == false)
+        if (Vector3.Distance(playerTarget.position, transform.position) <= aggroMaxRange)
+        {
+            isAggroed = true;
+        }
+        else
+        {
+            isAggroed = false;
+        }
+
+        if (isAggroed == false)
         {
 
             //Any movement stuff
-            countingTime += Time.deltaTime;
+            countingTime += Time.fixedDeltaTime;
             if (dest0 == true)
             {
                 anim.SetBool("isMoving", true);
@@ -72,7 +89,7 @@ public class GL_Enemy4_Behaviour : MonoBehaviour
                     once2 = false;
                 }
 
-                transform.position = Vector3.MoveTowards(transform.position, new Vector3(newPlace, transform.position.y, 0), 0.03f);
+                transform.position = Vector3.MoveTowards(transform.position, new Vector3(newPlace, transform.position.y, 0), 2.5f * Time.fixedDeltaTime);
 
                 if (transform.position.x == newPlace)
                 {
@@ -129,7 +146,7 @@ public class GL_Enemy4_Behaviour : MonoBehaviour
                     once2 = false;
                 }
 
-                transform.position = Vector3.MoveTowards(transform.position, new Vector3(newPlace, transform.position.y, 0), 0.03f);
+                transform.position = Vector3.MoveTowards(transform.position, new Vector3(newPlace, transform.position.y, 0), 2.5f * Time.fixedDeltaTime);
 
                 if (transform.position.x == newPlace)
                 {
@@ -183,7 +200,7 @@ public class GL_Enemy4_Behaviour : MonoBehaviour
                     once2 = false;
                 }
 
-                transform.position = Vector3.MoveTowards(transform.position, new Vector3(newPlace, transform.position.y, 0), 0.03f);
+                transform.position = Vector3.MoveTowards(transform.position, new Vector3(newPlace, transform.position.y, 0), 2.5f * Time.fixedDeltaTime);
 
                 if (transform.position.x == newPlace)
                 {
@@ -229,7 +246,7 @@ public class GL_Enemy4_Behaviour : MonoBehaviour
                     once2 = false;
                 }
 
-                transform.position = Vector3.MoveTowards(transform.position, new Vector3(newPlace, transform.position.y, 0), 0.03f);
+                transform.position = Vector3.MoveTowards(transform.position, new Vector3(newPlace, transform.position.y, 0), 2.5f * Time.fixedDeltaTime);
 
                 if (transform.position.x == newPlace)
                 {
@@ -272,7 +289,7 @@ public class GL_Enemy4_Behaviour : MonoBehaviour
                     once2 = false;
                 }
 
-                transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, newPlace, 0), 0.03f);
+                transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, newPlace, 0), 2.5f * Time.fixedDeltaTime);
 
                 if (transform.position.y == newPlace)
                 {
@@ -307,7 +324,7 @@ public class GL_Enemy4_Behaviour : MonoBehaviour
                     once2 = false;
                 }
 
-                transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, newPlace, 0), 0.03f);
+                transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, newPlace, 0), 2.5f * Time.fixedDeltaTime);
 
                 if (transform.position.y == newPlace)
                 {
@@ -339,44 +356,42 @@ public class GL_Enemy4_Behaviour : MonoBehaviour
                     }
                 }
             }
-
-            anim.SetFloat("speed", direction);
         }
-        else if (touchingPlayer == true && Input.GetKeyDown(KeyCode.Z))
+        else if (isColliding == false)
         {
-            //NPCtextbox.SetActive(true);
-            //Dialogue.NPCnumber = 1;
+            anim.SetBool("isMoving", true);
+            transform.position = Vector3.MoveTowards(transform.position, playerTarget.position, 2.5f * Time.fixedDeltaTime);
         }
-
-        //anim.SetFloat("moveY", (playerTarget.position.y - transform.position.y));
 
         if (Mathf.Abs(playerTarget.position.y - transform.position.y) > Mathf.Abs(playerTarget.position.x - transform.position.x))
         {
             anim.SetFloat("moveX", 0f);
             anim.SetFloat("moveY", (playerTarget.position.y - transform.position.y));
+            anim.SetBool("moveVert", true);
+            direction = playerTarget.position.y - transform.position.y;
         }
         else
         {
             anim.SetFloat("moveX", (playerTarget.position.x - transform.position.x));
             anim.SetFloat("moveY", 0f);
+            anim.SetBool("moveVert", false);
+            direction = playerTarget.position.x - transform.position.x;
+        }
+
+        anim.SetFloat("speed", direction);
+        if (isColliding)
+        {
+            anim.SetBool("isMoving", false);
         }
     }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.collider.tag == "Player")
+        if (other.collider.CompareTag("Player"))
         {
-            touchingPlayer = true;
-            isMoving = false;
-            anim.SetBool("isMoving", false);
+            other.gameObject.GetComponent<PlayerChar>().TakeDamage(damage);
+            GameObject deathAnimation = Instantiate(explosion, transform.position, transform.rotation);
+            Destroy(this.gameObject);
         }
     }
-
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        touchingPlayer = false;
-        isMoving = false;
-        anim.SetBool("isMoving", true);
-    }
-
 }

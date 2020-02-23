@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,15 +7,23 @@ using UnityEngine.UI;
 public class InventoryManager : MonoBehaviour
 {
     public PlayerChar c;
+    public CurrencyManager cm;
+    public GameObject sellItem;
 
     [SerializeField] Inventory inventory;
     [SerializeField] EquipmentMenu equipmentMenu;
     [SerializeField] EnchantingWindow enchantingWindow;
+    [SerializeField] Vendor vendorWindow;    
     [SerializeField] ItemTooltips itemTooltips;
+    [SerializeField] VendorPrice vendorPrice;
+    [SerializeField] ItemSellPrice sellPrice;
     [SerializeField] Image draggableItem;
     [SerializeField] Image draggableItemIcon;
     [SerializeField] DropItemArea dropItemArea;
+    [SerializeField] SellItemArea sellItemArea;
     [SerializeField] PromptPopup promptPopup;
+    [SerializeField] PromptPopup sellPrompt;
+    [SerializeField] PromptPopup buyPrompt;
 
     private BaseItemSlots draggedSlot;
 
@@ -24,19 +33,42 @@ public class InventoryManager : MonoBehaviour
         {
             itemTooltips = FindObjectOfType<ItemTooltips>();
         }
+
+        if (vendorPrice == null)
+        {
+            vendorPrice = FindObjectOfType<VendorPrice>();
+        }
+
+        if (sellPrice == null)
+        {
+            sellPrice = FindObjectOfType<ItemSellPrice>();
+        }
+
+        c = FindObjectOfType<PlayerChar>();
     }
     private void Awake()
     {
         inventory.OnRightClickEvent += InventoryRightClick;
         equipmentMenu.OnRightClickEvent += EquipmentPanelRightClick;
+        vendorWindow.OnRightClickEvent += VendorWindowRightClick;
+
+        vendorWindow.OnLeftClickEvent += VendorWindowLeftClick;
 
         inventory.OnPointerEnterEvent += ShowToolTip;
         equipmentMenu.OnPointerEnterEvent += ShowToolTip;
         enchantingWindow.OnPointerEnterEvent += ShowToolTip;
+        vendorWindow.OnPointerEnterEvent += ShowToolTip;
 
         inventory.OnPointerExitEvent += HideToolTip;
         equipmentMenu.OnPointerExitEvent += HideToolTip;
         enchantingWindow.OnPointerExitEvent += HideToolTip;
+        vendorWindow.OnPointerExitEvent += HideToolTip;
+
+        vendorWindow.OnPointerEnterEvent += ShowPrice;
+        vendorWindow.OnPointerExitEvent += HidePrice;
+
+        inventory.OnPointerEnterEvent += ShowSalePrice;
+        inventory.OnPointerExitEvent += HideSalePrice;
 
         inventory.OnBeginDragEvent += BeginDrag;
         equipmentMenu.OnBeginDragEvent += BeginDrag;
@@ -51,6 +83,68 @@ public class InventoryManager : MonoBehaviour
         equipmentMenu.OnDropEvent += Drop;
 
         dropItemArea.OnItemDropEvent += DropItem;
+        sellItemArea.OnItemDropEvent += SellItem;
+    }
+
+    private void VendorWindowLeftClick(BaseItemSlots itemSlots)
+    {
+        buyPrompt.Show();
+        buyPrompt.OnOption1Event += () => BuyItem(itemSlots);
+    }
+
+    private void VendorWindowRightClick(BaseItemSlots itemSlots)
+    {
+        BuyItem(itemSlots);
+    }
+    private void BuyItem(BaseItemSlots itemSlots)
+    {
+
+        if (itemSlots.Item is ConsumableItem)
+        {
+            ConsumableItem consumableItem = (ConsumableItem)itemSlots.Item;
+            if (cm.crystalsCount >= consumableItem.ItemPrice)
+            {
+
+                if (inventory.AddItem(consumableItem))
+                {
+                    cm.crystalsCount -= consumableItem.ItemPrice;
+                }
+
+                else
+                {
+                    Debug.Log("Inventory is Full");
+                }
+
+            }
+            else
+            {
+                Debug.Log("Insufficient Crystals");
+            }
+
+        }
+
+        else
+        {
+            Item item = (Item)itemSlots.Item;
+
+            if (cm.crystalsCount >= item.ItemPrice)
+            {
+                if (inventory.AddItem(item))
+                {
+                    vendorWindow.RemoveItem(item);
+                    cm.crystalsCount -= item.ItemPrice;
+                }
+                else
+                {
+                    Debug.Log("Inventory is Full");
+                }
+            }
+
+            else
+            {
+                Debug.Log("Insufficient Crystals");
+            }
+        }
     }
 
     private void InventoryRightClick(BaseItemSlots itemSlots)
@@ -91,6 +185,38 @@ public class InventoryManager : MonoBehaviour
         itemTooltips.HideToolTip();
     }
 
+    private void ShowPrice(BaseItemSlots itemSlots)
+    {
+        if (itemSlots.Item != null)
+        {
+            vendorPrice.ShowPrice(itemSlots.Item);
+        }
+    }
+
+    private void HidePrice(BaseItemSlots itemSlots)
+    {
+        vendorPrice.HidePrice();
+    }
+    private void ShowSalePrice(BaseItemSlots itemSlots)
+    {
+        if (itemSlots.Item != null)
+        {
+            if (vendorWindow.isActiveAndEnabled)
+            {
+                sellPrice.ShowPrice(itemSlots.Item);
+            }  
+        }
+    }
+
+    private void HideSalePrice(BaseItemSlots itemSlots)
+    {
+        if (vendorWindow.isActiveAndEnabled)
+        {
+            sellPrice.HidePrice();
+        } 
+    }
+
+
     private void BeginDrag(BaseItemSlots itemSlots)
     {
         Vector3 mP = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -111,6 +237,7 @@ public class InventoryManager : MonoBehaviour
         draggedSlot = null;
         draggableItem.enabled = false;
         draggableItemIcon.enabled = false;
+        sellItem.SetActive(false);
     }
 
     private void Drag(BaseItemSlots itemSlots)
@@ -123,7 +250,7 @@ public class InventoryManager : MonoBehaviour
             draggableItem.transform.position = Input.mousePosition;
             draggableItemIcon.transform.position = mP;
         }
-
+        sellItem.SetActive(true);
     }
     private void Drop(BaseItemSlots dropItemSlots)
     {
@@ -149,8 +276,23 @@ public class InventoryManager : MonoBehaviour
         promptPopup.Show();
         BaseItemSlots baseItemSlots = draggedSlot;
         promptPopup.OnOption1Event += () => DestroyItem(baseItemSlots);
+    }
 
-        
+    private void SellItem()
+    {
+
+        int crystalCount = cm.crystalsCount;
+        if (draggedSlot == null) return;
+
+        if (draggedSlot is EquipmentSlots) return;
+
+        sellPrompt.Show();
+        sellItem.SetActive(false);
+        BaseItemSlots baseItemSlots = draggedSlot;
+        crystalCount += baseItemSlots.Item.SellItemPrice;
+        sellPrompt.OnOption1Event += () => DestroyItem(baseItemSlots);
+        sellPrompt.OnOption1Event += () => cm.crystalsCount = crystalCount;
+
     }
 
     private void DestroyItem(BaseItemSlots baseItemSlots)

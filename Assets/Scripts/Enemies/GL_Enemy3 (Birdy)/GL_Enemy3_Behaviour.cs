@@ -6,21 +6,26 @@ public class GL_Enemy3_Behaviour : MonoBehaviour
 {
     private Transform playerTarget;
     private Animator anim;
-    public GameObject player;
-    // public GameObject NPCtextbox;
-    // public NPC_Dialogue Dialogue;
-
+    public Transform firePoint;
+    public GameObject tornado;
+    [Space]
     public float aggroMaxRange = 7;
     public float aggroMinRange = 0;
     public float countingTime = 0;
-    public float speed = 1.0f;
+    public float moveSpeed = 1.0f;
     public float direction = 1.0f;
+    [Space]
     public bool moveVert = false;
     public bool isMoving = true;
     public bool touchingPlayer = false;
-
-
-    //Diff for each NPC
+    public bool isAggro = false;
+    public bool isAttackAggro;
+    public bool isColliding = false;
+    [Space]
+    public float shootCD = 5.0f;
+    public float shootTimer = 0;
+    public bool shootOnCD = false;
+    [Space]
     public Vector3 startPos = new Vector3(0, 0, 0);
     public bool dest0 = false;
     public bool dest1 = true;
@@ -28,16 +33,10 @@ public class GL_Enemy3_Behaviour : MonoBehaviour
     public bool dest3 = false;
     public bool dest4 = false;
     public bool dest5 = false;
-
     public int nextDirection;
     public int whenNext;
-
     public bool once = true;
     public bool once2 = true;
-
-    public float test;
-    public Vector3 TESTME;
-
     public float newPlace;
 
     void Start()
@@ -48,18 +47,72 @@ public class GL_Enemy3_Behaviour : MonoBehaviour
         anim.SetBool("isMoving", true);
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        TESTME = transform.position;
-        test = startPos.x + transform.position.x;
+        shootTimer += Time.fixedDeltaTime;
+        if (Vector3.Distance(playerTarget.position, transform.position) <= aggroMaxRange && Vector3.Distance(playerTarget.position, transform.position) >= aggroMinRange)
+        {
+            isAggro = true;
+        }
+        else
+        {
+            isAggro = false;
+        }
 
+        if (Vector3.Distance(playerTarget.position, transform.position) <= aggroMaxRange)
+        {
+            isAttackAggro = true;
+        }
 
+        else
+        {
+            isAttackAggro = false;
+        }
 
-        if (touchingPlayer == false)
+        if (isAggro && isColliding == false)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, playerTarget.position, moveSpeed * Time.fixedDeltaTime);
+            anim.SetBool("isMoving", true);
+            anim.SetFloat("speed", direction);
+        }
+
+        if (isAttackAggro)
+        {
+
+            if (Mathf.Abs(playerTarget.position.y - transform.position.y) > Mathf.Abs(playerTarget.position.x - transform.position.x))
+            {
+                anim.SetFloat("moveX", 0f);
+                anim.SetFloat("moveY", (playerTarget.position.y - transform.position.y));
+                anim.SetBool("moveVert", true);
+                direction = playerTarget.position.y - transform.position.y;
+            }
+            else
+            {
+                anim.SetFloat("moveX", (playerTarget.position.x - transform.position.x));
+                anim.SetFloat("moveY", 0f);
+                anim.SetBool("moveVert", false);
+                direction = playerTarget.position.x - transform.position.x;
+            }
+            anim.SetFloat("speed", direction);
+        }
+
+        if (isAttackAggro && shootOnCD == false)
+        {
+            ShootProjectile();
+            shootOnCD = true;
+            shootTimer = 0;
+        }
+
+        if (shootTimer > shootCD && shootOnCD == true)
+        {
+            shootOnCD = false;
+        }
+
+        if (touchingPlayer == false && isAttackAggro == false)
         {
 
             //Any movement stuff
-            countingTime += Time.deltaTime;
+            countingTime += Time.fixedDeltaTime;
             if (dest0 == true)
             {
                 anim.SetBool("isMoving", true);
@@ -342,13 +395,6 @@ public class GL_Enemy3_Behaviour : MonoBehaviour
 
             anim.SetFloat("speed", direction);
         }
-        else if (touchingPlayer == true && Input.GetKeyDown(KeyCode.Z))
-        {
-            //NPCtextbox.SetActive(true);
-            //Dialogue.NPCnumber = 1;
-        }
-
-        //anim.SetFloat("moveY", (playerTarget.position.y - transform.position.y));
 
         if (Mathf.Abs(playerTarget.position.y - transform.position.y) > Mathf.Abs(playerTarget.position.x - transform.position.x))
         {
@@ -360,11 +406,35 @@ public class GL_Enemy3_Behaviour : MonoBehaviour
             anim.SetFloat("moveX", (playerTarget.position.x - transform.position.x));
             anim.SetFloat("moveY", 0f);
         }
+
+        if (isColliding)
+        {
+            anim.SetBool("isMoving", false);
+        }
+
+        //Linecast to check for wall/other enemies between monster and player
+        RaycastHit2D hit = Physics2D.Linecast(transform.position, playerTarget.position, 1 << 15 | 1 << 9);
+
+        if (hit.collider != null)
+        {
+            isColliding = true;
+            //Debug.Log(hit.collider);
+            Debug.DrawLine(transform.position, playerTarget.position, Color.red);
+        }
+        else
+        {
+            isColliding = false;
+            Debug.DrawLine(transform.position, playerTarget.position, Color.green);
+        }
     }
 
+    void ShootProjectile()
+    {
+        GameObject Nado = Instantiate(tornado, firePoint.position, firePoint.rotation);
+    }
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.collider.tag == "Player")
+        if (other.collider.CompareTag("Player"))
         {
             touchingPlayer = true;
             isMoving = false;
@@ -378,5 +448,4 @@ public class GL_Enemy3_Behaviour : MonoBehaviour
         isMoving = false;
         anim.SetBool("isMoving", true);
     }
-
 }

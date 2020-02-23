@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerCombat : MonoBehaviour
 {
     private int playerDamage;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,21 +20,33 @@ public class PlayerCombat : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Enemy")
+        if (other.CompareTag("Enemy"))
         {
             EnemyHealth enemy;
             enemy = other.gameObject.GetComponent<EnemyHealth>();
-
-            enemy.damageEnemy(playerDamage);
+            enemy.damageEnemy(25);
             
         }
-
-        if (other.tag == "GLBoss")
+        else if (other.CompareTag("GLBoss"))
         {
             GrassLandsBoss glBoss;
             glBoss = other.gameObject.GetComponent<GrassLandsBoss>();
 
             glBoss.BossHits();
+        }
+        else if (other.tag == "DBoss")
+        {
+            DesertBossHealth DBoss;
+            DBoss = other.gameObject.GetComponent<DesertBossHealth>();
+
+            DBoss.damageEnemy(playerDamage);
+        }
+        else if (other.tag == "FBoss")
+        {
+            ForestBossHealth FBoss;
+            FBoss = other.gameObject.GetComponent<ForestBossHealth>();
+
+            FBoss.damageEnemy(playerDamage);
         }
     }
 }

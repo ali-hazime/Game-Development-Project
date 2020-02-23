@@ -13,6 +13,7 @@ public class BaseItemSlots : MonoBehaviour, IPointerClickHandler, IPointerEnterH
     public event Action<BaseItemSlots> OnPointerEnterEvent;
     public event Action<BaseItemSlots> OnPointerExitEvent;
     public event Action<BaseItemSlots> OnRightClickEvent;
+    public event Action<BaseItemSlots> OnLeftClickEvent;
 
     protected Color normalColor = Color.white;
     protected Color disabledColor = new Color(1, 1, 1, 0);
@@ -103,8 +104,15 @@ public class BaseItemSlots : MonoBehaviour, IPointerClickHandler, IPointerEnterH
                 OnRightClickEvent(this);
             }
         }
-    }
 
+        if (eventData != null && eventData.button == PointerEventData.InputButton.Left)
+        {
+            if (OnLeftClickEvent != null)
+            {
+                OnLeftClickEvent(this);
+            }
+        }
+    }
     public void OnPointerEnter(PointerEventData eventData)
     {
         isPointerOver = true;

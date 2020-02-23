@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5096597472676943651}
   - component: {fileID: 5096597472676943653}
   - component: {fileID: 5096597472676943652}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: terrain_439 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,6 +46,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -68,7 +69,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1170572659
-  m_SortingLayer: 6
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_Sprite: {fileID: -6471348176010176429, guid: 7b1ebb7815b42904288b3341cff80852,
     type: 3}
@@ -119,7 +120,7 @@ GameObject:
   - component: {fileID: 5096597472753194458}
   - component: {fileID: 5096597472753194460}
   - component: {fileID: 5096597472753194459}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: terrain_439 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -154,6 +155,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -176,7 +178,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1170572659
-  m_SortingLayer: 6
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_Sprite: {fileID: -6471348176010176429, guid: 7b1ebb7815b42904288b3341cff80852,
     type: 3}
@@ -227,7 +229,7 @@ GameObject:
   - component: {fileID: 5096597473614773676}
   - component: {fileID: 5096597473614773678}
   - component: {fileID: 5096597473614773677}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: terrain_438 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -262,6 +264,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -284,7 +287,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1170572659
-  m_SortingLayer: 6
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_Sprite: {fileID: 269243326207472430, guid: 7b1ebb7815b42904288b3341cff80852, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -334,7 +337,7 @@ GameObject:
   - component: {fileID: 5096597473955803531}
   - component: {fileID: 5096597473955803533}
   - component: {fileID: 5096597473955803532}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: terrain_438 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -369,6 +372,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -391,7 +395,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1170572659
-  m_SortingLayer: 6
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_Sprite: {fileID: 269243326207472430, guid: 7b1ebb7815b42904288b3341cff80852, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -439,9 +443,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5096597474389631914}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Cave
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -621,6 +625,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Dirt (113)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1347087576758494850, guid: c91cd31ab3c26ad45922c3ef0569f7f3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1347087576758494851, guid: c91cd31ab3c26ad45922c3ef0569f7f3,
         type: 3}
@@ -997,6 +1006,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dirt (66)
       objectReference: {fileID: 0}
+    - target: {fileID: 1347087576758494850, guid: c91cd31ab3c26ad45922c3ef0569f7f3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 1347087576758494851, guid: c91cd31ab3c26ad45922c3ef0569f7f3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1146,6 +1160,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Dirt (111)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1347087576758494850, guid: c91cd31ab3c26ad45922c3ef0569f7f3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1347087576758494851, guid: c91cd31ab3c26ad45922c3ef0569f7f3,
         type: 3}
@@ -1671,6 +1690,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Dirt (65)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1347087576758494850, guid: c91cd31ab3c26ad45922c3ef0569f7f3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1347087576758494851, guid: c91cd31ab3c26ad45922c3ef0569f7f3,
         type: 3}
@@ -2572,6 +2596,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dirt (112)
       objectReference: {fileID: 0}
+    - target: {fileID: 1347087576758494850, guid: c91cd31ab3c26ad45922c3ef0569f7f3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 1347087576758494851, guid: c91cd31ab3c26ad45922c3ef0569f7f3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2647,6 +2676,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dirt (68)
       objectReference: {fileID: 0}
+    - target: {fileID: 1347087576758494850, guid: c91cd31ab3c26ad45922c3ef0569f7f3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 1347087576758494851, guid: c91cd31ab3c26ad45922c3ef0569f7f3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2721,6 +2755,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Dirt (64)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1347087576758494850, guid: c91cd31ab3c26ad45922c3ef0569f7f3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1347087576758494851, guid: c91cd31ab3c26ad45922c3ef0569f7f3,
         type: 3}
@@ -3096,6 +3135,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Dirt (109)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1347087576758494850, guid: c91cd31ab3c26ad45922c3ef0569f7f3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1347087576758494851, guid: c91cd31ab3c26ad45922c3ef0569f7f3,
         type: 3}
@@ -3917,6 +3961,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5096597474389631914}
     m_Modifications:
+    - target: {fileID: 558897147043454362, guid: ece34507872de6b46a8946ae3cdfab0a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1482236418719784474, guid: ece34507872de6b46a8946ae3cdfab0a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 1901825526163404922, guid: ece34507872de6b46a8946ae3cdfab0a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3981,6 +4035,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DirtLEftSide
+      objectReference: {fileID: 0}
+    - target: {fileID: 5841492787299457060, guid: ece34507872de6b46a8946ae3cdfab0a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7728748900116043685, guid: ece34507872de6b46a8946ae3cdfab0a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ece34507872de6b46a8946ae3cdfab0a, type: 3}
@@ -4451,6 +4515,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Dirt (67)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1347087576758494850, guid: c91cd31ab3c26ad45922c3ef0569f7f3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1347087576758494851, guid: c91cd31ab3c26ad45922c3ef0569f7f3,
         type: 3}
@@ -5272,15 +5341,35 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5096597474389631914}
     m_Modifications:
+    - target: {fileID: 3169999454885309441, guid: cdddaa2c658c0854cb5457f8df99eca4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 4630376164014551513, guid: cdddaa2c658c0854cb5457f8df99eca4,
         type: 3}
       propertyPath: m_LocalPosition.y
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 5085780946879713502, guid: cdddaa2c658c0854cb5457f8df99eca4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 6588129764735134721, guid: cdddaa2c658c0854cb5457f8df99eca4,
         type: 3}
       propertyPath: m_Name
       value: DirtRightSide
+      objectReference: {fileID: 0}
+    - target: {fileID: 6588129764735134721, guid: cdddaa2c658c0854cb5457f8df99eca4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8365304795210245572, guid: cdddaa2c658c0854cb5457f8df99eca4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 9010901796832694383, guid: cdddaa2c658c0854cb5457f8df99eca4,
         type: 3}
@@ -6106,6 +6195,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Dirt (110)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1347087576758494850, guid: c91cd31ab3c26ad45922c3ef0569f7f3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1347087576758494851, guid: c91cd31ab3c26ad45922c3ef0569f7f3,
         type: 3}

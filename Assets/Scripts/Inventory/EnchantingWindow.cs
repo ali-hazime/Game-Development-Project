@@ -19,7 +19,7 @@ public class EnchantingWindow : MonoBehaviour
 		Init();
 	}
 
-	private void Start()
+	private void Awake()
 	{
 		Init();
 

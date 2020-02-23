@@ -9,6 +9,11 @@ TagManager:
   - GLBoss
   - Sword
   - Staff
+  - Wall
+  - Currency
+  - DBoss
+  - FBoss
+  - poisonCloud
   layers:
   - Default
   - TransparentFX
@@ -18,15 +23,15 @@ TagManager:
   - UI
   - 
   - 
-  - Ignore Combat Collider
+  - Combat Collider
   - Enemy
   - Player
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - NoRock
+  - NoPoison
+  - FBoss
+  - pCloud
+  - Wall
+  - Projectile
   - 
   - 
   - 
@@ -73,17 +78,26 @@ TagManager:
   - name: Objects on the ground
     uniqueID: 1810851877
     locked: 0
+  - name: Under Monster
+    uniqueID: 1348227489
+    locked: 0
   - name: Monsters
     uniqueID: 3456235653
+    locked: 0
+  - name: Above Monster
+    uniqueID: 3432694993
     locked: 0
   - name: Player
     uniqueID: 3113264351
     locked: 0
-  - name: Above player
+  - name: ABOVE PLAYER
     uniqueID: 634325293
     locked: 0
   - name: HitboxOverlay
     uniqueID: 3479444731
+    locked: 0
+  - name: Environment Effects
+    uniqueID: 3974065861
     locked: 0
   - name: UI Layer
     uniqueID: 2889976323

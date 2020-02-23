@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6952679090255524794}
   - component: {fileID: 6952679090255524797}
-  m_Layer: 0
+  - component: {fileID: 3256686909090526511}
+  m_Layer: 15
   m_Name: dungeon_414
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,6 +46,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -67,7 +69,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1170572659
-  m_SortingLayer: 4
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_Sprite: {fileID: -6310728775542300876, guid: d64f9b42d4cb4f745b0bc0c59ad5a07b,
     type: 3}
@@ -81,6 +83,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &3256686909090526511
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6952679090255524796}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &6952679091289951911
 GameObject:
   m_ObjectHideFlags: 0
@@ -91,7 +119,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6952679091289951909}
   - component: {fileID: 6952679091289951908}
-  m_Layer: 0
+  - component: {fileID: 7981849096266954080}
+  m_Layer: 15
   m_Name: dungeon_456
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126,6 +155,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -148,7 +178,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1170572659
-  m_SortingLayer: 4
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_Sprite: {fileID: 4611292139230210811, guid: d64f9b42d4cb4f745b0bc0c59ad5a07b,
     type: 3}
@@ -162,6 +192,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &7981849096266954080
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6952679091289951911}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &7531726380725911318
 GameObject:
   m_ObjectHideFlags: 0
@@ -171,9 +227,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5853718822791371209}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: CaveEntrance
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

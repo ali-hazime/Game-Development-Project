@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 2643754848746929632}
   - component: {fileID: 895027390907398929}
   - component: {fileID: 888325791772193733}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: terrain_407
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46,6 +46,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -68,7 +69,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1170572659
-  m_SortingLayer: 5
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_Sprite: {fileID: 8531469263801930655, guid: 7b1ebb7815b42904288b3341cff80852,
     type: 3}

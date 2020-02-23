@@ -12,7 +12,7 @@ public class NPC_Dialogue : MonoBehaviour
     public GameObject TestNPCTB2;
     public GameObject TestNPCTB3;
     public int NPCnumber;
-    public NPC_Movement npcMoveScript;
+    public NPC_Stuff npcMoveScript;
     public int pressed = 0;
 
     public bool once = false;
@@ -63,6 +63,7 @@ public class NPC_Dialogue : MonoBehaviour
             TestNPCTB1.SetActive(false);
             TestNPCTB2.SetActive(false);
             TestNPCTB3.SetActive(false);
+            pressed = 0;
         }
 
         if (Input.GetKeyDown(KeyCode.Z))
