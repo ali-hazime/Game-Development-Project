@@ -10,13 +10,14 @@ public class ForestBossHealth : MonoBehaviour
     public float scale;
 
     //enemy takes damage
-    public void damageEnemy(int playerDamage)
+    public void DamageEnemy(int playerDamage)
     {
         currentHealth -= playerDamage;
 
         if (currentHealth <= 0)
         {
             //Destroy(gameObject);
+            gameObject.GetComponent<ItemDropScript>().DropItem(true);
         }
     }
 

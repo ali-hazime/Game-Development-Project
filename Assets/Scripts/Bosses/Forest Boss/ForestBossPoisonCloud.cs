@@ -12,7 +12,7 @@ public class ForestBossPoisonCloud : MonoBehaviour
 
             GameObject.FindWithTag("Player").GetComponent<PlayerChar>().PoisonPlayer(3.0f);
         }
-        else if(thing.tag == "FBoss")
+        else if(thing.CompareTag("FBoss"))
         {
             thing.gameObject.GetComponent<ForestBoss>().makeCloud = false;
         }

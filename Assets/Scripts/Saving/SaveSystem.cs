@@ -4,7 +4,6 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public static class SaveSystem
 {
-    private static string[] saveFiles = {"/playerData.game", "/monsterData.game" };
     public static void SavePlayer(PlayerChar playerchar)
     {
         
@@ -12,26 +11,13 @@ public static class SaveSystem
         string path = Application.persistentDataPath + "/playerData.game";
         FileStream stream = new FileStream(path, FileMode.Create);
         
-        GameData data = new GameData(playerchar);
+        PlayerGameData data = new PlayerGameData(playerchar);
         formatter.Serialize(stream, data);
         stream.Close();
         
     }
 
-    public static void SaveEnemy(EnemyHealth eh)
-    {
-
-        BinaryFormatter formatter = new BinaryFormatter();
-        string path = Application.persistentDataPath + "/monsterData.game";
-        FileStream stream = new FileStream(path, FileMode.Create);
-
-        GameData data = new GameData(eh);
-        formatter.Serialize(stream, data);
-        stream.Close();
-
-    }
-
-    public static GameData LoadPlayer()
+    public static PlayerGameData LoadPlayer()
     {
         string path = Application.persistentDataPath + "/playerData.game";
 
@@ -39,8 +25,8 @@ public static class SaveSystem
         {
             BinaryFormatter formatter = new BinaryFormatter();
             FileStream stream = new FileStream(path, FileMode.Open);
-                
-            GameData data = formatter.Deserialize(stream) as GameData;
+
+            PlayerGameData data = formatter.Deserialize(stream) as PlayerGameData;
             stream.Close();
 
             return data;
@@ -52,16 +38,30 @@ public static class SaveSystem
         }
     }
 
-    public static GameData LoadEnemy()
+    /*
+    public static void SaveGameInfo()
     {
-        string path = Application.persistentDataPath + "/monsterData.game";
+
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + "/gameInfo.game";
+        FileStream stream = new FileStream(path, FileMode.Create);
+
+        InfoGameData data = new InfoGameData();
+        formatter.Serialize(stream, data);
+        stream.Close();
+
+    }
+    
+    public static InfoGameData LoadGameInfo()
+    {
+        string path = Application.persistentDataPath + "/gameInfo.game";
 
         if (File.Exists(path))
         {
             BinaryFormatter formatter = new BinaryFormatter();
             FileStream stream = new FileStream(path, FileMode.Open);
 
-            GameData data = formatter.Deserialize(stream) as GameData;
+            InfoGameData data = formatter.Deserialize(stream) as InfoGameData;
             stream.Close();
 
             return data;
@@ -71,5 +71,5 @@ public static class SaveSystem
             Debug.Log("Save file not found in " + path);
             return null;
         }
-    }
+    }*/
 }

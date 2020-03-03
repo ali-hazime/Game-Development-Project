@@ -41,14 +41,14 @@ public class staffProjectiles : MonoBehaviour
             DesertBossHealth DBoss;
             DBoss = other.gameObject.GetComponent<DesertBossHealth>();
 
-            DBoss.damageEnemy(playerDamage);
+            DBoss.DamageEnemy(playerDamage);
         }
         else if (other.tag == "FBoss")
         {
             ForestBossHealth FBoss;
             FBoss = other.gameObject.GetComponent<ForestBossHealth>();
 
-            FBoss.damageEnemy(playerDamage);
+            FBoss.DamageEnemy(playerDamage);
         }
 
         Destroy(me);

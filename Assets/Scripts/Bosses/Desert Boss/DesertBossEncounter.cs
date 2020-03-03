@@ -62,5 +62,6 @@ public class DesertBossEncounter : MonoBehaviour
         }
 
         Destroy(theBoss);
+        GameSavingInformation.desertBossDefeated = true;
     }
 }

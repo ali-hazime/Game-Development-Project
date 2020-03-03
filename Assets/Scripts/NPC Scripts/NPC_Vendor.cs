@@ -16,6 +16,7 @@ public class NPC_Vendor : MonoBehaviour
     public GameObject playerStuff;
     public GameObject buyPrompt;
     public GameObject sellPrompt;
+    [SerializeField] UIToggle uiToggle;
     //public NPC_Dialogue Dialogue;
     public float countingTime = 0;
     public float speed = 1.0f;
@@ -48,6 +49,11 @@ public class NPC_Vendor : MonoBehaviour
         playerTarget = FindObjectOfType<PlayerChar>().transform;
         anim.SetBool("moveVert", false);
         anim.SetBool("isMoving", true);
+
+        if (uiToggle == null)
+        {
+            uiToggle = FindObjectOfType<UIToggle>();
+        }
     }
 
     void Update()
@@ -348,6 +354,11 @@ public class NPC_Vendor : MonoBehaviour
             currencyUI.SetActive(true);
         }
 
+        if (uiToggle.isPaused)
+        {
+            vendorWindow.SetActive(false);
+        }
+
         //anim.SetFloat("moveY", (playerTarget.position.y - transform.position.y));
 
         if (Mathf.Abs(playerTarget.position.y - transform.position.y) > Mathf.Abs(playerTarget.position.x - transform.position.x))
@@ -378,7 +389,7 @@ public class NPC_Vendor : MonoBehaviour
         isMoving = false;
         anim.SetBool("isMoving", true);
 
-        if (collision.collider.tag == "Player")
+        if (collision.collider.CompareTag("Player"))
         {
             vendorWindow.SetActive(false);
             playerStuff.SetActive(false);

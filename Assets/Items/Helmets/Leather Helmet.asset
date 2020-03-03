@@ -9,20 +9,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 517569b35722b814085fa6c00795958a, type: 3}
   m_Name: Leather Helmet
   m_EditorClassIdentifier: Assembly-CSharp::EquipableItem
   id: 3b32dfa6ecfacdf40b65d7697230801d
   ItemName: Leather Helmet
   Icon: {fileID: 21300000, guid: 5ff9b869a12e70b4db7a137f84ed920b, type: 3}
   MaxStacks: 1
-  ItemPrice: 100
+  ItemPrice: 45
+  SellItemPrice: 15
+  isQuestItem: 0
   bonusAttackDamage: 0
   bonusAbilityPower: 0
   bonusAttackSpeed: 0
   bonusMovementSpeed: 0
-  bonusHealth: 5
-  bonusArmour: 5
+  bonusHealth: 4
+  bonusArmour: 2
   ItemType: 0
   isSword: 0
   isStaff: 0

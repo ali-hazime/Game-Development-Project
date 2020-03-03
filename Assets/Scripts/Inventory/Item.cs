@@ -15,6 +15,7 @@ public class Item : ScriptableObject
     public int MaxStacks = 1;
     public int ItemPrice;
     public int SellItemPrice;
+    public bool isQuestItem;
 
     protected static readonly StringBuilder sb = new StringBuilder();
 

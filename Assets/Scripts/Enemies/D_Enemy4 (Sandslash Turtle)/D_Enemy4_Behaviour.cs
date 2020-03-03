@@ -127,11 +127,13 @@ public class D_Enemy4_Behaviour : MonoBehaviour
         if (wallCheck.collider != null && playerCheck.collider != null && Vector3.Distance(playerTarget.position, transform.position) < 2)
         {
             isPinned = true;
+            GameObject.FindWithTag("Player").GetComponent<PlayerChar>().playerPinned(true);
             //Debug.DrawLine(transform.position, offsetPos, Color.yellow);
         }
         else
         {
             isPinned = false;
+            GameObject.FindWithTag("Player").GetComponent<PlayerChar>().playerPinned(false);
             //Debug.DrawLine(transform.position, offsetPos, Color.cyan);
         }
     }

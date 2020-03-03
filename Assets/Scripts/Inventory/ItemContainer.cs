@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class ItemContainer : MonoBehaviour, IItemContainer
 {
-    [SerializeField] protected ItemSlots[] itemSlots;
+    public ItemSlots[] itemSlots;
     public virtual bool CanAddItem(Item item, int amount = 1)
     {
         int freeSlots = 0;
@@ -105,7 +105,7 @@ public abstract class ItemContainer : MonoBehaviour, IItemContainer
         return number;
     }
 
-    public virtual void Clear()
+    public void Clear()
     {
         for (int i = 0; i < itemSlots.Length; i++)
         {

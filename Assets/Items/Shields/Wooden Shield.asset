@@ -9,20 +9,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 517569b35722b814085fa6c00795958a, type: 3}
   m_Name: Wooden Shield
   m_EditorClassIdentifier: Assembly-CSharp::EquipableItem
   id: 54784d295ac43754f8e347e511b56bc7
   ItemName: Wooden Shield
   Icon: {fileID: 21300000, guid: 615f3cdaa1374bd4db14286066f31cde, type: 3}
   MaxStacks: 1
-  ItemPrice: 150
+  ItemPrice: 38
+  SellItemPrice: 12
   bonusAttackDamage: 0
   bonusAbilityPower: 0
   bonusAttackSpeed: 0
   bonusMovementSpeed: 0
-  bonusHealth: 5
-  bonusArmour: 10
+  bonusHealth: 3
+  bonusArmour: 1
   ItemType: 4
   isSword: 0
   isStaff: 0

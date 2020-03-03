@@ -24,6 +24,8 @@ public class EquipableItem : Item
     public ItemType ItemType;
     public bool isSword;
     public bool isStaff;
+    [Space]
+    public float bonusMagicFind;
 
     public override Item GetCopy()
     {
@@ -77,6 +79,12 @@ public class EquipableItem : Item
             p.swordEquipped = false;
             p.staffEquipped = true;
         }
+
+        if (bonusMagicFind != 0)
+        {
+            p.playerMagicFind += bonusMagicFind;
+            GameSavingInformation.dropChanceModifier += bonusMagicFind;
+        }
     }
 
     public void Unequip(PlayerChar p)
@@ -87,6 +95,8 @@ public class EquipableItem : Item
         p.playerMovementSpeed /= (1 + bonusMovementSpeed);
         p.playerMaxHealth -= bonusHealth;
         p.playerArmour -= bonusArmour;
+        p.playerMagicFind -= bonusMagicFind;
+        GameSavingInformation.dropChanceModifier -= bonusMagicFind;
 
         if (isSword)
         {
@@ -140,6 +150,7 @@ public class EquipableItem : Item
         TooltipStat(bonusMovementSpeed, "Movement Speed");
         TooltipStat(bonusHealth, "Health");
         TooltipStat(bonusArmour, "Armour");
+        TooltipStat(bonusMagicFind, "Magic Find");
 
         return sb.ToString();
     }

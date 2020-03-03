@@ -6,13 +6,18 @@ public class DesertBossBiteNorth : MonoBehaviour
 {
 
     public int biteDamage = 0;
-    
-    private void OnCollisionEnter2D(Collision2D other)
+    public float biteForce = 10000f;
+
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.collider.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
-            other.gameObject.GetComponent<PlayerChar>().TakeDamage(biteDamage);
-            other.gameObject.GetComponent<Rigidbody2D>().AddForce(other.transform.up * 10000f);
+            GameObject.FindWithTag("Player").GetComponent<PlayerChar>().TakeDamage(biteDamage);
+            if (GameObject.FindWithTag("Player").GetComponent<PlayerChar>()._isPinned == false)
+            {
+                GameObject.FindWithTag("Player").GetComponent<Rigidbody2D>().AddForce(other.transform.up * biteForce);
+            }  
         }
     }
+
 }

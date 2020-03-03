@@ -16,7 +16,7 @@ public class PlayerChar : MonoBehaviour
     public GameObject slowIndicator;
     public GameObject burnIndicator;
     public Transform statusIndicatorPoint;
-    public CurrencyManager currencyManagerScript;
+    
     [Space]
     //player sprite and movement
     private Rigidbody2D rb;
@@ -37,6 +37,7 @@ public class PlayerChar : MonoBehaviour
     public float playerAttackSpeed;
     public int playerArmour;
     public int playerDamage;
+    public float playerMagicFind;
     private float tempSpeed;
     [Space]
     public float timer = 0;
@@ -63,6 +64,7 @@ public class PlayerChar : MonoBehaviour
     public float poisonDOTclock = 0;
     public bool isPoisoned = false;
     public bool isSlowed = false;
+    public bool _isPinned = false;
 
     private void Start()
     {
@@ -75,7 +77,7 @@ public class PlayerChar : MonoBehaviour
 
     private void Update()
     {
-
+        
         if (playerCurrentHealth > playerMaxHealth)
         {
             playerCurrentHealth = playerMaxHealth;
@@ -211,6 +213,11 @@ public class PlayerChar : MonoBehaviour
     public void TakeDotDamage(int damageTaken)
     {
         playerCurrentHealth -= damageTaken;
+
+        if (playerCurrentHealth <= 0)
+        {
+            PlayerDie();
+        }
     }
     public void TakeDamage(int damageTaken)
     {
@@ -222,8 +229,13 @@ public class PlayerChar : MonoBehaviour
         playerCurrentHealth -= _actualDmg;
         if (playerCurrentHealth <= 0)
         {
-            gameObject.SetActive(false);
+            PlayerDie();
         }
+    }
+    
+    public void PlayerDie()
+    {
+        gameObject.SetActive(false);
     }
 
     public void PoisonPlayer(float poisonTime)
@@ -376,16 +388,6 @@ public class PlayerChar : MonoBehaviour
         animator.enabled = true;
         GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 255);
     }
-
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("Currency"))
-        {
-            Destroy(other.gameObject);
-            currencyManagerScript.AddCurrency();
-        }
-    }
-
     public void WalkingLeft(float fearTime)
     {
         StartCoroutine(Feared(fearTime));
@@ -413,6 +415,19 @@ public class PlayerChar : MonoBehaviour
         walkNorth = false;
         walkSouth = false;
         cancel = true;
+    }
+
+    public void playerPinned(bool isPinned)
+    {
+        if (isPinned)
+        {
+            _isPinned = true;
+        }
+        else
+        {
+            _isPinned = false;
+        }
+        
     }
 
     IEnumerator Feared(float fearTime)

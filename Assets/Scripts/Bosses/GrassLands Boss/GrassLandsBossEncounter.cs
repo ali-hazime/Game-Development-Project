@@ -59,6 +59,7 @@ public class GrassLandsBossEncounter : MonoBehaviour
     {
         GLEnd = true;
         GLStart = false;
+        GameSavingInformation.grassBossDefeated = true;
         BreakBarrier();
     }
 

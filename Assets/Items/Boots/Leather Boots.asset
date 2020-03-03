@@ -9,20 +9,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 517569b35722b814085fa6c00795958a, type: 3}
   m_Name: Leather Boots
-  m_EditorClassIdentifier: Assembly-CSharp::EquipableItem
-  id: eb1610c21f76da94bbf5403f585676c2
+  m_EditorClassIdentifier: 
+  id: a069fdaa952546b4393ee36cd8834fa9
   ItemName: Leather Boots
-  Icon: {fileID: 21300000, guid: 29a1226f7b5e20240942612e151c3c4c, type: 3}
+  Icon: {fileID: 21300000, guid: 6855f5c15b53b074998e9b8639877f41, type: 3}
   MaxStacks: 1
-  ItemPrice: 100
+  ItemPrice: 45
+  SellItemPrice: 15
   bonusAttackDamage: 0
   bonusAbilityPower: 0
   bonusAttackSpeed: 0
-  bonusMovementSpeed: 0.1
-  bonusHealth: 5
-  bonusArmour: 5
+  bonusMovementSpeed: 0.03
+  bonusHealth: 3
+  bonusArmour: 2
   ItemType: 2
   isSword: 0
   isStaff: 0

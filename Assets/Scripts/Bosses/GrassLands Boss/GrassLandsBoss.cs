@@ -19,8 +19,7 @@ public class GrassLandsBoss : MonoBehaviour
     public bool isCentered = false;
     public bool isJumping = false;
     public bool isPunching = false;
-
-    
+    public KillBoss killBoss;
 
     //private int maxHealth = 100;
     //public int attackDamage = 25;
@@ -136,6 +135,7 @@ public class GrassLandsBoss : MonoBehaviour
 
     public void GLBossDeath()
     {
+        killBoss.UpdateBossStatus();
         Destroy(me);
     }
 

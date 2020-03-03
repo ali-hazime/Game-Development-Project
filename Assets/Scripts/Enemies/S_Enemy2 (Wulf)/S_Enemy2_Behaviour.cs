@@ -69,13 +69,16 @@ public class S_Enemy2_Behaviour : MonoBehaviour
 
         if (wallCheck.collider != null && playerCheck.collider != null && Vector3.Distance(playerTarget.position, transform.position) < 2)
         {
+            GameObject.FindWithTag("Player").GetComponent<PlayerChar>().playerPinned(true);
             isPinned = true;
-            //Debug.DrawLine(transform.position, offsetPos, Color.yellow);
+            
+            Debug.DrawLine(transform.position, offsetPos, Color.yellow);
         }
         else
         {
+            GameObject.FindWithTag("Player").GetComponent<PlayerChar>().playerPinned(false);
             isPinned = false;
-            //Debug.DrawLine(transform.position, offsetPos, Color.cyan);
+            Debug.DrawLine(transform.position, offsetPos, Color.cyan);
         }
 
         if (Vector3.Distance(playerTarget.position, transform.position) <= aggroMaxRange)

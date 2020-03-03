@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 6913540734416617571}
   - component: {fileID: 6913540734416617570}
   - component: {fileID: 6913540734416617569}
-  m_Layer: 0
+  - component: {fileID: 1729713988511667787}
+  m_Layer: 18
   m_Name: Crystals
   m_TagString: Currency
   m_Icon: {fileID: 0}
@@ -118,3 +119,27 @@ PolygonCollider2D:
       - {x: 0.4816798, y: 0.1609385}
       - {x: 0.46363574, y: 0.17405033}
       - {x: 0.25416768, y: 0.40511274}
+--- !u!114 &1729713988511667787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6913540734416617568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 181eaf57270e7a54287fda726f649df7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 0}
+  inventory: {fileID: 0}
+  currencyManagerScript: {fileID: 0}
+  isQuestItem: 0
+  isCurrency: 1
+  itemDropScript: {fileID: 0}
+  collectObjective:
+    amount: 0
+    currentAmount: 0
+    type: 
+  inRange: 0
+  currencyDrop: 0

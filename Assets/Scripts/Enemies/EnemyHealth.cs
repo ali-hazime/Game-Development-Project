@@ -22,6 +22,8 @@ public class EnemyHealth : MonoBehaviour
         if (currentHealth <= 0)
         {
             Destroy(gameObject);
+            QuestTracker.killCount++;
+            gameObject.GetComponent<ItemDropScript>().DropItem(true);
         }
     }
 

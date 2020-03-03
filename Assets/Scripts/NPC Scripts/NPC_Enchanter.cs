@@ -22,6 +22,7 @@ public class NPC_Enchanter : MonoBehaviour
     public bool moveVert = false;
     public bool isMoving = true;
     public bool touchingPlayer = false;
+    [SerializeField] UIToggle uiToggle;
 
 
     //Diff for each NPC
@@ -47,6 +48,11 @@ public class NPC_Enchanter : MonoBehaviour
         playerTarget = FindObjectOfType<PlayerChar>().transform;
         anim.SetBool("moveVert", false);
         anim.SetBool("isMoving", true);
+
+        if (uiToggle == null)
+        {
+            uiToggle = FindObjectOfType<UIToggle>();
+        }
     }
 
     void Update()
@@ -347,6 +353,11 @@ public class NPC_Enchanter : MonoBehaviour
             currencyUI.SetActive(true);
         }
 
+        if (uiToggle.isPaused)
+        {
+            enchantingWindow.SetActive(false);
+        }
+
         //anim.SetFloat("moveY", (playerTarget.position.y - transform.position.y));
 
         if (Mathf.Abs(playerTarget.position.y - transform.position.y) > Mathf.Abs(playerTarget.position.x - transform.position.x))
@@ -377,7 +388,7 @@ public class NPC_Enchanter : MonoBehaviour
         isMoving = false;
         anim.SetBool("isMoving", true);
 
-        if (collision.collider.tag == "Player")
+        if (collision.collider.CompareTag("Player"))
         {
             enchantingWindow.SetActive(false);
             playerStuff.SetActive(false);

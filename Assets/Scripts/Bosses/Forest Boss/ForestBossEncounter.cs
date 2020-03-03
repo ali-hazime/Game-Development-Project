@@ -50,6 +50,7 @@ public class ForestBossEncounter : MonoBehaviour
         Destroy(cloudParent);
         Destroy(boltsParent);
         treeBlock.SetActive(false);
+        GameSavingInformation.forestBossDefeated = true;
         Destroy(theBoss);
     }
 }

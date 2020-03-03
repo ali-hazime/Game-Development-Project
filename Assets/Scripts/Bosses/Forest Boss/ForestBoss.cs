@@ -16,11 +16,11 @@ public class ForestBoss : MonoBehaviour
     public float waitTime = 0;
     public bool doingSomething = false;
     public bool doingPhase2 = false;
-
+    [Space]
     //melee basic attack
     public float slashCoolDown;
     public bool slash;
-
+    [Space]
     //shoot basic attack
     public GameObject BApoisonProjectile;
     public float shootCoolDown;
@@ -28,7 +28,7 @@ public class ForestBoss : MonoBehaviour
     public bool shootOnCD;
 
     public bool phase1 = true;
-
+    [Space]
     //phase2
     public GameObject phase2Indcator;
     public GameObject boltsParent;
@@ -48,13 +48,17 @@ public class ForestBoss : MonoBehaviour
     public bool once2P2 = true;
     public bool once3P2 = true;
     public bool once4P2 = true;
-
+    [Space]
     //phases3
     public GameObject cloudsParent;
     public GameObject cloud;
     public bool phase3 = false;
     public bool makeCloud = true;
     public float phase3Start = 0.3f;
+    [Space]
+    public bool isPinned = false;
+    private Vector3 dir;
+    private Vector3 offsetPos;
 
     // Start is called before the first frame update
     void Start()
@@ -63,8 +67,13 @@ public class ForestBoss : MonoBehaviour
         playerTarget = FindObjectOfType<PlayerChar>().transform;
     }
 
-    // Update is called once per frame
     void Update()
+    {
+        dir = (playerTarget.position - transform.position).normalized;
+        offsetPos = playerTarget.position + (dir * 1.5f);
+    }
+    // Update is called once per frame
+    void FixedUpdate()
     {
         if (started)
         {
@@ -197,7 +206,7 @@ public class ForestBoss : MonoBehaviour
                 slash = false;
             }
 
-            if (doingSomething == false && doingPhase2 == false)
+            if (doingSomething == false && doingPhase2 == false && isPinned == false)
             { 
                 transform.position = Vector3.MoveTowards(transform.position, playerTarget.position, 5.0f * Time.deltaTime);
             }
@@ -217,6 +226,23 @@ public class ForestBoss : MonoBehaviour
         if (bossStats.currentHealth <= 0)
         {
             dead = true;
+        }
+
+        RaycastHit2D wallCheck = Physics2D.Linecast(transform.position, offsetPos, 1 << 15);
+        RaycastHit2D playerCheck = Physics2D.Linecast(transform.position, offsetPos, 1 << 8);
+
+        if (wallCheck.collider != null && playerCheck.collider != null && Vector3.Distance(playerTarget.position, transform.position) < 1.5)
+        {
+            isPinned = true;
+            anim.SetBool("isMoving", false);
+            GameObject.FindWithTag("Player").GetComponent<PlayerChar>().playerPinned(true);
+            //Debug.DrawLine(transform.position, offsetPos, Color.yellow);
+        }
+        else
+        {
+            isPinned = false;
+            GameObject.FindWithTag("Player").GetComponent<PlayerChar>().playerPinned(false);
+            //Debug.DrawLine(transform.position, offsetPos, Color.cyan);
         }
 
     }
@@ -290,7 +316,7 @@ public class ForestBoss : MonoBehaviour
     {
         if (phase3 == true)
         {
-            if (thing.tag == "poisonCloud")
+            if (thing.CompareTag("poisonCloud"))
             {
                 makeCloud = false;
             }
@@ -301,7 +327,7 @@ public class ForestBoss : MonoBehaviour
     {
         if (phase3 == true)
         {
-            if (thing.tag == "poisonCloud")
+            if (thing.CompareTag("poisonCloud"))
             {
                 makeCloud = true;
             }

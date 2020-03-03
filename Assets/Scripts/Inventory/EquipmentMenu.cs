@@ -2,11 +2,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EquipmentMenu : MonoBehaviour
 {
-    [SerializeField] Transform equipmentSlotsParent;
     public EquipmentSlots[] equipmentSlots;
+    [SerializeField] Transform equipmentSlotsParent;
+    [SerializeField] Image helmImage;
+    [SerializeField] Image wepImage;
+    [SerializeField] Image shieldImage;
+    [SerializeField] Image bootsImage;
+    [SerializeField] Image bodyImage;
 
     public event Action<BaseItemSlots> OnBeginDragEvent;
     public event Action<BaseItemSlots> OnEndDragEvent;
@@ -44,6 +50,7 @@ public class EquipmentMenu : MonoBehaviour
                 previousItem = (EquipableItem)equipmentSlots[i].Item;
                 equipmentSlots[i].Item = item;
                 equipmentSlots[i].Amount = 1;
+                EnableEmptyIcon(equipmentSlots[i].EquipmentType);
                 return true;
             }
         }
@@ -60,9 +67,54 @@ public class EquipmentMenu : MonoBehaviour
             {
                 equipmentSlots[i].Item = null;
                 equipmentSlots[i].Amount = 0;
+                DisableEmptyIcon(equipmentSlots[i].EquipmentType);
                 return true;
             }
         }
         return false;
+    }
+
+    public void EnableEmptyIcon(ItemType itemType)
+    {
+        switch (itemType)
+        {
+            case ItemType.Helmet:
+                helmImage.enabled = true;
+                break;
+            case ItemType.BodyArmour:
+                bodyImage.enabled = true;
+                break;
+            case ItemType.Boots:
+                bootsImage.enabled = true;
+                break;
+            case ItemType.Shield:
+                shieldImage.enabled = true;
+                break;
+            case ItemType.Weapon:
+                wepImage.enabled = true;
+                break;
+        }
+    }
+
+    public void DisableEmptyIcon(ItemType itemType)
+    {
+        switch (itemType)
+        {
+            case ItemType.Helmet:
+                helmImage.enabled = false;
+                break;
+            case ItemType.BodyArmour:
+                bodyImage.enabled = false;
+                break;
+            case ItemType.Boots:
+                bootsImage.enabled = false;
+                break;
+            case ItemType.Shield:
+                shieldImage.enabled = false;
+                break;
+            case ItemType.Weapon:
+                wepImage.enabled = false;
+                break;
+        }
     }
 }

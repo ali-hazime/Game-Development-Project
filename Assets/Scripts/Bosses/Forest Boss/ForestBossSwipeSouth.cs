@@ -7,14 +7,18 @@ public class ForestBossSwipeSouth : MonoBehaviour
     public float swipePoisonTime = 0;
 
     public int swipeDamage = 0;
+    public float swipeForce = -5000f;
 
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.collider.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
-            other.gameObject.GetComponent<PlayerChar>().TakeDamage(swipeDamage);
-            other.gameObject.GetComponent<PlayerChar>().PoisonPlayer(swipePoisonTime);
-            other.gameObject.GetComponent<Rigidbody2D>().AddForce(other.transform.up * -5000f);
+            GameObject.FindWithTag("Player").GetComponent<PlayerChar>().TakeDamage(swipeDamage);
+            GameObject.FindWithTag("Player").GetComponent<PlayerChar>().PoisonPlayer(swipePoisonTime);
+            if (GameObject.FindWithTag("Player").GetComponent<PlayerChar>()._isPinned == false)
+            {
+                GameObject.FindWithTag("Player").GetComponent<Rigidbody2D>().AddForce(other.transform.up * swipeForce);
+            }
         }
     }
 }

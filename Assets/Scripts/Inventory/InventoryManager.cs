@@ -10,8 +10,8 @@ public class InventoryManager : MonoBehaviour
     public CurrencyManager cm;
     public GameObject sellItem;
 
-    [SerializeField] Inventory inventory;
-    [SerializeField] EquipmentMenu equipmentMenu;
+    public Inventory inventory;
+    public EquipmentMenu equipmentMenu;
     [SerializeField] EnchantingWindow enchantingWindow;
     [SerializeField] Vendor vendorWindow;    
     [SerializeField] ItemTooltips itemTooltips;
@@ -24,6 +24,7 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] PromptPopup promptPopup;
     [SerializeField] PromptPopup sellPrompt;
     [SerializeField] PromptPopup buyPrompt;
+    [SerializeField] ItemSaveManager itemSaveManager;
 
     private BaseItemSlots draggedSlot;
 
@@ -44,7 +45,16 @@ public class InventoryManager : MonoBehaviour
             sellPrice = FindObjectOfType<ItemSellPrice>();
         }
 
-        c = FindObjectOfType<PlayerChar>();
+        if (c == null)
+        {
+            c = FindObjectOfType<PlayerChar>();
+        }
+
+        if (itemSaveManager == null)
+        {
+            itemSaveManager = FindObjectOfType<ItemSaveManager>();
+        }
+        
     }
     private void Awake()
     {
@@ -84,8 +94,17 @@ public class InventoryManager : MonoBehaviour
 
         dropItemArea.OnItemDropEvent += DropItem;
         sellItemArea.OnItemDropEvent += SellItem;
-    }
 
+        //itemSaveManager.LoadEquipment(this);
+        //itemSaveManager.LoadInventory(this);
+    }
+    /*
+    private void OnDestroy()
+    {
+        itemSaveManager.SaveEquipment(this);
+        itemSaveManager.SaveInventory(this);
+    }
+    */
     private void VendorWindowLeftClick(BaseItemSlots itemSlots)
     {
         buyPrompt.Show();
@@ -102,12 +121,12 @@ public class InventoryManager : MonoBehaviour
         if (itemSlots.Item is ConsumableItem)
         {
             ConsumableItem consumableItem = (ConsumableItem)itemSlots.Item;
-            if (cm.crystalsCount >= consumableItem.ItemPrice)
+            if (GameSavingInformation.crystalsCount >= consumableItem.ItemPrice)
             {
 
                 if (inventory.AddItem(consumableItem))
                 {
-                    cm.crystalsCount -= consumableItem.ItemPrice;
+                    GameSavingInformation.crystalsCount -= consumableItem.ItemPrice;
                 }
 
                 else
@@ -127,12 +146,12 @@ public class InventoryManager : MonoBehaviour
         {
             Item item = (Item)itemSlots.Item;
 
-            if (cm.crystalsCount >= item.ItemPrice)
+            if (GameSavingInformation.crystalsCount >= item.ItemPrice)
             {
                 if (inventory.AddItem(item))
                 {
                     vendorWindow.RemoveItem(item);
-                    cm.crystalsCount -= item.ItemPrice;
+                    GameSavingInformation.crystalsCount -= item.ItemPrice;
                 }
                 else
                 {
@@ -273,6 +292,8 @@ public class InventoryManager : MonoBehaviour
 
         if (draggedSlot is EquipmentSlots) return;
 
+        if (draggedSlot.Item.isQuestItem) return;
+
         promptPopup.Show();
         BaseItemSlots baseItemSlots = draggedSlot;
         promptPopup.OnOption1Event += () => DestroyItem(baseItemSlots);
@@ -281,17 +302,19 @@ public class InventoryManager : MonoBehaviour
     private void SellItem()
     {
 
-        int crystalCount = cm.crystalsCount;
+        int crystalCount = GameSavingInformation.crystalsCount;
         if (draggedSlot == null) return;
 
         if (draggedSlot is EquipmentSlots) return;
+
+        if (draggedSlot.Item.isQuestItem) return;
 
         sellPrompt.Show();
         sellItem.SetActive(false);
         BaseItemSlots baseItemSlots = draggedSlot;
         crystalCount += baseItemSlots.Item.SellItemPrice;
         sellPrompt.OnOption1Event += () => DestroyItem(baseItemSlots);
-        sellPrompt.OnOption1Event += () => cm.crystalsCount = crystalCount;
+        sellPrompt.OnOption1Event += () => GameSavingInformation.crystalsCount = crystalCount;
 
     }
 

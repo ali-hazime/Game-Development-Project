@@ -5,27 +5,17 @@ using UnityEngine.UI;
 
 public class CurrencyManager : MonoBehaviour
 {
-    private GameObject PlayerChar;
-
-    public int crystalsCount;
     public Text currencyCountText;
-
-    private void Start()
-    {
-        PlayerChar = GameObject.FindWithTag("Player");
-        crystalsCount = PlayerPrefs.GetInt("crystalsCount");
-    }
 
     private void Update()
     {
-        currencyCountText.text = "" + crystalsCount.ToString();
-        PlayerPrefs.SetInt("crystalsCount", crystalsCount);
+        currencyCountText.text = "" + GameSavingInformation.crystalsCount.ToString();
     }
 
-    public void AddCurrency()
+    public void AddCurrency(int crystals)
     {
-        crystalsCount += 1000;
-        currencyCountText.text = "" + crystalsCount.ToString();
+        GameSavingInformation.crystalsCount += crystals;
+        currencyCountText.text = "" + GameSavingInformation.crystalsCount.ToString();
     }
 }
 
