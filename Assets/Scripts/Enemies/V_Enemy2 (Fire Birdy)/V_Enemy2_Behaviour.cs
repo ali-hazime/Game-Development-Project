@@ -40,9 +40,19 @@ public class V_Enemy2_Behaviour : MonoBehaviour
     public bool once = true;
     public bool once2 = true;
     public float newPlace;
+    private PlayerChar player;
+    private void Awake()
+    {
+        if (player == null)
+        {
+            player = FindObjectOfType<PlayerChar>();
+        }
+    }
+
 
     void Start()
     {
+        startPos = this.gameObject.transform.position;
         anim = GetComponent<Animator>();
         playerTarget = FindObjectOfType<PlayerChar>().transform;
         anim.SetBool("moveVert", false);
@@ -112,7 +122,7 @@ public class V_Enemy2_Behaviour : MonoBehaviour
 
         if (touchingPlayer == false && isAttackAggro == false)
         {
-
+            /*
             //Any movement stuff
             countingTime += Time.fixedDeltaTime;
             if (dest0 == true)
@@ -394,7 +404,7 @@ public class V_Enemy2_Behaviour : MonoBehaviour
                     }
                 }
             }
-
+            */
             anim.SetFloat("speed", direction);
         }
 
@@ -415,7 +425,7 @@ public class V_Enemy2_Behaviour : MonoBehaviour
         }
 
         //Linecast to check for wall/other enemies between monster and player
-        RaycastHit2D hit = Physics2D.Linecast(transform.position, playerTarget.position, 1 << 15 | 1 << 9);
+        RaycastHit2D hit = Physics2D.Linecast(transform.position, playerTarget.position, 1 << 15 | 1 << 9 | 1 << 4);
 
         if (hit.collider != null)
         {
@@ -441,7 +451,7 @@ public class V_Enemy2_Behaviour : MonoBehaviour
             touchingPlayer = true;
             isMoving = false;
             anim.SetBool("isMoving", false);
-            other.gameObject.GetComponent<PlayerChar>().BurnPlayer(true, burnLength, burnDamage);
+            player.BurnPlayer(true, burnLength, burnDamage);
         }
     }
 

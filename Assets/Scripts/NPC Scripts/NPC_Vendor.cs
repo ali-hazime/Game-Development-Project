@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class NPC_Vendor : MonoBehaviour
 {
+    [SerializeField] int NPC_Number;
+    [SerializeField] bool isTalkingNPC;
+    public GameObject NPCtextbox;
+    public NPC_Dialogue Dialogue;
     private Transform playerTarget;
     private Animator anim;
     public GameObject player;
@@ -42,6 +46,18 @@ public class NPC_Vendor : MonoBehaviour
     public bool once2 = true;
 
     public float newPlace;
+
+    private void OnEnable()
+    {
+        if (NPCtextbox == null)
+        {
+            NPCtextbox = FindObjectOfType<NPC_Dialogue>().gameObject;
+        }
+        if (Dialogue == null)
+        {
+            Dialogue = FindObjectOfType<NPC_Dialogue>();
+        }
+    }
 
     void Start()
     {

@@ -5,7 +5,14 @@ using UnityEngine;
 public class DesertBossRockProjectile : MonoBehaviour
 {
     public int rockDamage;
-    // Start is called before the first frame update
+    private PlayerChar player;
+    private void Awake()
+    {
+        if (player == null)
+        {
+            player = FindObjectOfType<PlayerChar>();
+        }
+    }
 
     private void OnCollisionEnter2D(Collision2D thing)
     {
@@ -13,9 +20,9 @@ public class DesertBossRockProjectile : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-        else if (thing.collider.tag == "Player")
+        else if (thing.collider.CompareTag("Player"))
         {
-            thing.gameObject.GetComponent<PlayerChar>().TakeDamage(rockDamage);
+            player.TakeDamage(rockDamage);
             Destroy(this.gameObject);
         }
     }

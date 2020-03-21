@@ -464,6 +464,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85d964c9631a3164fb03c2b087139f94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  listOfItems: []
-  itemToDrop: 0
+  listOfItems:
+  - {fileID: 6159992186057606492, guid: ee12da90cd262ef438057716b5a4a5cf, type: 3}
+  - {fileID: 6159992186057606492, guid: c38997f0659f931409acc007c8134542, type: 3}
+  - {fileID: 6159992186057606492, guid: 4919454aa648ca840bc25ecf92ed2469, type: 3}
+  - {fileID: 6159992186057606492, guid: a1973f9cefe001a43ba1c72bd7bbb105, type: 3}
+  - {fileID: 6159992186057606492, guid: bfecb407aff5a754fad048215e05544e, type: 3}
+  - {fileID: 6159992186057606492, guid: 48d0b5353ef990f44b740e17e5fbc666, type: 3}
+  - {fileID: 6159992186057606492, guid: 6a0a036faab6a9346809bcc22f4e8246, type: 3}
+  - {fileID: 6159992186057606492, guid: db33ff3bc50b0814ebb65b2b7cb5c35e, type: 3}
+  - {fileID: 6159992186057606492, guid: e6a2bf9625f542c4293f059947e58519, type: 3}
+  - {fileID: 6159992186057606492, guid: 8c62f9259a5ed3742b5ae716a726ebff, type: 3}
+  - {fileID: 6159992186057606492, guid: a21363eace660ab4a8492f78ffd4e78f, type: 3}
+  - {fileID: 6159992186057606492, guid: 1f622f83c90a6324588cba7cf27306ff, type: 3}
+  - {fileID: 6159992186057606492, guid: a21363eace660ab4a8492f78ffd4e78f, type: 3}
+  - {fileID: 6159992186057606492, guid: 80bcf4be375dbb540874fd31d63bacbf, type: 3}
+  - {fileID: 6159992186057606492, guid: e843883c5a913a84293e0b243137c351, type: 3}
+  - {fileID: 6159992186057606492, guid: 6c28ba318a8d82c498ed5149a250d40c, type: 3}
+  - {fileID: 6159992186057606492, guid: 7609b2119aa13004bbf36a23b162d367, type: 3}
+  listOfRareItems:
+  - {fileID: 6159992186057606492, guid: c1a52f8dc8368a44ea8f1a77d62c13a0, type: 3}
+  - {fileID: 6159992186057606492, guid: f969a382d2f944a49afeb49123978c15, type: 3}
+  listOfLegendaryItems: []
+  listOfGems:
+  - {fileID: 6159992186057606492, guid: 8e4ba73dfb7640a45bd3feff38ddb1aa, type: 3}
+  - {fileID: 6159992186057606492, guid: f05a8499481ecff44b86614e3ee407bf, type: 3}
+  currencyObject: {fileID: 6913540734416617568, guid: f2f412f6bbbd62542959ec430c5ed1b7,
+    type: 3}
+  dropChance: 20
+  legendaryItemDropChance: 0
+  rareItemDropChance: 10
+  currencyDropChance: 40
+  gemDropChance: 10
+  rareGemDropChance: 50
+  currency: {fileID: 0}
   item: {fileID: 0}
+  gem: {fileID: 0}

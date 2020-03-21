@@ -97,7 +97,7 @@ public class GL_Enemy1_Behaviour : MonoBehaviour
         }
 
         //Linecast to check for wall/other enemies between monster and player
-        RaycastHit2D hit = Physics2D.Linecast(transform.position, playerTarget.position, 1 << 15 | 1 << 9);
+        RaycastHit2D hit = Physics2D.Linecast(transform.position, playerTarget.position, 1 << 15 | 1 << 9 | 1 << 4);
 
         if (hit.collider != null)
         {

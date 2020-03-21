@@ -4,20 +4,27 @@ using UnityEngine;
 
 public class ForestBossSwipeSouth : MonoBehaviour
 {
-    public float swipePoisonTime = 0;
-
-    public int swipeDamage = 0;
+    public float swipePoisonTime = 5;
+    public int swipeDamage = 20;
     public float swipeForce = -5000f;
+    public PlayerChar player;
 
+    private void Awake()
+    {
+        if (player == null)
+        {
+            player = FindObjectOfType<PlayerChar>();
+        }
+    }
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            GameObject.FindWithTag("Player").GetComponent<PlayerChar>().TakeDamage(swipeDamage);
-            GameObject.FindWithTag("Player").GetComponent<PlayerChar>().PoisonPlayer(swipePoisonTime);
-            if (GameObject.FindWithTag("Player").GetComponent<PlayerChar>()._isPinned == false)
+            player.TakeDamage(swipeDamage);
+            player.PoisonPlayer(swipePoisonTime);
+            if (player._isPinned == false)
             {
-                GameObject.FindWithTag("Player").GetComponent<Rigidbody2D>().AddForce(other.transform.up * swipeForce);
+                player.GetComponent<Rigidbody2D>().AddForce(other.transform.up * swipeForce);
             }
         }
     }

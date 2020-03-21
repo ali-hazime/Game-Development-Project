@@ -22,6 +22,14 @@ public class D_Enemy1_Behaviour : MonoBehaviour
     public bool isAttackAggro;
     public bool shootOnCD = false;
     public bool isColliding = false;
+    private PlayerChar player;
+    private void Awake()
+    {
+        if (player == null)
+        {
+            player = FindObjectOfType<PlayerChar>();
+        }
+    }
 
     void Start()
     {
@@ -88,7 +96,7 @@ public class D_Enemy1_Behaviour : MonoBehaviour
         }
 
         //Linecast to check for wall/other enemies between monster and player
-        RaycastHit2D hit = Physics2D.Linecast(transform.position, playerTarget.position, 1 << 15 | 1 << 9);
+        RaycastHit2D hit = Physics2D.Linecast(transform.position, playerTarget.position, 1 << 15 | 1 << 9 | 1 << 4);
 
         if (hit.collider != null)
         {
@@ -117,7 +125,7 @@ public class D_Enemy1_Behaviour : MonoBehaviour
         if (other.collider.CompareTag("Player"))
         {
             anim.SetBool("isMoving", false);
-            other.gameObject.GetComponent<PlayerChar>().PoisonPlayer(poisonTime);
+            player.PoisonPlayer(poisonTime);
         }
     }
 

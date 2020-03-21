@@ -12,13 +12,22 @@ public class UIToggle : MonoBehaviour
     public GameObject currencyUI;
     public GameObject pauseMenu;
     public GameObject questUI;
+    public GameObject TextboxUI;
     public bool isPaused = false;
     public bool questLogOpen = false;
 
+    private void Awake()
+    {
+        if (TextboxUI == null)
+        {
+            TextboxUI = FindObjectOfType<NPC_Dialogue>().gameObject;
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
         this.gameObject.GetComponent<Canvas>().worldCamera = Camera.main;
+        TextboxUI.SetActive(false);
         tooltipUI.SetActive(false);
         vendorPriceUI.SetActive(false);
         sellPriceUI.SetActive(false);
@@ -26,13 +35,17 @@ public class UIToggle : MonoBehaviour
         inventoryUI.SetActive(false);
         currencyUI.SetActive(false);
         pauseMenu.SetActive(false);
-        questUI.GetComponent<CanvasGroup>().alpha = 0;
-        questUI.GetComponent<CanvasGroup>().interactable = false;
+        //questUI.GetComponent<CanvasGroup>().alpha = 0;
+        //questUI.GetComponent<CanvasGroup>().interactable = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (questUI == null)
+        {
+          questUI =  FindObjectOfType<QuestCanvas>().gameObject;
+        }
         if (!pauseMenu.activeSelf)
         {
             if (Input.GetButtonDown("Pause"))
@@ -135,4 +148,11 @@ public class UIToggle : MonoBehaviour
         }
         
     } 
+
+    public void ToggleQuestLog()
+    {
+        questUI.GetComponent<CanvasGroup>().alpha = 1;
+        questUI.GetComponent<CanvasGroup>().interactable = true;
+        questLogOpen = true;
+    }
 }

@@ -4,18 +4,24 @@ using UnityEngine;
 
 public class ChargeE : MonoBehaviour
 {
-    private Rigidbody2D playerRB;
     public int chargeDamage = 0;
     public float stunLength = 1f;
+    public PlayerChar player;
 
+    private void Awake()
+    {
+        if (player == null)
+        {
+            player = FindObjectOfType<PlayerChar>();
+        }
+    }
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.collider.CompareTag("Player"))
         {
-            other.gameObject.GetComponent<PlayerChar>().TakeDamage(chargeDamage);
-            playerRB = other.gameObject.GetComponent<Rigidbody2D>();
-            playerRB.AddForce(other.transform.right * 5000f);
-            other.gameObject.GetComponent<PlayerChar>().StunPlayer(true, stunLength);
+            player.TakeDamage(chargeDamage);
+            player.GetComponent<Rigidbody2D>().AddForce(other.transform.right * 5000f);
+            player.StunPlayer(true, stunLength);
         }
     }
 }

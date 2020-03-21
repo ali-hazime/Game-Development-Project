@@ -41,6 +41,7 @@ public class GL_Enemy3_Behaviour : MonoBehaviour
 
     void Start()
     {
+        startPos = this.gameObject.transform.position;
         anim = GetComponent<Animator>();
         playerTarget = FindObjectOfType<PlayerChar>().transform;
         anim.SetBool("moveVert", false);
@@ -110,7 +111,7 @@ public class GL_Enemy3_Behaviour : MonoBehaviour
 
         if (touchingPlayer == false && isAttackAggro == false)
         {
-
+            /*
             //Any movement stuff
             countingTime += Time.fixedDeltaTime;
             if (dest0 == true)
@@ -392,7 +393,7 @@ public class GL_Enemy3_Behaviour : MonoBehaviour
                     }
                 }
             }
-
+            */
             anim.SetFloat("speed", direction);
         }
 
@@ -413,7 +414,7 @@ public class GL_Enemy3_Behaviour : MonoBehaviour
         }
 
         //Linecast to check for wall/other enemies between monster and player
-        RaycastHit2D hit = Physics2D.Linecast(transform.position, playerTarget.position, 1 << 15 | 1 << 9);
+        RaycastHit2D hit = Physics2D.Linecast(transform.position, playerTarget.position, 1 << 15 | 1 << 9 | 1 << 4);
 
         if (hit.collider != null)
         {

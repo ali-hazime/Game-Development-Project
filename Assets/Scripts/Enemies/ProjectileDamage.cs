@@ -7,6 +7,15 @@ public class ProjectileDamage : MonoBehaviour
     public int projectileDamage;
     public float poisonTime;
     public float stunTime;
+    private PlayerChar player;
+    private void Awake()
+    {
+        if (player == null)
+        {
+            player = FindObjectOfType<PlayerChar>();
+        }
+    }
+
 
     private void OnCollisionEnter2D(Collision2D other)
     {
@@ -16,9 +25,9 @@ public class ProjectileDamage : MonoBehaviour
         }
         else if (other.collider.CompareTag("Player"))
         {
-            other.gameObject.GetComponent<PlayerChar>().TakeDamage(projectileDamage);
-            other.gameObject.GetComponent<PlayerChar>().PoisonPlayer(poisonTime);
-            other.gameObject.GetComponent<PlayerChar>().StunPlayer(true, stunTime);
+            player.TakeDamage(projectileDamage);
+            player.PoisonPlayer(poisonTime);
+            player.StunPlayer(true, stunTime);
             Destroy(this.gameObject);
         }
     }

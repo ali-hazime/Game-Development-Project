@@ -30,7 +30,15 @@ public class F_Enemy3_Behaviour : MonoBehaviour
     public bool isColliding = false;
     private Vector3 dir;
     private Vector3 offsetPos;
+    public PlayerChar player;
 
+    private void Awake()
+    {
+        if (player == null)
+        {
+            player = FindObjectOfType<PlayerChar>();
+        }
+    }
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -51,7 +59,7 @@ public class F_Enemy3_Behaviour : MonoBehaviour
     {
 
         //Linecast to check for wall/other enemies between monster and player
-        RaycastHit2D hit = Physics2D.Linecast(transform.position, playerTarget.position, 1 << 15 | 1 << 9);
+        RaycastHit2D hit = Physics2D.Linecast(transform.position, playerTarget.position, 1 << 15 | 1 << 9 | 1 << 4);
 
         if (hit.collider != null)
         {
@@ -65,19 +73,19 @@ public class F_Enemy3_Behaviour : MonoBehaviour
         }
 
         //Linecast to make sure player does not get pinned against wall
-        RaycastHit2D wallCheck = Physics2D.Linecast(transform.position, offsetPos, 1 << 15);
+        RaycastHit2D wallCheck = Physics2D.Linecast(transform.position, offsetPos, 1 << 15 | 1 << 19 | 1 << 4);
         RaycastHit2D playerCheck = Physics2D.Linecast(transform.position, offsetPos, 1 << 8);
 
         if (wallCheck.collider != null && playerCheck.collider != null && Vector3.Distance(playerTarget.position, transform.position) < 2)
         {
             isPinned = true;
-            GameObject.FindWithTag("Player").GetComponent<PlayerChar>().playerPinned(true);
+            player.PlayerPinned(true);
             //Debug.DrawLine(transform.position, offsetPos, Color.yellow);
         }
         else
         {
             isPinned = false;
-            GameObject.FindWithTag("Player").GetComponent<PlayerChar>().playerPinned(false);
+            player.PlayerPinned(false);
             //Debug.DrawLine(transform.position, offsetPos, Color.cyan);
         }
 
@@ -140,8 +148,8 @@ public class F_Enemy3_Behaviour : MonoBehaviour
         {
             if (screamOnCD == false)
             {
-                other.gameObject.GetComponent<PlayerChar>().TakeDamage(damage);
-                other.rigidbody.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+                player.TakeDamage(damage);
+                player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
                 GameObject screamAnimation = Instantiate(scream, transform.position, transform.rotation);
                 doingSomething = true;
                 screamOnCD = true;
@@ -162,8 +170,8 @@ public class F_Enemy3_Behaviour : MonoBehaviour
     {
         yield return new WaitForSeconds(fearTime);
         screamOnCD = false;
-        GameObject.FindWithTag("Player").GetComponent<PlayerChar>().CancelWalks();
-        GameObject.FindWithTag("Player").GetComponent<Rigidbody2D>().constraints &= ~RigidbodyConstraints2D.FreezePosition;
+        player.CancelWalks();
+        player.GetComponent<Rigidbody2D>().constraints &= ~RigidbodyConstraints2D.FreezePosition;
     }
 
     void screamAtPeople()
@@ -172,12 +180,12 @@ public class F_Enemy3_Behaviour : MonoBehaviour
         {
             if (playerTarget.position.y - transform.position.y > 0)
             {
-                GameObject.FindWithTag("Player").GetComponent<PlayerChar>().WalkingNorth(fearTime);
+                player.WalkingNorth(fearTime);
                 playerTarget.position = Vector3.MoveTowards(playerTarget.position,  new Vector3(transform.position.x, transform.position.y + 4, 0), 1.0f * Time.deltaTime);
             }
             else
             {
-                GameObject.FindWithTag("Player").GetComponent<PlayerChar>().WalkingSouth(fearTime);
+                player.WalkingSouth(fearTime);
                 playerTarget.position = Vector3.MoveTowards(playerTarget.position, new Vector3(transform.position.x, transform.position.y - 4, 0), 1.0f * Time.deltaTime);
             }
         }
@@ -185,12 +193,12 @@ public class F_Enemy3_Behaviour : MonoBehaviour
         {
             if (playerTarget.position.x - transform.position.x > 0)
             {
-                GameObject.FindWithTag("Player").GetComponent<PlayerChar>().WalkingRight(fearTime);
+                player.WalkingRight(fearTime);
                 playerTarget.position = Vector3.MoveTowards(playerTarget.position, new Vector3(transform.position.x + 4, transform.position.y, 0), 1.0f * Time.deltaTime);
             }
             else
             {
-                GameObject.FindWithTag("Player").GetComponent<PlayerChar>().WalkingLeft(fearTime);
+                player.WalkingLeft(fearTime);
                 playerTarget.position = Vector3.MoveTowards(playerTarget.position, new Vector3(transform.position.x - 4, transform.position.y, 0), 1.0f * Time.deltaTime);
             }
         }

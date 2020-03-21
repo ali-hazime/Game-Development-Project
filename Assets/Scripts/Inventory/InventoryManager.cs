@@ -330,14 +330,31 @@ public class InventoryManager : MonoBehaviour
 
         if (dropItemSlots is EquipmentSlots)
         {
-            if (dragItem != null) dragItem.Equip(c);
-            if (dropItem != null) dropItem.Unequip(c);
+            if (dragItem != null)
+            {
+                equipmentMenu.EnableEmptyIcon(dragItem.ItemType);
+                dragItem.Equip(c);
+            }
+            if (dropItem != null)
+            {
+                dropItem.Unequip(c);
+                equipmentMenu.EnableEmptyIcon(dropItem.ItemType);
+            }
         }
 
         if (draggedSlot is EquipmentSlots)
         {
-            if (dragItem != null) dragItem.Unequip(c);
-            if (dropItem != null) dropItem.Equip(c);
+            if (dragItem != null)
+            {
+                dragItem.Unequip(c);
+                equipmentMenu.DisableEmptyIcon(dragItem.ItemType);
+            }
+
+            if (dropItem != null)
+            {
+                dropItem.Equip(c);
+                equipmentMenu.EnableEmptyIcon(dropItem.ItemType);
+            }
         }
 
         Item draggedItem = draggedSlot.Item;
@@ -387,5 +404,14 @@ public class InventoryManager : MonoBehaviour
             inventory.AddItem(item);
             item.Unequip(c); 
         }
+    }
+
+    public void Clear(EquipableItem item)
+    {
+        item.Unequip(c);
+        equipmentMenu.RemoveItem(item);
+        
+        
+        
     }
 }

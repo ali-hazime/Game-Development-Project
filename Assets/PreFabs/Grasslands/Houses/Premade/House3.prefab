@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3862419684102712948}
   m_Layer: 15
   m_Name: House3
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -51,7 +51,7 @@ GameObject:
   - component: {fileID: 6581170128362596213}
   m_Layer: 15
   m_Name: Collider
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -83,7 +83,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0070284605, y: 2.2948918}
+  m_Offset: {x: 0.0070285797, y: 2.9084935}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -94,7 +94,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 6.437043, y: 2.422927}
+  m_Size: {x: 6.437043, y: 3.6501303}
   m_EdgeRadius: 0
 --- !u!1001 &419438716444852374
 PrefabInstance:
@@ -628,70 +628,140 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 4726645269992958015, guid: 3d5925e17f6571042a7ece6a5404d006,
+        type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 4726645270194727329, guid: 3d5925e17f6571042a7ece6a5404d006,
         type: 3}
       propertyPath: m_Layer
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4726645270194727329, guid: 3d5925e17f6571042a7ece6a5404d006,
+        type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 4726645270198944748, guid: 3d5925e17f6571042a7ece6a5404d006,
         type: 3}
       propertyPath: m_Layer
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 4726645270198944748, guid: 3d5925e17f6571042a7ece6a5404d006,
+        type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 4726645270238849478, guid: 3d5925e17f6571042a7ece6a5404d006,
         type: 3}
       propertyPath: m_Layer
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4726645270238849478, guid: 3d5925e17f6571042a7ece6a5404d006,
+        type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 4726645270509154540, guid: 3d5925e17f6571042a7ece6a5404d006,
         type: 3}
       propertyPath: m_Layer
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 4726645270509154540, guid: 3d5925e17f6571042a7ece6a5404d006,
+        type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 4726645270628524141, guid: 3d5925e17f6571042a7ece6a5404d006,
         type: 3}
       propertyPath: m_Layer
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4726645270628524141, guid: 3d5925e17f6571042a7ece6a5404d006,
+        type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 4726645270831764326, guid: 3d5925e17f6571042a7ece6a5404d006,
         type: 3}
       propertyPath: m_Layer
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 4726645270831764326, guid: 3d5925e17f6571042a7ece6a5404d006,
+        type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 4726645271121360478, guid: 3d5925e17f6571042a7ece6a5404d006,
         type: 3}
       propertyPath: m_Layer
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4726645271121360478, guid: 3d5925e17f6571042a7ece6a5404d006,
+        type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 4726645271416762911, guid: 3d5925e17f6571042a7ece6a5404d006,
         type: 3}
       propertyPath: m_Layer
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 4726645271416762911, guid: 3d5925e17f6571042a7ece6a5404d006,
+        type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 4726645271555980649, guid: 3d5925e17f6571042a7ece6a5404d006,
         type: 3}
       propertyPath: m_Layer
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4726645271555980649, guid: 3d5925e17f6571042a7ece6a5404d006,
+        type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 4726645271605060650, guid: 3d5925e17f6571042a7ece6a5404d006,
         type: 3}
       propertyPath: m_Layer
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 4726645271605060650, guid: 3d5925e17f6571042a7ece6a5404d006,
+        type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 4726645271617487726, guid: 3d5925e17f6571042a7ece6a5404d006,
         type: 3}
       propertyPath: m_Layer
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4726645271617487726, guid: 3d5925e17f6571042a7ece6a5404d006,
+        type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 4726645271629566677, guid: 3d5925e17f6571042a7ece6a5404d006,
         type: 3}
       propertyPath: m_Layer
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 4726645271629566677, guid: 3d5925e17f6571042a7ece6a5404d006,
+        type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 4726645271916325395, guid: 3d5925e17f6571042a7ece6a5404d006,
         type: 3}
       propertyPath: m_Layer
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4726645271916325395, guid: 3d5925e17f6571042a7ece6a5404d006,
+        type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 5108403783138019465, guid: 3d5925e17f6571042a7ece6a5404d006,
         type: 3}

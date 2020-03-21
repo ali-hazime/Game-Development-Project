@@ -38,7 +38,7 @@ public static class SaveSystem
         }
     }
 
-    /*
+    
     public static void SaveGameInfo()
     {
 
@@ -71,5 +71,80 @@ public static class SaveSystem
             Debug.Log("Save file not found in " + path);
             return null;
         }
-    }*/
+    }
+
+    public static void SaveQuestInfo()
+    {
+
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + "/questInfo.game";
+        FileStream stream = new FileStream(path, FileMode.Create);
+
+        QuestInfo data = new QuestInfo();
+        formatter.Serialize(stream, data);
+        stream.Close();
+
+    }
+
+    public static QuestInfo LoadQuestInfo()
+    {
+        string path = Application.persistentDataPath + "/questInfo.game";
+
+        if (File.Exists(path))
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+            FileStream stream = new FileStream(path, FileMode.Open);
+
+            QuestInfo data = formatter.Deserialize(stream) as QuestInfo;
+            stream.Close();
+
+            return data;
+        }
+        else
+        {
+            Debug.Log("Save file not found in " + path);
+            return null;
+        }
+    }
+    /*
+    public static void SaveQuestData()
+    {
+
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + "/questInfo.game";
+        FileStream stream = new FileStream(path, FileMode.Create);
+
+        //QuestData data = new QuestData(quest.QTitle, quest.QDescription, quest.MyCollectObjectives, quest.MyKillObjectives, quest.MyKillBosses, quest.MyEscortQuests, quest.MyTalkToQuests);
+        //formatter.Serialize(stream, data);
+        //stream.Close();
+
+        foreach (Quest quest in QuestLog.MyInstance.MyQuests)
+        {
+            QuestData data = new QuestData(quest.QTitle, quest.QDescription, quest.MyCollectObjectives, quest.MyKillObjectives, quest.MyKillBosses, quest.MyEscortQuests, quest.MyTalkToQuests); ;
+            data.MyQuestData.Add(new QuestData(quest.QTitle, quest.QDescription, quest.MyCollectObjectives, quest.MyKillObjectives, quest.MyKillBosses, quest.MyEscortQuests, quest.MyTalkToQuests));
+        }
+
+    }
+
+    public static QuestData LoadQuestData()
+    {
+        string path = Application.persistentDataPath + "/questInfo.game";
+
+        if (File.Exists(path))
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+            FileStream stream = new FileStream(path, FileMode.Open);
+
+            QuestData data = formatter.Deserialize(stream) as QuestData;
+            stream.Close();
+
+            return data;
+        }
+        else
+        {
+            Debug.Log("Save file not found in " + path);
+            return null;
+        }
+    }
+    */
 }

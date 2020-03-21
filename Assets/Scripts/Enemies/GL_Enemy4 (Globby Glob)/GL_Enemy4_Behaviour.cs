@@ -37,9 +37,18 @@ public class GL_Enemy4_Behaviour : MonoBehaviour
     public float newPlace;
     [Space]
     public bool isColliding = false;
+    private PlayerChar player;
+    private void Awake()
+    {
+        if (player == null)
+        {
+            player = FindObjectOfType<PlayerChar>();
+        }
+    }
 
     void Start()
     {
+        startPos = this.gameObject.transform.position;
         anim = GetComponent<Animator>();
         playerTarget = FindObjectOfType<PlayerChar>().transform;
         anim.SetBool("moveVert", false);
@@ -50,7 +59,7 @@ public class GL_Enemy4_Behaviour : MonoBehaviour
     {
 
         //Linecast to check for wall/other enemies between monster and player
-        RaycastHit2D hit = Physics2D.Linecast(transform.position, playerTarget.position, 1 << 15 | 1 << 9);
+        RaycastHit2D hit = Physics2D.Linecast(transform.position, playerTarget.position, 1 << 15 | 1 << 9 | 1 << 4);
 
         if (hit.collider != null)
         {
@@ -74,35 +83,39 @@ public class GL_Enemy4_Behaviour : MonoBehaviour
 
         if (isAggroed == false)
         {
-
+            /*
             //Any movement stuff
             countingTime += Time.fixedDeltaTime;
             if (dest0 == true)
             {
                 anim.SetBool("isMoving", true);
                 anim.SetBool("moveVert", false);
+                anim.SetFloat("moveX", -1f);
+                anim.SetFloat("moveY", (0f));
+                anim.SetFloat("speed", direction);
+
                 direction = -1.0f;
 
                 if (once2 == true)
                 {
-                    newPlace = transform.position.x - 1;
+                    newPlace = startPos.x - 1;
                     once2 = false;
                 }
 
-                transform.position = Vector3.MoveTowards(transform.position, new Vector3(newPlace, transform.position.y, 0), 2.5f * Time.fixedDeltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, new Vector3(newPlace, startPos.y, 0), 3 * Time.fixedDeltaTime);
 
                 if (transform.position.x == newPlace)
                 {
                     if (once == true)
                     {
                         countingTime = 0;
-                        if (startPos.x + transform.position.x == 0)
+                        if (transform.position.x == startPos.x + 1)
                         {
-                            nextDirection = Random.Range(0, 2);
+                            nextDirection = Random.Range(1, 4);
                         }
                         else
                         {
-                            nextDirection = Random.Range(1, 4);
+                            nextDirection = Random.Range(0, 2);
                         }
 
                         whenNext = Random.Range(3, 8);
@@ -110,6 +123,10 @@ public class GL_Enemy4_Behaviour : MonoBehaviour
                     }
 
                     anim.SetBool("isMoving", false);
+                    anim.SetFloat("moveX", -1f);
+                    anim.SetFloat("moveY", (0f));
+                    // anim.SetBool("moveVert", false);
+
 
                     if (countingTime > whenNext)
                     {
@@ -138,34 +155,42 @@ public class GL_Enemy4_Behaviour : MonoBehaviour
             {
                 anim.SetBool("isMoving", true);
                 anim.SetBool("moveVert", false);
+                anim.SetFloat("moveX", 1f);
+                anim.SetFloat("moveY", (0f));
+                anim.SetFloat("speed", direction);
+
                 direction = 1.0f;
 
                 if (once2 == true)
                 {
-                    newPlace = transform.position.x + 1;
+                    newPlace = startPos.x + 1;
                     once2 = false;
                 }
 
-                transform.position = Vector3.MoveTowards(transform.position, new Vector3(newPlace, transform.position.y, 0), 2.5f * Time.fixedDeltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, new Vector3(newPlace, startPos.y, 0), 3 * Time.fixedDeltaTime);
 
                 if (transform.position.x == newPlace)
                 {
                     if (once == true)
                     {
                         countingTime = 0;
-                        if (startPos.x + transform.position.x == 2)
+                        if (transform.position.x == startPos.x + 1)
                         {
-                            nextDirection = Random.Range(0, 2);
+                            nextDirection = Random.Range(1, 4);
                         }
                         else
                         {
-                            nextDirection = Random.Range(1, 4);
+                            nextDirection = Random.Range(0, 2);
                         }
                         whenNext = Random.Range(3, 8);
                         once = false;
                     }
 
                     anim.SetBool("isMoving", false);
+                    anim.SetFloat("moveX", 1f);
+                    anim.SetFloat("moveY", (0f));
+                    // anim.SetBool("moveVert", false);
+
                     if (countingTime > whenNext)
                     {
                         dest1 = false;
@@ -193,14 +218,18 @@ public class GL_Enemy4_Behaviour : MonoBehaviour
             {
                 anim.SetBool("isMoving", true);
                 anim.SetBool("moveVert", false);
+                anim.SetFloat("moveX", 1f);
+                anim.SetFloat("moveY", (0f));
+                anim.SetFloat("speed", direction);
+
                 direction = 1.0f;
                 if (once2 == true)
                 {
-                    newPlace = transform.position.x + 2;
+                    newPlace = startPos.x + 2;
                     once2 = false;
                 }
 
-                transform.position = Vector3.MoveTowards(transform.position, new Vector3(newPlace, transform.position.y, 0), 2.5f * Time.fixedDeltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, new Vector3(newPlace, startPos.y, 0), 3 * Time.fixedDeltaTime);
 
                 if (transform.position.x == newPlace)
                 {
@@ -217,6 +246,10 @@ public class GL_Enemy4_Behaviour : MonoBehaviour
 
 
                     anim.SetBool("isMoving", false);
+                    anim.SetFloat("moveX", 1f);
+                    anim.SetFloat("moveY", (0f));
+                    // anim.SetBool("moveVert", false);
+
                     if (countingTime > whenNext)
                     {
                         switch (nextDirection)
@@ -238,15 +271,19 @@ public class GL_Enemy4_Behaviour : MonoBehaviour
             {
                 anim.SetBool("isMoving", true);
                 anim.SetBool("moveVert", false);
+                anim.SetFloat("moveX", -1f);
+                anim.SetFloat("moveY", (0f));
+                anim.SetFloat("speed", direction);
+
                 direction = -1.0f;
 
                 if (once2 == true)
                 {
-                    newPlace = transform.position.x - 2;
+                    newPlace = startPos.x - 2;
                     once2 = false;
                 }
 
-                transform.position = Vector3.MoveTowards(transform.position, new Vector3(newPlace, transform.position.y, 0), 2.5f * Time.fixedDeltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, new Vector3(newPlace, startPos.y, 0), 3 * Time.fixedDeltaTime);
 
                 if (transform.position.x == newPlace)
                 {
@@ -259,6 +296,9 @@ public class GL_Enemy4_Behaviour : MonoBehaviour
                     }
 
                     anim.SetBool("isMoving", false);
+                    anim.SetFloat("moveX", -1f);
+                    anim.SetFloat("moveY", (0f));
+                    // anim.SetBool("moveVert", false);
 
                     if (countingTime > whenNext)
                     {
@@ -281,15 +321,19 @@ public class GL_Enemy4_Behaviour : MonoBehaviour
             {
                 anim.SetBool("isMoving", true);
                 anim.SetBool("moveVert", true);
+                anim.SetFloat("moveX", 0f);
+                anim.SetFloat("moveY", (-1f));
+                anim.SetFloat("speed", direction);
+
                 direction = -1.0f;
 
                 if (once2 == true)
                 {
-                    newPlace = transform.position.y - 1;
+                    newPlace = startPos.y - 1;
                     once2 = false;
                 }
 
-                transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, newPlace, 0), 2.5f * Time.fixedDeltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, new Vector3(startPos.x + 1, newPlace, 0), 3 * Time.fixedDeltaTime);
 
                 if (transform.position.y == newPlace)
                 {
@@ -301,6 +345,9 @@ public class GL_Enemy4_Behaviour : MonoBehaviour
                     }
 
                     anim.SetBool("isMoving", false);
+                    anim.SetFloat("moveX", 0f);
+                    anim.SetFloat("moveY", (-1f));
+                    // anim.SetBool("moveVert", false);
 
                     if (countingTime > whenNext)
                     {
@@ -316,15 +363,19 @@ public class GL_Enemy4_Behaviour : MonoBehaviour
             {
                 anim.SetBool("isMoving", true);
                 anim.SetBool("moveVert", true);
+                anim.SetFloat("moveX", 0f);
+                anim.SetFloat("moveY", (1f));
+                anim.SetFloat("speed", direction);
+
                 direction = 1.0f;
 
                 if (once2 == true)
                 {
-                    newPlace = transform.position.y + 1;
+                    newPlace = startPos.y + 1;
                     once2 = false;
                 }
 
-                transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, newPlace, 0), 2.5f * Time.fixedDeltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, new Vector3(startPos.x + 1, newPlace, 0), 3 * Time.fixedDeltaTime);
 
                 if (transform.position.y == newPlace)
                 {
@@ -337,6 +388,9 @@ public class GL_Enemy4_Behaviour : MonoBehaviour
                     }
 
                     anim.SetBool("isMoving", false);
+                    anim.SetFloat("moveX", 0f);
+                    anim.SetFloat("moveY", (1f));
+                    //anim.SetBool("moveVert", false);
 
                     if (countingTime > whenNext)
                     {
@@ -356,6 +410,9 @@ public class GL_Enemy4_Behaviour : MonoBehaviour
                     }
                 }
             }
+            */
+            anim.SetFloat("speed", direction); 
+
         }
         else if (isColliding == false)
         {
@@ -389,7 +446,7 @@ public class GL_Enemy4_Behaviour : MonoBehaviour
     {
         if (other.collider.CompareTag("Player"))
         {
-            other.gameObject.GetComponent<PlayerChar>().TakeDamage(damage);
+            player.TakeDamage(damage);
             GameObject deathAnimation = Instantiate(explosion, transform.position, transform.rotation);
             Destroy(this.gameObject);
         }

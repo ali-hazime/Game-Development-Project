@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4389129823141740348}
   - component: {fileID: 7791796837591946551}
   - component: {fileID: 2027651078325363470}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: outside 1_98
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,6 +46,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -68,7 +69,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1810851877
-  m_SortingLayer: 5
+  m_SortingLayer: 9
   m_SortingOrder: 0
   m_Sprite: {fileID: 2313369931425005819, guid: b5c38a54098362e4ebe935c0399bd3c9,
     type: 3}
@@ -119,7 +120,7 @@ GameObject:
   - component: {fileID: 256157842500127047}
   - component: {fileID: 7453360178152660959}
   - component: {fileID: 6510132759704954365}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: outside 1_148
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -154,6 +155,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -176,7 +178,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1810851877
-  m_SortingLayer: 5
+  m_SortingLayer: 9
   m_SortingOrder: 0
   m_Sprite: {fileID: -8464863514290092472, guid: b5c38a54098362e4ebe935c0399bd3c9,
     type: 3}
@@ -225,9 +227,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8169446904071224561}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: graveStone1
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -8,16 +8,20 @@ public class DesertBossHealth : MonoBehaviour
     public int maxHealth;
     public GameObject healthBar;
     public float scale;
+    public DesertBoss theBoss;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        theBoss = this.gameObject.GetComponent<DesertBoss>();
     }
     //enemy takes damage
     public void DamageEnemy(int playerDamage)
     {
-        currentHealth -= playerDamage;
+        if (theBoss.started && theBoss.onceFirst == false)
+        {
+            currentHealth -= playerDamage;
+        }
 
         if (currentHealth <= 0)
         {

@@ -4,6 +4,15 @@ using UnityEngine;
 
 public static class GameSavingInformation
 {
+    //New Game
+    public static bool isNewGame;
+
+    //player location
+    public static float playerX;
+    public static float playerY;
+    public static string whereAmI;
+    public static string whereWasI;
+
     //Currency
     public static int crystalsCount;
     public static int minCurrency;
@@ -22,48 +31,39 @@ public static class GameSavingInformation
 
     //Grasslands Quests
     public static int cropsInspected;
-    public static bool grassQuest1Complete; //Inspect 5 dead crops
-    public static int townsFolkTalkedTo; 
-    public static bool grassQuest2Complete; //Go to the town and speak to 4 people in the town
-    public static bool grassQuest3Complete; //Defend the town
-    public static bool grassQuest4Complete; //Boss Quest
-    public static bool grassQuest5AComplete; //Once player reaches forest
-    public static bool grassQuest5BComplete; //Once player reaches desert
-
-    //Forest Quests
-    public static bool forestQuest1Complete; //Get the NPC to the town
-    public static bool forestQuest2AComplete; //Totem collected from east
-    public static bool forestQuest2BComplete; //Totem collected from southwest
-    public static bool forestQuest2CComplete; //Totem collected from northwest
-    public static bool forestQuest2Complete; //Collected all totems and talked to shaman
-    public static bool forestQuest3Complete; //After escorting shaman to poison
-    public static bool forestQuest4Complete; //Boss Quest
-    public static bool forestQuest5Complete; //Speak to shaman after boss
+    public static bool grassQuest1Complete; 
+    public static bool grassQuest2Complete; 
+    public static bool grassQuest3Complete; 
+    public static bool grassQuest4Complete; 
+    public static bool grassQuest5Complete;
+    public static bool grassQuest6Complete;
+    public static bool grassQuest7Complete;
 
     //Desert Quests
-    public static bool desertQuest1Complete; //Get to the town
-    public static bool desertQuest2Complete; //Missing townsfolk found
-    public static bool desertQuest3Complete; //Escort the missing townsfolk back to town
-    public static bool desertQuest4AComplete; //Puzzle complete in ancient tombs
-    public static bool desertQuest4BComplete; //Defeat the boss //Boss Quest
-    public static bool desertQuest5Complete; //Return to the town
+    public static bool desertQuest1Complete;
+    public static bool desertQuest2Complete;
+    public static bool desertQuest3Complete;
+    public static bool desertQuest4Complete;
+    public static bool desertQuest5Complete;
+    public static bool desertQuest6Complete;
 
+    //Forest Quests
+    public static bool forestQuest1Complete; 
+    public static bool forestQuest2Complete;
+    public static bool forestQuest3Complete;
+    public static bool forestQuest4Complete;
+    public static bool forestQuest5Complete; 
+   
     //Snow Mountain Quests
-    public static bool snowQuest1Complete; //Return to forest Elder
-    public static bool snowQuest2Complete; //Ascend the snow mountain and make it to the town
-    public static bool snowQuest3Complete; //Make it to the Great Town
-    public static bool snowQuest4Complete; //Defeat the Frozen King //Boss Quest
-    public static bool snowQuest5Complete; //Return & speak to the forest Elder
+    public static bool snowQuest1Complete; 
+    public static bool snowQuest2Complete;
+    public static bool snowQuest3Complete; 
 
-    //Volcano Quests
-    public static bool volcanoQuest1Complete; //Make it to the mining outpost and speak to miners
-    public static int minersSpokenTo;
-    public static bool volcanoQuest2Complete; //Speak the 3 miners to gather information
-    public static bool volcanoQuest3Complete; //Ascend the volcano and reach the source of corruption (very top)
-    public static bool volcanoQuest4Complete; //Defeat the boss //Boss Quest
-    public static bool volcanoQuest5Complete; //Inform the head miner the volcano is clear
 
-    //Final Quest
-    public static bool finalQuest1Complete; //Defeat the final boss //Boss Quest
-    public static bool finalQuest2Complete; //Speak to the Elder and complete main quest
+    //Volcano + Final Quests
+    public static bool volcanoQuest1Complete; 
+    public static bool volcanoQuest2Complete; 
+    public static bool volcanoQuest3Complete; 
+    public static bool volcanoQuest4Complete; 
+    public static bool volcanoQuest5Complete; 
 }

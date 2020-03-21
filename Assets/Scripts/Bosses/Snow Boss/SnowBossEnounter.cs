@@ -5,24 +5,41 @@ using UnityEngine;
 public class SnowBossEnounter : MonoBehaviour
 {
     private GameObject player;
-   // public GameObject block;
+    public GameObject blockUp;
+    public GameObject blockDown;
+    //public GameObject soul;
     //public FrostKingSoulOne bossScriptSoulOne;
    // public FrostKingSoulTwo bossScriptSoulTwo;
     public GameObject theBossSoulOne;
     public GameObject theBossSoulTwo;
+    public bool SoulOneDead = false;
+    public bool SoulTwoDead = false;
+    public bool soulGone = false;
     public bool sStart = false;
     public bool sEnd = false;
     public bool sSoulTwoStart = false;
+    [Space]
+    [SerializeField] QuestController questController;
+    [SerializeField] UIToggle uiToggle;
+    [SerializeField] bool toggleOnce = true;
+    [SerializeField] GameObject venkarsCrown;
+    public KillBoss killBoss;
 
-    // Start is called before the first frame update
+   
     void Start()
     {
         player = GameObject.FindWithTag("Player");
+
+        if (uiToggle == null)
+        {
+            uiToggle = FindObjectOfType<UIToggle>();
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         if (sStart == false && sEnd == false)
         {
             if (player.transform.position.y > 62)
@@ -30,12 +47,12 @@ public class SnowBossEnounter : MonoBehaviour
                 StartSBossFight();
             }
         }
-        else if (theBossSoulOne.GetComponent<FrostKingSoulOne>().dead == true && sSoulTwoStart == false)
+        else if (SoulOneDead && sSoulTwoStart == false && soulGone)
         {
-            EndSBossSoulOne();
+            
             StartSBossTwo();
 
-        } else if (theBossSoulTwo.GetComponent<FrostKingSoulTwo>().dead == true)
+        } else if (SoulTwoDead)
         {
             EndSBossFight();
         }
@@ -44,7 +61,8 @@ public class SnowBossEnounter : MonoBehaviour
     void StartSBossFight()
     {
         sStart = true;
-        //rocks.SetActive(true);
+        blockDown.SetActive(true);
+        blockUp.SetActive(false);
         theBossSoulOne.GetComponent<FrostKingSoulOne>().started = true;
     }
 
@@ -55,16 +73,37 @@ public class SnowBossEnounter : MonoBehaviour
 
     }
 
-    void EndSBossSoulOne()
+    public void StartSOD()
     {
+        StartCoroutine(EndSBossSoulOne());
+    }
+
+    IEnumerator EndSBossSoulOne()
+    {
+        yield return new WaitForSeconds(0.1f);
         Destroy(theBossSoulOne);
     }
 
     void EndSBossFight()
     {
-       // rocks.SetActive(false);
+        
+        blockDown.SetActive(false);
 
         Destroy(theBossSoulTwo);
         GameSavingInformation.snowBossDefeated = true;
+        StartCoroutine(EndBossQuest());
+    }
+
+    IEnumerator EndBossQuest()
+    {
+        yield return new WaitForSeconds(0.1f);
+        if (toggleOnce)
+        {
+            killBoss.UpdateBossStatus();
+            yield return new WaitForSeconds(1f);
+            uiToggle.ToggleQuestLog();
+            toggleOnce = false;
+            venkarsCrown.SetActive(true);
+        }
     }
 }

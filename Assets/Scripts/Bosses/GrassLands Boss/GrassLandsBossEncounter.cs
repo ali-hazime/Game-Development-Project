@@ -10,18 +10,52 @@ public class GrassLandsBossEncounter : MonoBehaviour
     public GrassLandsBoss bossScript;
     public bool GLStart = false;
     public bool GLEnd = false;
+    [SerializeField] QuestController questController;
+    [SerializeField] UIToggle uiToggle;
+    [SerializeField] bool toggleOnce = true;
+    public TalkToQuest talkToQuest;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+     void Awake()
+     {
+        if (questController == null)
+        {
+            questController = FindObjectOfType<QuestController>();
+        }
+
+        if (uiToggle == null)
+        {
+            uiToggle = FindObjectOfType<UIToggle>();
+        }
     }
 
-    // Update is called once per frame
+    void Start()
+    {
+        if (GameSavingInformation.grassBossDefeated == true)
+        {
+            bossScript.gameObject.SetActive(false);
+        }
+        else
+        {
+            bossScript.gameObject.SetActive(true);
+        }
+
+        if(QuestTracker.grasslandsQuestCount == 4)
+        {
+            talkToQuest.UpdateTalkToQuest();
+            StartCoroutine(DefeatBossQuest());
+        }
+    }
+
+    IEnumerator DefeatBossQuest()
+    {
+        yield return new WaitForSeconds(1f);
+        uiToggle.ToggleQuestLog();
+        questController.StartQuest(QuestTracker.grasslandsQuestCount, "gM");
+        QuestTracker.questType = "gM";
+    }
+
     void Update()
     {
-
-
         if (GLStart == false && GLEnd == false)
         {
             WallCheck();
@@ -61,6 +95,20 @@ public class GrassLandsBossEncounter : MonoBehaviour
         GLStart = false;
         GameSavingInformation.grassBossDefeated = true;
         BreakBarrier();
+        StartCoroutine(StartTurnInBossQuest());
+    }
+
+    IEnumerator StartTurnInBossQuest()
+    {
+        yield return new WaitForSeconds(1f);
+        if (toggleOnce)
+        {
+            uiToggle.ToggleQuestLog();
+            toggleOnce = false;
+        }
+        
+        questController.StartQuest(QuestTracker.grasslandsQuestCount, "gM");
+        QuestTracker.questType = "gM";
     }
 
    void BreakBarrier()

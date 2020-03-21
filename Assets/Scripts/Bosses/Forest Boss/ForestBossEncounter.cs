@@ -15,13 +15,29 @@ public class ForestBossEncounter : MonoBehaviour
 
     public bool fStart = false;
     public bool fEnd = false;
-    // Start is called before the first frame update
-    void Start()
+    [Space]
+    [SerializeField] QuestController questController;
+    [SerializeField] UIToggle uiToggle;
+    [SerializeField] bool toggleOnce = true;
+    [SerializeField] GameObject worldCorruption;
+    public KillBoss killBoss;
+
+
+    void Awake()
     {
         player = GameObject.FindWithTag("Player");
+
+        if (questController == null)
+        {
+            questController = FindObjectOfType<QuestController>();
+        }
+
+        if (uiToggle == null)
+        {
+            uiToggle = FindObjectOfType<UIToggle>();
+        }
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (fStart == false && fEnd == false)
@@ -34,6 +50,16 @@ public class ForestBossEncounter : MonoBehaviour
         else if (bossScript.dead == true)
         {
             EndFBossFight();
+            worldCorruption.SetActive(false);
+        }
+
+        if (QuestTracker.forestQuestCount > 3)
+        {
+            worldCorruption.SetActive(false);
+        }
+        else if (QuestTracker.forestQuestCount < 3)
+        {
+            worldCorruption.SetActive(true);
         }
     }
 
@@ -49,9 +75,25 @@ public class ForestBossEncounter : MonoBehaviour
     {
         Destroy(cloudParent);
         Destroy(boltsParent);
-        treeBlock.SetActive(false);
+        treeBlock.SetActive(false); 
         GameSavingInformation.forestBossDefeated = true;
         Destroy(theBoss);
+        
+        StartCoroutine(StartTurnInBossQuest());
+    }
+
+    IEnumerator StartTurnInBossQuest()
+    {
+        yield return new WaitForSeconds(0.5f);
+        if (toggleOnce)
+        {
+            killBoss.UpdateBossStatus();
+            yield return new WaitForSeconds(1f);
+            uiToggle.ToggleQuestLog();
+            toggleOnce = false;
+            questController.StartQuest(QuestTracker.forestQuestCount, "fM");
+            QuestTracker.questType = "fM";
+        }
     }
 }
 

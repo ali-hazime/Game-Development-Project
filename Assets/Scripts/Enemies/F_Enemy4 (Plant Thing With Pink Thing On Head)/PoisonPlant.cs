@@ -6,7 +6,14 @@ public class PoisonPlant : MonoBehaviour
 {
     public int plantDamage;
     public float poisonTime;
-
+    private PlayerChar player;
+    private void Awake()
+    {
+        if (player == null)
+        {
+            player = FindObjectOfType<PlayerChar>();
+        }
+    }
     void Start()
     {
         StartCoroutine(DespawnPlant());
@@ -15,8 +22,8 @@ public class PoisonPlant : MonoBehaviour
     {
         if (other.collider.CompareTag("Player"))
         {
-            other.gameObject.GetComponent<PlayerChar>().TakeDamage(plantDamage);
-            other.gameObject.GetComponent<PlayerChar>().PoisonPlayer(poisonTime);
+            player.TakeDamage(plantDamage);
+            player.PoisonPlayer(poisonTime);
             Destroy(this.gameObject);
         }
     }

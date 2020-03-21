@@ -16,6 +16,7 @@ public class DesertBoss : MonoBehaviour
     public DesertBossHealth bossStats;
     public ParticleSystem SSright;
     public ParticleSystem SSleft;
+    public KillBoss killBoss;
 
     //public float bossHealth;
 
@@ -179,6 +180,7 @@ public class DesertBoss : MonoBehaviour
 
         if (bossStats.currentHealth <= 0)
         {
+            killBoss.UpdateBossStatus();
             dead = true;
         }
     }

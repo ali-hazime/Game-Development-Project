@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using System.Text;
 
 [CreateAssetMenu]
@@ -21,8 +23,10 @@ public class Item : ScriptableObject
 
     private void OnValidate()
     {
+        #if UNITY_EDITOR
         string path = AssetDatabase.GetAssetPath(this);
         id = AssetDatabase.AssetPathToGUID(path);
+        #endif
         SellItemPrice = ItemPrice / 3;
     }
 

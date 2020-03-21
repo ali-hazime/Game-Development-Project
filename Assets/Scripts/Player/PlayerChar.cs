@@ -16,11 +16,11 @@ public class PlayerChar : MonoBehaviour
     public GameObject slowIndicator;
     public GameObject burnIndicator;
     public Transform statusIndicatorPoint;
-    
+
     [Space]
     //player sprite and movement
     private Rigidbody2D rb;
-    private Vector2 move;
+    public Vector2 move;
     public Animator animator;
     private float attackTime = 0.3f;
     private float attackCounter = 0.3f;
@@ -65,19 +65,36 @@ public class PlayerChar : MonoBehaviour
     public bool isPoisoned = false;
     public bool isSlowed = false;
     public bool _isPinned = false;
+    [Space]
+    public bool lockInput = false;
+    public bool facingRight;
+    public bool facingLeft;
+    public bool facingUp;
+    public bool facingDown;
+    public bool collidingWithWall = false;
+    public bool breakFreeze = false;
 
     private void Start()
     {
+        this.transform.position = new Vector3(GameSavingInformation.playerX, GameSavingInformation.playerY, 0f);
+
         rb = GetComponent<Rigidbody2D>();
         poisonIndicator.SetActive(false);
         slowIndicator.SetActive(false);
         burnIndicator.SetActive(false);
-}
+        InvokeRepeating("DebugPrints", 0, 5f);
+    }
+
+    void DebugPrints() // for build tests
+    {
+
+    }
+
 
 
     private void Update()
     {
-        
+        Debug.Log("S Quest Count: " + QuestTracker.snowMountainQuestCount);
         if (playerCurrentHealth > playerMaxHealth)
         {
             playerCurrentHealth = playerMaxHealth;
@@ -108,7 +125,7 @@ public class PlayerChar : MonoBehaviour
         FearIndicator();
 
         timer += Time.deltaTime;
-        if (timer > 15)
+        if (timer > 5)
         {
             if (playerCurrentHealth < playerMaxHealth)
             {
@@ -118,7 +135,7 @@ public class PlayerChar : MonoBehaviour
 
         }
 
-        if (!isAttacking)
+        if (!isAttacking && !lockInput)
         {//get input for player movement
             move.x = Input.GetAxisRaw("Horizontal");
             move.y = Input.GetAxisRaw("Vertical");
@@ -203,6 +220,38 @@ public class PlayerChar : MonoBehaviour
             animator.SetFloat("Speed", 1.0f);
             cancel = false;
         }
+
+        if (animator.GetFloat("Horizontal") > 0f)
+        {
+            facingUp = false;
+            facingDown = false;
+            facingRight = true;
+            facingLeft = false;
+        }
+
+        else if (animator.GetFloat("Horizontal") < 0f)
+        {
+            facingUp = false;
+            facingDown = false;
+            facingRight = false;
+            facingLeft = true;
+        }
+
+        else if (animator.GetFloat("Vertical") > 0f)
+        {
+            facingUp = true;
+            facingDown = false;
+            facingRight = false;
+            facingLeft = false;
+        }
+
+        else if (animator.GetFloat("Vertical") < 0f)
+        {
+            facingUp = false;
+            facingDown = true;
+            facingRight = false;
+            facingLeft = false;
+        }
     }
 
     private void FixedUpdate()
@@ -235,7 +284,17 @@ public class PlayerChar : MonoBehaviour
     
     public void PlayerDie()
     {
-        gameObject.SetActive(false);
+        if (QuestTracker.snowMountainQuestCount < 3 && GameSavingInformation.whereAmI == "Volcanic Caves 1")
+        {
+            GameSavingInformation.playerX = -154f;
+            GameSavingInformation.playerY = -35f;
+            SaveSystem.SaveGameInfo();
+            SceneManager.LoadScene(GameSavingInformation.whereWasI);
+        }
+        else
+        {
+            SceneManager.LoadScene(GameSavingInformation.whereAmI);
+        }
     }
 
     public void PoisonPlayer(float poisonTime)
@@ -317,6 +376,7 @@ public class PlayerChar : MonoBehaviour
         GetComponent<SpriteRenderer>().color = new Color(0/255f, 0/255f, 200f/255f, 215f/255f);
         yield return new WaitForSeconds(slowTime);
         slowIndicator.SetActive(false);
+        isSlowed = false;
         GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 255);
         playerMovementSpeed = tempSpeed;
 
@@ -388,6 +448,33 @@ public class PlayerChar : MonoBehaviour
         animator.enabled = true;
         GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 255);
     }
+
+    public void RestrictMovement(float freezeTime)
+    {
+        StartCoroutine(Restrict(freezeTime));
+    }
+
+    IEnumerator Restrict(float freezeTime)
+    {
+        animator.enabled = false;
+        rb.constraints = RigidbodyConstraints2D.FreezeAll;
+        yield return new WaitForSeconds(freezeTime);
+        rb.constraints &= ~RigidbodyConstraints2D.FreezePosition;
+        animator.enabled = true;
+    }
+
+    public void RestrictMovementUntilTrue()
+    {
+        animator.enabled = false;
+        rb.constraints = RigidbodyConstraints2D.FreezeAll;
+    }
+
+    public void breakTheFreeze()
+    {
+        rb.constraints &= ~RigidbodyConstraints2D.FreezePosition;
+        animator.enabled = true;
+    }
+
     public void WalkingLeft(float fearTime)
     {
         StartCoroutine(Feared(fearTime));
@@ -417,7 +504,7 @@ public class PlayerChar : MonoBehaviour
         cancel = true;
     }
 
-    public void playerPinned(bool isPinned)
+    public void PlayerPinned(bool isPinned)
     {
         if (isPinned)
         {
@@ -435,5 +522,22 @@ public class PlayerChar : MonoBehaviour
         isFeared = true;
         yield return new WaitForSeconds(fearTime);
         isFeared = false;
+    }
+
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            collidingWithWall = true;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            collidingWithWall = false;
+        }
     }
 }

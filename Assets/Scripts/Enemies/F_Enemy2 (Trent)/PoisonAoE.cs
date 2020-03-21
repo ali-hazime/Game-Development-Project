@@ -5,12 +5,20 @@ using UnityEngine;
 public class PoisonAoE : MonoBehaviour
 {
     public float poisonDmg = 10.0f;
+    public PlayerChar player;
 
+    void Awake()
+    {
+        if (player == null)
+        {
+            player = FindObjectOfType<PlayerChar>();
+        }
+    }
     private void OnTriggerStay2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            GameObject.FindWithTag("Player").GetComponent<PlayerChar>().PoisonPlayer(poisonDmg);
+            player.PoisonPlayer(poisonDmg);
         }
     }
 }

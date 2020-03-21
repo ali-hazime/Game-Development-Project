@@ -37,6 +37,7 @@ public class S_Enemy4_Behaviour : MonoBehaviour
 
     void Start()
     {
+        startPos = this.gameObject.transform.position;
         anim = GetComponent<Animator>();
         playerTarget = FindObjectOfType<PlayerChar>().transform;
         anim.SetBool("moveVert", false);

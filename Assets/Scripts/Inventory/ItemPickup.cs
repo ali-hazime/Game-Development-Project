@@ -9,6 +9,7 @@ public class ItemPickup : MonoBehaviour
     [SerializeField] CurrencyManager currencyManagerScript;
     public bool isQuestOnlyItem = false;
     public bool isCurrency = false;
+    public bool isCollectEquipItem = false;
     public ItemDropScript itemDropScript;
     public CollectObjective collectObjective;
     public bool inRange;
@@ -80,6 +81,14 @@ public class ItemPickup : MonoBehaviour
                 currencyDrop = Random.Range(GameSavingInformation.minCurrency, GameSavingInformation.maxCurrency);
                 currencyManagerScript.AddCurrency(currencyDrop);
                 Destroy(this.gameObject);
+            }
+        }
+
+        if (isCollectEquipItem)
+        {
+            if (other.CompareTag("Player"))
+            {
+                collectObjective.UpdateItemCount();
             }
         }
     }

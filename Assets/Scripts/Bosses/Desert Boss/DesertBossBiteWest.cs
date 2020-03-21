@@ -7,15 +7,23 @@ public class DesertBossBiteWest : MonoBehaviour
 
     public int biteDamage = 0;
     public float biteForce = -10000f;
+    public PlayerChar player;
 
+    private void Awake()
+    {
+        if (player == null)
+        {
+            player = FindObjectOfType<PlayerChar>();
+        }
+    }
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            GameObject.FindWithTag("Player").GetComponent<PlayerChar>().TakeDamage(biteDamage);
-            if (GameObject.FindWithTag("Player").GetComponent<PlayerChar>()._isPinned == false)
+            player.TakeDamage(biteDamage);
+            if (player._isPinned == false)
             {
-                GameObject.FindWithTag("Player").GetComponent<Rigidbody2D>().AddForce(other.transform.right * biteForce);
+                player.GetComponent<Rigidbody2D>().AddForce(other.transform.right * biteForce);
             }
         }
     }

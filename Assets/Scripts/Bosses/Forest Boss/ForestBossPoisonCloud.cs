@@ -4,17 +4,31 @@ using UnityEngine;
 
 public class ForestBossPoisonCloud : MonoBehaviour
 {
+    private PlayerChar player;
+    private ForestBoss fBoss;
+    private void Awake()
+    {
+        if (player == null)
+        {
+            player = FindObjectOfType<PlayerChar>();
+        }
+
+        if (fBoss == null)
+        {
+            fBoss = FindObjectOfType<ForestBoss>();
+        }
+    }
+
 
     public void OnTriggerStay2D(Collider2D thing)
     {
         if (thing.CompareTag("Player"))
         {
-
-            GameObject.FindWithTag("Player").GetComponent<PlayerChar>().PoisonPlayer(3.0f);
+            player.PoisonPlayer(3.0f);
         }
         else if(thing.CompareTag("FBoss"))
         {
-            thing.gameObject.GetComponent<ForestBoss>().makeCloud = false;
+           fBoss.makeCloud = false;
         }
     }
 }

@@ -9,6 +9,15 @@ public class timedProjectile : MonoBehaviour
     public float stunTime;
     public float timeBeforeDestroy;
     private float timer = 0;
+    private PlayerChar player;
+    private void Awake()
+    {
+        if (player == null)
+        {
+            player = FindObjectOfType<PlayerChar>();
+        }
+    }
+
 
     private void Update()
     {
@@ -24,9 +33,9 @@ public class timedProjectile : MonoBehaviour
     {
         if (other.collider.CompareTag("Player"))
         {
-            other.gameObject.GetComponent<PlayerChar>().TakeDamage(projectileDamage);
-            other.gameObject.GetComponent<PlayerChar>().PoisonPlayer(poisonTime);
-            other.gameObject.GetComponent<PlayerChar>().StunPlayer(true, stunTime);
+            player.TakeDamage(projectileDamage);
+            player.PoisonPlayer(poisonTime);
+            player.StunPlayer(true, stunTime);
             Destroy(this.gameObject);
         }
     }

@@ -6,6 +6,15 @@ public class TornadoDamage : MonoBehaviour
 {
     public int projectileDamage;
     public float spinLength = 0.5f;
+    private PlayerChar player;
+    private void Awake()
+    {
+        if (player == null)
+        {
+            player = FindObjectOfType<PlayerChar>();
+        }
+    }
+
 
     private void OnCollisionEnter2D(Collision2D other)
     {
@@ -15,8 +24,8 @@ public class TornadoDamage : MonoBehaviour
         }
         else if (other.collider.CompareTag("Player"))
         {
-            other.gameObject.GetComponent<PlayerChar>().TakeDamage(projectileDamage);
-            other.gameObject.GetComponent<PlayerChar>().SpinPlayer(true, spinLength);
+            player.TakeDamage(projectileDamage);
+            player.SpinPlayer(true, spinLength);
             Destroy(this.gameObject);
         }
     }

@@ -50,6 +50,34 @@ public class ItemSaveManager : MonoBehaviour
         }
     }
 
+    public void UnLoadEquipment(InventoryManager inventoryManager)
+    {
+        ItemContainerSaveData savedSlots = ItemSaveIO.LoadItems(EquipmentFileName);
+        if (savedSlots == null) return;
+
+        foreach (ItemSlotSaveData savedSlot in savedSlots.SavedSlots)
+        {
+            if (savedSlot == null)
+            {
+                continue;
+            }
+
+            Item item = itemDatabase.GetItemCopy(savedSlot.ItemID);
+            //inventoryManager.inventory.AddItem(item);
+            inventoryManager.Clear((EquipableItem)item);
+        }
+    }
+
+    public void ClearInventory(InventoryManager inventoryManager)
+    {
+        ClearItems(inventoryManager.inventory.itemSlots, InventoryFileName);
+    }
+
+    public void ClearEquipment(InventoryManager inventoryManager)
+    {
+        ClearItems(inventoryManager.equipmentMenu.equipmentSlots, EquipmentFileName);
+    }
+
     public void SaveInventory(InventoryManager inventoryManager)
     {
         SaveItems(inventoryManager.inventory.itemSlots, InventoryFileName);
@@ -76,6 +104,23 @@ public class ItemSaveManager : MonoBehaviour
             {
                 saveData.SavedSlots[i] = new ItemSlotSaveData(itemSlot.Item.ID, itemSlot.Amount);
             }
+        }
+
+        ItemSaveIO.SaveItems(saveData, fileName);
+    }
+
+    private void ClearItems(IList<ItemSlots> itemSlots, string fileName)
+    {
+        var saveData = new ItemContainerSaveData(itemSlots.Count);
+
+        for (int i = 0; i < saveData.SavedSlots.Length; i++)
+        {
+            ItemSlots itemSlot = itemSlots[i];
+
+            saveData.SavedSlots[i] = null;
+            itemSlots[i].Item = null;
+            itemSlots[i].Amount = 0;
+
         }
 
         ItemSaveIO.SaveItems(saveData, fileName);

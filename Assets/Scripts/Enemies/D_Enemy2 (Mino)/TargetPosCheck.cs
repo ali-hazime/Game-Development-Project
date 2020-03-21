@@ -6,7 +6,7 @@ public class TargetPosCheck : MonoBehaviour
 {
     public Transform playerTarget;
     public Vector3 targetPos;
-    public float offset = 2f;
+    public float offset = 10f;
 
     private Vector3 direction;
     public void OnEnable()

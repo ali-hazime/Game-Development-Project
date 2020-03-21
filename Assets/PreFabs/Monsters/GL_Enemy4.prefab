@@ -227,9 +227,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85d964c9631a3164fb03c2b087139f94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  listOfItems: []
-  itemToDrop: 0
+  listOfItems:
+  - {fileID: 6159992186057606492, guid: 6d6050886c3e8344b923e4639fd6338a, type: 3}
+  - {fileID: 6159992186057606492, guid: 32758f25d987c784fa320c7238047ddb, type: 3}
+  - {fileID: 6159992186057606492, guid: ea27b7dc4e381ab4ba257e911dfbce96, type: 3}
+  - {fileID: 6159992186057606492, guid: 8ab6708c03d47d947a09fe116a3fd3ca, type: 3}
+  - {fileID: 6159992186057606492, guid: 65118acf9ce43cc479b535fdb9f95948, type: 3}
+  - {fileID: 6159992186057606492, guid: 3d54e3a23aa1f8b4dac385414895182a, type: 3}
+  - {fileID: 6159992186057606492, guid: 7ae1626180cdb1f4bb6b9b9eadd51463, type: 3}
+  - {fileID: 6159992186057606492, guid: 6f4037be66647cb47abac75fb8447576, type: 3}
+  - {fileID: 6159992186057606492, guid: fcfd47dd3276601428f1381c1870095c, type: 3}
+  - {fileID: 6159992186057606492, guid: 4d9a7ca00826046478e70c19869ff8e3, type: 3}
+  - {fileID: 6159992186057606492, guid: fe1d55d5b3d8ca04aa799976473b93bb, type: 3}
+  - {fileID: 6159992186057606492, guid: 84100aea28e028049aaeead2ee7906be, type: 3}
+  - {fileID: 6159992186057606492, guid: 5abd9e9ccded0ed43ad62fd79ecd5a96, type: 3}
+  - {fileID: 6159992186057606492, guid: 8f0034aed5185264585ec6254c8054a8, type: 3}
+  - {fileID: 8896868340280283236, guid: b931958fc40d84e4497d38cde9b2cf48, type: 3}
+  - {fileID: 6159992186057606492, guid: d72114f9ba4e4634aa70f28d4907db49, type: 3}
+  listOfRareItems: []
+  listOfLegendaryItems: []
+  listOfGems:
+  - {fileID: 6159992186057606492, guid: 8e4ba73dfb7640a45bd3feff38ddb1aa, type: 3}
+  - {fileID: 6159992186057606492, guid: f05a8499481ecff44b86614e3ee407bf, type: 3}
+  currencyObject: {fileID: 6913540734416617568, guid: f2f412f6bbbd62542959ec430c5ed1b7,
+    type: 3}
+  dropChance: 25
+  legendaryItemDropChance: 0
+  rareItemDropChance: 0
+  currencyDropChance: 40
+  gemDropChance: 10
+  rareGemDropChance: 1
+  currency: {fileID: 0}
   item: {fileID: 0}
+  gem: {fileID: 0}
 --- !u!1 &6073489018010647756
 GameObject:
   m_ObjectHideFlags: 0

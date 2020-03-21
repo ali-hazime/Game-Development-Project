@@ -31,16 +31,18 @@ public class Inventory : ItemContainer
             
         }
 
-        SetStartingItems();
+        //SetStartingItems();
     }
     private void OnValidate()
     {
         if (itemsParent != null)
             itemSlots = itemsParent.GetComponentsInChildren<ItemSlots>();
 
-        SetStartingItems();
+        Clear();
+        //SetStartingItems();
     }
 
+    /*
     private void SetStartingItems()
     {
         Clear();
@@ -48,7 +50,7 @@ public class Inventory : ItemContainer
         {
             AddItem(item.GetCopy());
         }
-    }
+    }*/
 
 
 }

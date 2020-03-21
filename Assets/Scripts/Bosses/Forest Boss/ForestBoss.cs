@@ -235,13 +235,13 @@ public class ForestBoss : MonoBehaviour
         {
             isPinned = true;
             anim.SetBool("isMoving", false);
-            GameObject.FindWithTag("Player").GetComponent<PlayerChar>().playerPinned(true);
+            GameObject.FindWithTag("Player").GetComponent<PlayerChar>().PlayerPinned(true);
             //Debug.DrawLine(transform.position, offsetPos, Color.yellow);
         }
         else
         {
             isPinned = false;
-            GameObject.FindWithTag("Player").GetComponent<PlayerChar>().playerPinned(false);
+            GameObject.FindWithTag("Player").GetComponent<PlayerChar>().PlayerPinned(false);
             //Debug.DrawLine(transform.position, offsetPos, Color.cyan);
         }
 

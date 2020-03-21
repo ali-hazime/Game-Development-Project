@@ -18,6 +18,8 @@ public class PlayerGameData
     //Bonus Effects/Modifiers
     public float dropChanceModifierS;
 
+    
+
     public PlayerGameData(PlayerChar player)
     {
         healthS = player.playerCurrentHealth;
@@ -35,15 +37,86 @@ public class PlayerGameData
 
         //Bonus Effects/Modifiers
         dropChanceModifierS = GameSavingInformation.dropChanceModifier;
-}
+    }
 }
 
+[System.Serializable]
+public class QuestInfo
+{
+    public bool questInProgressS;
+    public bool bossKilledS;
+    public bool isKillQuestS;
+    public bool isItemQuestS;
+    public bool escortCompleteS;
+    public bool talkToCompleteS;
+    public bool beginDesertQ3S;
+    public bool allTotemsCollectedS;
+    public bool allObjCompletedS;
+
+    public int killCountS;
+    public int itemCountS;
+
+    public int mainQuestCountS;
+    public string questTypeS;
+    public int grasslandsQuestCountS;
+    public int desertQuestCountS;
+    public int forestQuestCountS;
+    public int snowMountainQuestCountS;
+    public int volcanoQuestCountS;
+
+    //Quest Item Bools
+
+    public bool q1_Item1S;
+    public bool q1_Item2S;
+    public bool q1_Item3S;
+
+    public bool fQ2_Item1S;
+    public bool fQ2_Item2S;
+    public bool fQ2_Item3S;
+
+    public QuestInfo()
+    { 
+        questInProgressS = QuestTracker.questInProgress;
+        bossKilledS = QuestTracker.bossKilled;
+        isKillQuestS = QuestTracker.isKillQuest;
+        isItemQuestS = QuestTracker.isItemQuest;
+        escortCompleteS = QuestTracker.escortComplete;
+        talkToCompleteS = QuestTracker.talkToComplete;
+        beginDesertQ3S = QuestTracker.beginDesertQ3;
+        allTotemsCollectedS = QuestTracker.allTotemsCollected;
+        allObjCompletedS = QuestTracker.allObjCompleted;
+
+        killCountS = QuestTracker.killCount;
+        itemCountS = QuestTracker.itemCount;
+
+        mainQuestCountS = QuestTracker.mainQuestCount;
+        questTypeS = QuestTracker.questType;
+        grasslandsQuestCountS = QuestTracker.grasslandsQuestCount;
+        desertQuestCountS = QuestTracker.desertQuestCount;
+        forestQuestCountS = QuestTracker.forestQuestCount;
+        snowMountainQuestCountS = QuestTracker.snowMountainQuestCount;
+        volcanoQuestCountS = QuestTracker.volcanoQuestCount;
+
+        q1_Item1S = QuestTracker.q1_Item1;
+        q1_Item2S = QuestTracker.q1_Item2;
+        q1_Item3S = QuestTracker.q1_Item3;
+
+        fQ2_Item1S = QuestTracker.fQ2_Item1;
+        fQ2_Item2S = QuestTracker.fQ2_Item2;
+        fQ2_Item3S = QuestTracker.fQ2_Item3;
+    }
+}
+
+[System.Serializable]
 public class InfoGameData
 {
-    /*
-    //GameSavingInformation ---
-    
+    public bool isNewGameS;
 
+    //GameSavingInformation ---//
+    public float playerXS;
+    public float playerYS;
+    public string whereAmIS;
+    public string whereWasIS;
 
     //Bosses
     public bool grassBossDefeatedS;
@@ -54,20 +127,16 @@ public class InfoGameData
     public bool finalBossDefeatedS;
 
     //Grasslands Quests
-    public int cropsInspectedS;
     public bool grassQuest1CompleteS; //Inspect 5 dead crops
-    public int townsFolkTalkedToS;
     public bool grassQuest2CompleteS; //Go to the town and speak to 4 people in the town
     public bool grassQuest3CompleteS; //Defend the town
     public bool grassQuest4CompleteS; //Boss Quest
-    public bool grassQuest5ACompleteS; //Once player reaches forest
-    public bool grassQuest5BCompleteS; //Once player reaches desert
+    public bool grassQuest5CompleteS; //Once player reaches desert
+    public bool grassQuest6CompleteS; //Boss Quest
+    public bool grassQuest7CompleteS; //Once player reaches desert
 
     //Forest Quests
     public bool forestQuest1CompleteS; //Get the NPC to the town
-    public bool forestQuest2ACompleteS; //Totem collected from east
-    public bool forestQuest2BCompleteS; //Totem collected from southwest
-    public bool forestQuest2CCompleteS; //Totem collected from northwest
     public bool forestQuest2CompleteS; //Collected all totems and talked to shaman
     public bool forestQuest3CompleteS; //After escorting shaman to poison
     public bool forestQuest4CompleteS; //Boss Quest
@@ -77,34 +146,29 @@ public class InfoGameData
     public bool desertQuest1CompleteS; //Get to the town
     public bool desertQuest2CompleteS; //Missing townsfolk found
     public bool desertQuest3CompleteS; //Escort the missing townsfolk back to town
-    public bool desertQuest4ACompleteS; //Puzzle complete in ancient tombs
-    public bool desertQuest4BCompleteS; //Defeat the boss //Boss Quest
-    public bool desertQuest5CompleteS; //Return to the town
+    public bool desertQuest4CompleteS; //Puzzle complete in ancient tombs
+    public bool desertQuest5CompleteS; //Defeat the boss //Boss Quest
+    public bool desertQuest6CompleteS; //Return to the town
 
     //Snow Mountain Quests
-    public bool snowQuest1CompleteS; //Return to forest Elder
-    public bool snowQuest2CompleteS; //Ascend the snow mountain and make it to the town
-    public bool snowQuest3CompleteS; //Make it to the Great Town
-    public bool snowQuest4CompleteS; //Defeat the Frozen King //Boss Quest
-    public bool snowQuest5CompleteS; //Return & speak to the forest Elder
+    public bool snowQuest1CompleteS; 
+    public bool snowQuest2CompleteS; 
+    public bool snowQuest3CompleteS; 
 
     //Volcano Quests
-    public bool volcanoQuest1CompleteS; //Make it to the mining outpost and speak to miners
-    public int minersSpokenToS;
-    public bool volcanoQuest2CompleteS; //Speak the 3 miners to gather information
-    public bool volcanoQuest3CompleteS; //Ascend the volcano and reach the source of corruption (very top)
-    public bool volcanoQuest4CompleteS; //Defeat the boss //Boss Quest
-    public bool volcanoQuest5CompleteS; //Inform the head miner the volcano is clear
-
-    //Final Quest
-    public bool finalQuest1CompleteS; //Defeat the final boss //Boss Quest
-    public bool finalQuest2CompleteS; //Speak to the Elder and complete main quest
-
-    */
+    public bool volcanoQuest1CompleteS; 
+    public bool volcanoQuest2CompleteS; 
+    public bool volcanoQuest3CompleteS; 
+    public bool volcanoQuest4CompleteS; 
+    public bool volcanoQuest5CompleteS; 
 
     public InfoGameData()
     {
-        /*
+        isNewGameS = GameSavingInformation.isNewGame;
+        playerXS = GameSavingInformation.playerX;
+        playerYS = GameSavingInformation.playerY;
+        whereAmIS = GameSavingInformation.whereAmI;
+        whereWasIS = GameSavingInformation.whereWasI;
 
         //Bosses
         grassBossDefeatedS = GameSavingInformation.grassBossDefeated;
@@ -115,20 +179,16 @@ public class InfoGameData
         finalBossDefeatedS = GameSavingInformation.finalBossDefeated;
 
         //Grasslands Quests
-        cropsInspectedS = GameSavingInformation.cropsInspected;
         grassQuest1CompleteS = GameSavingInformation.grassQuest1Complete;
-        townsFolkTalkedToS = GameSavingInformation.townsFolkTalkedTo;
         grassQuest2CompleteS = GameSavingInformation.grassQuest2Complete;
         grassQuest3CompleteS = GameSavingInformation.grassQuest3Complete;
         grassQuest4CompleteS = GameSavingInformation.grassQuest4Complete;
-        grassQuest5ACompleteS = GameSavingInformation.grassQuest5AComplete;
-        grassQuest5BCompleteS = GameSavingInformation.grassQuest5BComplete;
+        grassQuest5CompleteS = GameSavingInformation.grassQuest5Complete;
+        grassQuest6CompleteS = GameSavingInformation.grassQuest6Complete;
+        grassQuest7CompleteS = GameSavingInformation.grassQuest7Complete;
 
         //Forest Quests
         forestQuest1CompleteS = GameSavingInformation.forestQuest1Complete;
-        forestQuest2ACompleteS = GameSavingInformation.forestQuest2AComplete;
-        forestQuest2BCompleteS = GameSavingInformation.forestQuest2BComplete;
-        forestQuest2CCompleteS = GameSavingInformation.forestQuest2CComplete;
         forestQuest2CompleteS = GameSavingInformation.forestQuest2Complete;
         forestQuest3CompleteS = GameSavingInformation.forestQuest3Complete;
         forestQuest4CompleteS = GameSavingInformation.forestQuest4Complete;
@@ -138,28 +198,62 @@ public class InfoGameData
         desertQuest1CompleteS = GameSavingInformation.desertQuest1Complete;
         desertQuest2CompleteS = GameSavingInformation.desertQuest2Complete;
         desertQuest3CompleteS = GameSavingInformation.desertQuest3Complete;
-        desertQuest4ACompleteS = GameSavingInformation.desertQuest4AComplete;
-        desertQuest4BCompleteS = GameSavingInformation.desertQuest4BComplete;
+        desertQuest4CompleteS = GameSavingInformation.desertQuest4Complete;
         desertQuest5CompleteS = GameSavingInformation.desertQuest5Complete;
+        desertQuest6CompleteS = GameSavingInformation.desertQuest6Complete;
 
         //Snow Mountain Quests
         snowQuest1CompleteS = GameSavingInformation.snowQuest1Complete;
         snowQuest2CompleteS = GameSavingInformation.snowQuest2Complete;
         snowQuest3CompleteS = GameSavingInformation.snowQuest3Complete;
-        snowQuest4CompleteS = GameSavingInformation.snowQuest4Complete;
-        snowQuest5CompleteS = GameSavingInformation.snowQuest5Complete;
 
         //Volcano Quests
         volcanoQuest1CompleteS = GameSavingInformation.volcanoQuest1Complete;
-        minersSpokenToS = GameSavingInformation.minersSpokenTo;
         volcanoQuest2CompleteS = GameSavingInformation.volcanoQuest2Complete;
         volcanoQuest3CompleteS = GameSavingInformation.volcanoQuest3Complete;
         volcanoQuest4CompleteS = GameSavingInformation.volcanoQuest4Complete;
         volcanoQuest5CompleteS = GameSavingInformation.volcanoQuest5Complete;
 
-        //Final Quest
-        finalQuest1CompleteS = GameSavingInformation.finalQuest1Complete;
-        finalQuest2CompleteS = GameSavingInformation.finalQuest2Complete;  
-        */
     }
 }
+/*
+[System.Serializable]
+public class QuestData
+{
+
+    public List<QuestData> MyQuestData { get; set; }
+
+    public string QTitle { get; set; }
+
+    public string QDescription { get; set; }
+
+    public CollectObjective[] MyCollectObjectives { get; set; }
+
+    public KillObjective[] MyKillObjectives { get; set; }
+
+    public KillBoss[] MyKillBosses { get; set; }
+
+    public EscortQuest[] MyEscortQuests { get; set; }
+
+    public TalkToQuest[] MyTalkToQuests { get; set; }
+
+
+
+    public QuestData(string title, string description, CollectObjective[] collectObjectives, KillObjective[] killObjectives, KillBoss[] killBosses, EscortQuest[] escortQuests, TalkToQuest[] talkToQuests)
+    {
+        QTitle = title;
+
+        QDescription = description;
+
+        MyCollectObjectives = collectObjectives;
+
+        MyKillObjectives = killObjectives;
+
+        MyKillBosses = killBosses;
+
+        MyEscortQuests = escortQuests;
+
+        MyTalkToQuests = talkToQuests;
+    }
+}
+*/

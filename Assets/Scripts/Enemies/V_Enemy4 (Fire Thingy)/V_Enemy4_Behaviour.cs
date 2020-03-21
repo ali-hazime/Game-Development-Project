@@ -22,6 +22,15 @@ public class V_Enemy4_Behaviour : MonoBehaviour
     public bool isAggroed = false;
     [Space]
     public bool isColliding = false;
+    private PlayerChar player;
+    private void Awake()
+    {
+        if (player == null)
+        {
+            player = FindObjectOfType<PlayerChar>();
+        }
+    }
+
 
 
     void Start()
@@ -36,7 +45,7 @@ public class V_Enemy4_Behaviour : MonoBehaviour
     {
 
         //Linecast to check for wall/other enemies between monster and player
-        RaycastHit2D hit = Physics2D.Linecast(transform.position, playerTarget.position, 1 << 15 | 1 << 9);
+        RaycastHit2D hit = Physics2D.Linecast(transform.position, playerTarget.position, 1 << 15 | 1 << 9 | 1 << 4);
 
         if (hit.collider != null)
         {
@@ -95,8 +104,8 @@ public class V_Enemy4_Behaviour : MonoBehaviour
     {
         if (other.collider.CompareTag("Player"))
         {
-            other.gameObject.GetComponent<PlayerChar>().TakeDamage(damage);
-            other.gameObject.GetComponent<PlayerChar>().BurnPlayer(true, burnLength, burnDamage);
+            player.TakeDamage(damage);
+            player.BurnPlayer(true, burnLength, burnDamage);
             GameObject deathAnimation = Instantiate(explosion, transform.position, transform.rotation);
             Destroy(this.gameObject);
         }

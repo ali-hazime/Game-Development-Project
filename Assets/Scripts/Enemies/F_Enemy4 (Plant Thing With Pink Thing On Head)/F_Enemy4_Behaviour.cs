@@ -17,8 +17,14 @@ public class F_Enemy4_Behaviour : MonoBehaviour
     [Space]
     public int plantDamage;
     public float poisonTime;
-
-
+    private PlayerChar player;
+    private void Awake()
+    {
+        if (player == null)
+        {
+            player = FindObjectOfType<PlayerChar>();
+        }
+    }
 
     void Start()
     {
@@ -69,8 +75,8 @@ public class F_Enemy4_Behaviour : MonoBehaviour
     {
         if (other.collider.CompareTag("Player"))
         {
-            other.gameObject.GetComponent<PlayerChar>().TakeDamage(plantDamage);
-            other.gameObject.GetComponent<PlayerChar>().PoisonPlayer(poisonTime);
+            player.TakeDamage(plantDamage);
+            player.PoisonPlayer(poisonTime);
         }
     }
 

@@ -29,7 +29,15 @@ public class S_Enemy2_Behaviour : MonoBehaviour
     public bool isColliding = false;
     private Vector3 dir;
     private Vector3 offsetPos;
+    public PlayerChar player;
 
+    private void Awake()
+    {
+        if (player == null)
+        {
+            player = FindObjectOfType<PlayerChar>();
+        }
+    }
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -50,33 +58,33 @@ public class S_Enemy2_Behaviour : MonoBehaviour
     {
 
         //Linecast to check for wall/other enemies between monster and player
-        RaycastHit2D hit = Physics2D.Linecast(transform.position, playerTarget.position, 1 << 15 | 1 << 9);
+        RaycastHit2D hit = Physics2D.Linecast(transform.position, playerTarget.position, 1 << 15 | 1 << 9 | 1 << 4);
 
         if (hit.collider != null)
         {
             isColliding = true;
-            //Debug.DrawLine(transform.position, playerTarget.position, Color.red);
+            Debug.DrawLine(transform.position, playerTarget.position, Color.red);
         }
         else
         {
             isColliding = false;
-            //Debug.DrawLine(transform.position, playerTarget.position, Color.green);
+            Debug.DrawLine(transform.position, playerTarget.position, Color.green);
         }
 
         //Linecast to make sure player does not get pinned against wall
-        RaycastHit2D wallCheck = Physics2D.Linecast(transform.position, offsetPos, 1 << 15);
+        RaycastHit2D wallCheck = Physics2D.Linecast(transform.position, offsetPos, 1 << 15 | 1 << 4 | 1 << 19 | 1 << 4);
         RaycastHit2D playerCheck = Physics2D.Linecast(transform.position, offsetPos, 1 << 8);
 
-        if (wallCheck.collider != null && playerCheck.collider != null && Vector3.Distance(playerTarget.position, transform.position) < 2)
+        if (wallCheck.collider != null && playerCheck.collider != null && Vector3.Distance(playerTarget.position, transform.position) < 5)
         {
-            GameObject.FindWithTag("Player").GetComponent<PlayerChar>().playerPinned(true);
+            player.PlayerPinned(true);
             isPinned = true;
             
             Debug.DrawLine(transform.position, offsetPos, Color.yellow);
         }
         else
         {
-            GameObject.FindWithTag("Player").GetComponent<PlayerChar>().playerPinned(false);
+           player.PlayerPinned(false);
             isPinned = false;
             Debug.DrawLine(transform.position, offsetPos, Color.cyan);
         }

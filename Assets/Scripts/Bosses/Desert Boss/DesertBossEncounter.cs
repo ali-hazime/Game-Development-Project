@@ -14,11 +14,43 @@ public class DesertBossEncounter : MonoBehaviour
     public bool dStart = false;
     public bool dEnd = false;
     public float endTimer = 5;
+    [Space]
+    [SerializeField] QuestController questController;
+    [SerializeField] UIToggle uiToggle;
+    [SerializeField] bool toggleOnce = true;
+    public TalkToQuest talkToQuest;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         player = GameObject.FindWithTag("Player");
+
+        if (questController == null)
+        {
+            questController = FindObjectOfType<QuestController>();
+        }
+
+        if (uiToggle == null)
+        {
+            uiToggle = FindObjectOfType<UIToggle>();
+        }
+    }
+
+    void Start()
+    {
+        if (QuestTracker.desertQuestCount == 3)
+        {
+            talkToQuest.UpdateTalkToQuest();
+            StartCoroutine(DefeatBossQuest());
+        }
+    }
+
+    IEnumerator DefeatBossQuest()
+    {
+        yield return new WaitForSeconds(1f);
+        uiToggle.ToggleQuestLog();
+        questController.StartQuest(QuestTracker.desertQuestCount, "dM");
+        QuestTracker.questType = "dM";
     }
 
     // Update is called once per frame
@@ -35,6 +67,7 @@ public class DesertBossEncounter : MonoBehaviour
         {
             EndDBossFight();
         }
+
     }
 
     void startDBossFight()
@@ -63,5 +96,19 @@ public class DesertBossEncounter : MonoBehaviour
 
         Destroy(theBoss);
         GameSavingInformation.desertBossDefeated = true;
+        StartCoroutine(StartTurnInBossQuest());
+    }
+
+    IEnumerator StartTurnInBossQuest()
+    {
+        yield return new WaitForSeconds(1f);
+        if (toggleOnce)
+        {
+            uiToggle.ToggleQuestLog();
+            toggleOnce = false;
+        }
+
+        questController.StartQuest(QuestTracker.desertQuestCount, "dM");
+        QuestTracker.questType = "dM";
     }
 }

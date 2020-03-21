@@ -26,6 +26,15 @@ public class F_Enemy1_Behaviour : MonoBehaviour
     public bool isPinned = false;
     private Vector3 dir;
     private Vector3 offsetPos;
+    public PlayerChar player;
+
+    private void Awake()
+    {
+        if (player == null)
+        {
+            player = FindObjectOfType<PlayerChar>();
+        }
+    }
 
     void Start()
     {
@@ -108,7 +117,7 @@ public class F_Enemy1_Behaviour : MonoBehaviour
         }
 
         //Linecast to check for wall/other enemies between monster and player
-        RaycastHit2D hit = Physics2D.Linecast(transform.position, playerTarget.position, 1 << 15 | 1 << 9);
+        RaycastHit2D hit = Physics2D.Linecast(transform.position, playerTarget.position, 1 << 15 | 1 << 9 | 1 << 4);
 
         if (hit.collider != null)
         {
@@ -122,19 +131,19 @@ public class F_Enemy1_Behaviour : MonoBehaviour
         }
 
         //Linecast to make sure player does not get pinned against wall
-        RaycastHit2D wallCheck = Physics2D.Linecast(transform.position, offsetPos, 1 << 15);
+        RaycastHit2D wallCheck = Physics2D.Linecast(transform.position, offsetPos, 1 << 15 | 1 << 19 | 1 << 4);
         RaycastHit2D playerCheck = Physics2D.Linecast(transform.position, offsetPos, 1 << 8);
 
         if (wallCheck.collider != null && playerCheck.collider != null && Vector3.Distance(playerTarget.position, transform.position) < 1f)
         {
             isPinned = true;
-            GameObject.FindWithTag("Player").GetComponent<PlayerChar>().playerPinned(true);
+            player.PlayerPinned(true);
             Debug.DrawLine(transform.position, offsetPos, Color.yellow);
         }
         else
         {
             isPinned = false;
-            GameObject.FindWithTag("Player").GetComponent<PlayerChar>().playerPinned(false);
+            player.PlayerPinned(false);
             Debug.DrawLine(transform.position, offsetPos, Color.cyan);
         }
     }

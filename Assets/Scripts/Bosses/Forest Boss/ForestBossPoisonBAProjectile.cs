@@ -6,7 +6,15 @@ public class ForestBossPoisonBAProjectile : MonoBehaviour
 {
     public int poisonDamage;
     public float poisonTime;
-    // Start is called before the first frame update
+    private PlayerChar player;
+    private void Awake()
+    {
+        if (player == null)
+        {
+            player = FindObjectOfType<PlayerChar>();
+        }
+    }
+
 
     private void OnCollisionEnter2D(Collision2D thing)
     {
@@ -14,10 +22,10 @@ public class ForestBossPoisonBAProjectile : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-        else if (thing.collider.tag == "Player")
+        else if (thing.collider.CompareTag("Player"))
         {
-            thing.gameObject.GetComponent<PlayerChar>().TakeDamage(poisonDamage);
-            thing.gameObject.GetComponent<PlayerChar>().PoisonPlayer(poisonTime);
+            player.TakeDamage(poisonDamage);
+            player.PoisonPlayer(poisonTime);
             Destroy(this.gameObject);
         }
     }

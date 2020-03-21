@@ -5,12 +5,21 @@ using UnityEngine;
 public class DesertBossRockDropStuff : MonoBehaviour
 {
     public int damage;
-    
+    private PlayerChar player;
+
+    private void Awake()
+    {
+        if (player == null)
+        {
+            player = FindObjectOfType<PlayerChar>();
+        }
+    }
+
     private void OnCollisionEnter2D(Collision2D thing)
     {
-        if (thing.collider.tag == "Player")
+        if (thing.collider.CompareTag("Player"))
         {
-            thing.gameObject.GetComponent<PlayerChar>().TakeDamage(damage);
+            player.TakeDamage(damage);
         }
     }
 }

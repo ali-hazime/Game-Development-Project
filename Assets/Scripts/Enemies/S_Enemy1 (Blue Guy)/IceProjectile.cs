@@ -7,6 +7,15 @@ public class IceProjectile : MonoBehaviour
     public int projectileDamage;
     public float slowTime;
     public float slowFactor;
+    private PlayerChar player;
+    private void Awake()
+    {
+        if (player == null)
+        {
+            player = FindObjectOfType<PlayerChar>();
+        }
+    }
+
 
     private void OnCollisionEnter2D(Collision2D other)
     {
@@ -16,8 +25,8 @@ public class IceProjectile : MonoBehaviour
         }
         else if (other.collider.CompareTag("Player"))
         {
-            other.gameObject.GetComponent<PlayerChar>().TakeDamage(projectileDamage);
-            other.gameObject.GetComponent<PlayerChar>().SlowPlayer(true, slowTime, slowFactor);
+            player.TakeDamage(projectileDamage);
+            player.SlowPlayer(true, slowTime, slowFactor);
             Destroy(this.gameObject);
         }
     }

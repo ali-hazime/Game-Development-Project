@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3714671541105860104}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: box5
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 838934855947044525}
   - component: {fileID: 3549078243785846409}
   - component: {fileID: 5194460528891762261}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: outside 1_52
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78,6 +78,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -100,7 +101,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1810851877
-  m_SortingLayer: 5
+  m_SortingLayer: 9
   m_SortingOrder: 0
   m_Sprite: {fileID: -6831436444882619915, guid: b5c38a54098362e4ebe935c0399bd3c9,
     type: 3}
@@ -151,7 +152,7 @@ GameObject:
   - component: {fileID: 2293731942587865760}
   - component: {fileID: 3699020738434407726}
   - component: {fileID: 5983900575416171141}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: outside 1_11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -186,6 +187,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -208,7 +210,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1810851877
-  m_SortingLayer: 5
+  m_SortingLayer: 9
   m_SortingOrder: 0
   m_Sprite: {fileID: -3005649874144115272, guid: b5c38a54098362e4ebe935c0399bd3c9,
     type: 3}

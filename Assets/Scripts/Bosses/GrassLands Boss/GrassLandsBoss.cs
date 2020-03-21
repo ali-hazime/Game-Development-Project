@@ -21,6 +21,7 @@ public class GrassLandsBoss : MonoBehaviour
     public bool isPunching = false;
     public KillBoss killBoss;
 
+
     //private int maxHealth = 100;
     //public int attackDamage = 25;
     // Start is called before the first frame update
@@ -38,7 +39,7 @@ public class GrassLandsBoss : MonoBehaviour
         countDown += Time.deltaTime;
         reset += Time.deltaTime;
 
-        Debug.Log("Hits = " + hitsTaken);
+        
         //This vector 3 is essentially aggro range
         if (Vector3.Distance(playerTarget.position, transform.position) <= aggroMaxRange && Vector3.Distance(playerTarget.position, transform.position) >= aggroMinRange)
         {
@@ -214,7 +215,7 @@ public class GrassLandsBoss : MonoBehaviour
         getBack += Time.deltaTime;
         transform.position = Vector3.MoveTowards(myLocation, centerPos, 0.03f);
         if(myLocation == centerPos)
-            isCentered = true;
+        isCentered = true;
         
     }
 }

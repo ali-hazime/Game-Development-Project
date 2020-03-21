@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 6713822498539843502}
   - component: {fileID: 5532825366938912205}
   - component: {fileID: 7424422829062515426}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: bot
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46,6 +46,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -68,7 +69,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1170572659
-  m_SortingLayer: 5
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: -3057837199426894784, guid: 7ce1721d320c08c478f4be94c978a5d5,
     type: 3}
@@ -119,9 +120,9 @@ GameObject:
   - component: {fileID: 2773382238349246535}
   - component: {fileID: 8980382372932186619}
   - component: {fileID: 7727574021093299193}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: desert_240
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -154,6 +155,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -176,7 +178,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1170572659
-  m_SortingLayer: 5
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: 8219800524005585330, guid: 7ce1721d320c08c478f4be94c978a5d5,
     type: 3}
@@ -225,9 +227,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6869511473566781633}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: bot
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

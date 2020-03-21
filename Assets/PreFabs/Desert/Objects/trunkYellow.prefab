@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 1969355763679590754}
   - component: {fileID: 1969355763679590753}
   - component: {fileID: 6602637273561517811}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: outside_23
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46,6 +46,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -68,7 +69,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 440511493
-  m_SortingLayer: 6
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 233911118108648223, guid: 6a6dfe8acffeeb540878dba5a3ff29e8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -94,7 +95,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.25631893, y: -0.24207926}
+  m_Offset: {x: -0.25631893, y: -0.27205396}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -105,7 +106,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.48736215, y: 0.5158415}
+  m_Size: {x: 0.48736215, y: 0.4558921}
   m_EdgeRadius: 0
 --- !u!1 &1969355763781740857
 GameObject:
@@ -118,9 +119,9 @@ GameObject:
   - component: {fileID: 1969355763781740859}
   - component: {fileID: 1969355763781740858}
   - component: {fileID: 6476412367268808134}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: outside_22
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -153,6 +154,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -175,7 +177,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 440511493
-  m_SortingLayer: 6
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: -3317994092650872629, guid: 6a6dfe8acffeeb540878dba5a3ff29e8,
     type: 3}
@@ -202,7 +204,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.24207939, y: -0.23733282}
+  m_Offset: {x: 0.24207938, y: -0.2836573}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -213,7 +215,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.51584125, y: 0.52533436}
+  m_Size: {x: 0.51584125, y: 0.43268538}
   m_EdgeRadius: 0
 --- !u!1 &1969355763976536321
 GameObject:
@@ -226,9 +228,9 @@ GameObject:
   - component: {fileID: 1969355763976536323}
   - component: {fileID: 1969355763976536322}
   - component: {fileID: 7523592573232102507}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: outside_63
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -261,6 +263,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -283,7 +286,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 440511493
-  m_SortingLayer: 6
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 5816780161842512695, guid: 6a6dfe8acffeeb540878dba5a3ff29e8,
     type: 3}
@@ -310,7 +313,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.15663962, y: 0.12341285}
+  m_Offset: {x: 0.13483986, y: 0.14793766}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -321,7 +324,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.6867207, y: 0.7531743}
+  m_Size: {x: 0.7303203, y: 0.7041247}
   m_EdgeRadius: 0
 --- !u!1 &1969355764174328171
 GameObject:
@@ -334,9 +337,9 @@ GameObject:
   - component: {fileID: 1969355764174328085}
   - component: {fileID: 1969355764174328084}
   - component: {fileID: 4289708375214775902}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: outside_64
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -369,6 +372,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -391,7 +395,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 440511493
-  m_SortingLayer: 6
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: -8950287035646146908, guid: 6a6dfe8acffeeb540878dba5a3ff29e8,
     type: 3}
@@ -418,7 +422,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.1613859, y: 0.13765311}
+  m_Offset: {x: -0.20498544, y: 0.15127814}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -429,7 +433,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.6772282, y: 0.7246938}
+  m_Size: {x: 0.5900291, y: 0.6974437}
   m_EdgeRadius: 0
 --- !u!1 &5265977119915313708
 GameObject:

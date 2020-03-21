@@ -300,15 +300,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85d964c9631a3164fb03c2b087139f94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  listOfItems: []
-  listOfRareItems: []
-  itemToDrop: 0
-  rareItemToDrop: 0
-  dropChanceRange: 0
-  rareDropChanceRange: 0
-  item: {fileID: 0}
+  listOfItems:
+  - {fileID: 6159992186057606492, guid: 623075cfd06d3674687d02485a9ce5bf, type: 3}
+  - {fileID: 6159992186057606492, guid: 17b2bb12ed6b9124ea9e95bb0492144a, type: 3}
+  - {fileID: 6159992186057606492, guid: ea4267e74fb4d7645924f2b6b8cee3cc, type: 3}
+  - {fileID: 6159992186057606492, guid: 93a33007a88b8a44c9ded89519e0a761, type: 3}
+  - {fileID: 6159992186057606492, guid: 223dd9bcb13d296438d23b81ed8312aa, type: 3}
+  - {fileID: 6159992186057606492, guid: fcfd47dd3276601428f1381c1870095c, type: 3}
+  - {fileID: 6159992186057606492, guid: 661e551295775b54bbd11c27f2df084c, type: 3}
+  - {fileID: 6159992186057606492, guid: 4bd60de1dd1e2334ebd147504120d4a9, type: 3}
+  - {fileID: 6159992186057606492, guid: bd99bb857c7997c4094c4a8bedf9d6ae, type: 3}
+  - {fileID: 6159992186057606492, guid: d07a96bcf778a9b40aa66e18963ca624, type: 3}
+  - {fileID: 6159992186057606492, guid: d4613576cfe83c949aa2af5691e30b87, type: 3}
+  - {fileID: 6159992186057606492, guid: f3ddfff2234da144ebafbd02303f082a, type: 3}
+  - {fileID: 6159992186057606492, guid: 5226e5a3805917840a41c61444ee4d24, type: 3}
+  - {fileID: 6159992186057606492, guid: 6fa12d37adee9ff4db0ceb64483b9d86, type: 3}
+  - {fileID: 6159992186057606492, guid: 499e0c8f208d3f64e891fcba495e1380, type: 3}
+  - {fileID: 6159992186057606492, guid: edbf6bed2804afd44b7ef50792b084fd, type: 3}
+  - {fileID: 6159992186057606492, guid: 09bfd437f55197540b9c0d464d59d1e8, type: 3}
+  - {fileID: 6159992186057606492, guid: cbf20562456948d42809bc1581d06b0c, type: 3}
+  - {fileID: 8896868340280283236, guid: b931958fc40d84e4497d38cde9b2cf48, type: 3}
+  listOfRareItems:
+  - {fileID: 6159992186057606492, guid: ee12da90cd262ef438057716b5a4a5cf, type: 3}
+  listOfLegendaryItems: []
+  listOfGems:
+  - {fileID: 6159992186057606492, guid: 8e4ba73dfb7640a45bd3feff38ddb1aa, type: 3}
+  - {fileID: 6159992186057606492, guid: f05a8499481ecff44b86614e3ee407bf, type: 3}
+  currencyObject: {fileID: 6913540734416617568, guid: f2f412f6bbbd62542959ec430c5ed1b7,
+    type: 3}
   dropChance: 20
-  rareItemDropChance: 5
+  legendaryItemDropChance: 0
+  rareItemDropChance: 15
+  currencyDropChance: 40
+  gemDropChance: 10
+  rareGemDropChance: 5
+  currency: {fileID: 0}
+  item: {fileID: 0}
+  gem: {fileID: 0}
 --- !u!1 &2374897771032272467
 GameObject:
   m_ObjectHideFlags: 0
