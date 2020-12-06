@@ -32,6 +32,8 @@ public class LeaveDesertBoss : MonoBehaviour
             GameSavingInformation.whereAmI = "Jeralehar Desert";
             GameSavingInformation.whereWasI = SceneManager.GetActiveScene().name;
             SceneManager.LoadScene("Jeralehar Desert");
+            GameSavingInformation.maxCurrency = 10;
+            GameSavingInformation.minCurrency = 5;
             GameSavingInformation.playerX = -107f;
             GameSavingInformation.playerY = 12.5f;
             SaveSystem.SavePlayer(player);

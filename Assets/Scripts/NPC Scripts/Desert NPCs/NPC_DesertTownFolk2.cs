@@ -41,6 +41,7 @@ public class NPC_DesertTownFolk2 : MonoBehaviour
     public bool faceSouth = false;
     public bool faceEast = false;
     public bool faceWest = false;
+    private bool triggerOnce = true;
 
     private void OnEnable()
     {
@@ -80,10 +81,15 @@ public class NPC_DesertTownFolk2 : MonoBehaviour
 
             if (QuestTracker.desertQuestCount == 1)
             {
-                uiToggle.ToggleQuestLog();
-                questController.StartQuest(QuestTracker.desertQuestCount, "dM");
-                QuestTracker.questType = "dM";
-                QuestTracker.beginDesertQ3 = true;
+                if (triggerOnce)
+                {
+                    uiToggle.ToggleQuestLog();
+                    questController.StartQuest(QuestTracker.desertQuestCount, "dM");
+                    QuestTracker.questType = "dM";
+                    QuestTracker.beginDesertQ3 = true;
+                    triggerOnce = false;
+                }
+                
             }
         }
     }

@@ -32,6 +32,10 @@ public class SnowGameController : MonoBehaviour
     [SerializeField] NPC_Script Script_NPC4;
     [SerializeField] NPC_Script Script_NPC5;
 
+    [SerializeField] GameObject Ruby9;
+    [SerializeField] GameObject Ruby10;
+    [SerializeField] GameObject Sapphire4;
+
     void Awake()
     {
         S_Chief = Instantiate(The_Chief, new Vector3(145, 53, 0), transform.rotation);
@@ -72,9 +76,35 @@ public class SnowGameController : MonoBehaviour
         Script_NPC3 = S_NPC3.GetComponent<NPC_Script>();
         Script_NPC4 = S_NPC4.GetComponent<NPC_Script>();
         Script_NPC5 = S_NPC5.GetComponent<NPC_Script>();
+
+        if (GameSavingInformation.ruby9Collected)
+        {
+            Ruby9.SetActive(false);
+        }
+        else
+        {
+            Ruby9.SetActive(true);
+        }
+        if (GameSavingInformation.ruby10Collected)
+        {
+            Ruby10.SetActive(false);
+        }
+        else
+        {
+            Ruby10.SetActive(true);
+        }
+        if (GameSavingInformation.sapphire4Collected)
+        {
+            Sapphire4.SetActive(false);
+        }
+        else
+        {
+            Sapphire4.SetActive(true);
+        }
     }
     void Update()
     {
+
         if (QuestTracker.snowMountainQuestCount > 2)
         {
             Corruption.SetActive(false);

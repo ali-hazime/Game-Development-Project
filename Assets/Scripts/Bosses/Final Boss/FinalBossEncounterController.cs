@@ -15,6 +15,8 @@ public class FinalBossEncounterController : MonoBehaviour
     [SerializeField] QuestController questController;
     [SerializeField] UIToggle uiToggle;
     [SerializeField] bool toggleOnce = true;
+    public KillBoss killBoss;
+    public TalkToQuest talkToQuest;
     [Space]
     public bool vStart;
     public bool vEnd;
@@ -22,8 +24,11 @@ public class FinalBossEncounterController : MonoBehaviour
     public bool once = true;
     public bool once2 = true;
     public bool once3 = true;
+    public bool once4 = true;
     public bool talkingBegin = false;
     public int z = 0;
+    public float stuff;
+    public AudioSource Music;
 
     private void OnEnable()
     {
@@ -38,10 +43,21 @@ public class FinalBossEncounterController : MonoBehaviour
     }
     void Start()
     {
-        TheBoss = FindObjectOfType<FinalBossScript>().gameObject;
-        TheBossScript = FindObjectOfType<FinalBossScript>();
-        Player = GameObject.FindWithTag("Player");
-        PlayerScript = FindObjectOfType<PlayerChar>();
+        Dialogue.zCount = 0;
+        if (QuestTracker.volcanoQuestCount > 2)
+        {
+            //TheBoss = FindObjectOfType<FinalBossScript>().gameObject;
+            //TheBossScript = FindObjectOfType<FinalBossScript>();
+        }
+        if (Player == null)
+        {
+
+            Player = FindObjectOfType<PlayerChar>().gameObject;
+        }
+        if (PlayerScript == null)
+        {
+            PlayerScript = FindObjectOfType<PlayerChar>();
+        }
 
         if (questController == null)
         {
@@ -58,16 +74,28 @@ public class FinalBossEncounterController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (QuestTracker.volcanoQuestCount == 2) 
+
+        if (QuestTracker.volcanoQuestCount > 2) 
         {
             if (vStart == false && vEnd == false)
             {
                 if (Player.transform.position.y < 4.1 && (Player.transform.position.x > 2.5 && Player.transform.position.x < 3.5))
                 {
+                    if (once4)
+                    {
+                        if (QuestTracker.volcanoQuestCount == 3)
+                        {
+                            talkToQuest.UpdateTalkToQuest();
+                            StartCoroutine(AcceptFinalQuest());
+                        }
+                        once = true;
+                        once4 = false;
+                    }
                     startIntro();
                 }
             }
-            else if (TheBossScript.dead == true)
+           
+            if (TheBossScript.dead == true)
             {
                 EndFBossFight();
             }
@@ -76,19 +104,18 @@ public class FinalBossEncounterController : MonoBehaviour
             {
                 if (once3)
                 {
-                    PlayerScript.breakTheFreeze();
-                    Player.GetComponent<Rigidbody2D>().AddForce(Player.transform.up * 15000);
-                    //PlayerScript
-                    talkingBegin = false;
                     once3 = false;
                     StartCoroutine(StartFight());
                 }
             }
         }
+
     }
 
     private void FixedUpdate()
     {
+        //stuff = Vector3.Distance(new Vector3(3.5f, -8f, 0), Player.transform.position);
+        //Debug.Log(stuff);
         if (movePlayer == true)
         {
             PlayerScript.walkSouth = true;
@@ -99,17 +126,18 @@ public class FinalBossEncounterController : MonoBehaviour
     {
         if (once)
         {
+            Music.Pause();
             movePlayer = true;
             once = false;
         }
 
-        if (Player.transform.position.y <= -7.9f)
+        if (Vector3.Distance( new Vector3(3.5f, -8f, 0), Player.transform.position) < 0.25f)
         {
-            PlayerScript.RestrictMovementUntilTrue();
             PlayerScript.walkSouth = false;
             movePlayer = false;
             if (once2 == true)
             {
+                PlayerScript.RestrictMovementUntilTrue();
                 StartCoroutine(SpawnArea());
                 once2 = false;
             }
@@ -139,12 +167,20 @@ public class FinalBossEncounterController : MonoBehaviour
        // Block.SetActive(false);
         GameSavingInformation.forestBossDefeated = true;
         Destroy(TheBoss);
+
+        //StartCoroutine(EndBossQuest());
+
     }
 
     IEnumerator StartFight()
     {
-        yield return new WaitForSeconds(1f);
-        //PlayerScript.breakTheFreeze();
+        yield return new WaitForSeconds(0.1f);
+        talkingBegin = false;
+        yield return new WaitForSeconds(0.1f);
+        PlayerScript.breakTheFreeze();
+        yield return new WaitForSeconds(0.2f);
+        Player.transform.position = new Vector3(3.5f, -2, 0f);
+        yield return new WaitForSeconds(0.5f);
         vStart = true;
         TheBossScript.isStarted = true;
     }
@@ -233,5 +269,27 @@ public class FinalBossEncounterController : MonoBehaviour
         GameObject ArenaWall415 = Instantiate(AreaEdge, new Vector3(0.58f, -1.7f, 0), Quaternion.Euler(0f, 0f, 15f));
         yield return new WaitForSeconds(1f);
         talkingBegin = true;
+    }
+
+    IEnumerator AcceptFinalQuest()
+    {
+        yield return new WaitForSeconds(1f);
+        QuestLog.MyInstance.HideQuests();
+        uiToggle.ToggleQuestLog();
+        yield return new WaitForSeconds(0.3f);
+        questController.StartQuest(QuestTracker.volcanoQuestCount, "vM");
+        QuestTracker.questType = "vM";
+    }
+
+    IEnumerator EndBossQuest()
+    {
+        yield return new WaitForSeconds(0.1f);
+        if (toggleOnce)
+        {
+            killBoss.UpdateBossStatus();
+            yield return new WaitForSeconds(1f);
+            uiToggle.ToggleQuestLog();
+            toggleOnce = false;
+        }
     }
 }

@@ -6,6 +6,7 @@ public class ForestBossEncounter : MonoBehaviour
 {
 
     private GameObject player;
+    private PlayerChar PlayerScript;
     public GameObject treeBeforeBlock;
     public GameObject treeBlock;
     public GameObject cloudParent;
@@ -21,6 +22,7 @@ public class ForestBossEncounter : MonoBehaviour
     [SerializeField] bool toggleOnce = true;
     [SerializeField] GameObject worldCorruption;
     public KillBoss killBoss;
+    public AudioSource Music;
 
 
     void Awake()
@@ -38,11 +40,32 @@ public class ForestBossEncounter : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        if (PlayerScript == null)
+        {
+            PlayerScript = FindObjectOfType<PlayerChar>();
+        }
+    }
+
+    private void Start()
+    {
+        if (GameSavingInformation.forestBossDefeated == true)
+        {
+            bossScript.gameObject.SetActive(false);
+        }
+        else
+        {
+            bossScript.gameObject.SetActive(true);
+        }
+
+    }
+
     void Update()
     {
         if (fStart == false && fEnd == false)
         {
-            if (player.transform.position.y > 18)
+            if (player.transform.position.y > 18 && !GameSavingInformation.forestBossDefeated)
             {
                 startFBossFight();
             }
@@ -68,6 +91,7 @@ public class ForestBossEncounter : MonoBehaviour
         fStart = true;
         treeBlock.SetActive(true);
         treeBeforeBlock.SetActive(false);
+        Music.Play();
         bossScript.started = true;
     }
 
@@ -78,7 +102,6 @@ public class ForestBossEncounter : MonoBehaviour
         treeBlock.SetActive(false); 
         GameSavingInformation.forestBossDefeated = true;
         Destroy(theBoss);
-        
         StartCoroutine(StartTurnInBossQuest());
     }
 
@@ -87,6 +110,7 @@ public class ForestBossEncounter : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         if (toggleOnce)
         {
+            PlayerScript.playerCurrentHealth += PlayerScript.playerMaxHealth;
             killBoss.UpdateBossStatus();
             yield return new WaitForSeconds(1f);
             uiToggle.ToggleQuestLog();

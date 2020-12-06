@@ -29,18 +29,40 @@ public class EnterDesert : MonoBehaviour
     {
         if (thing.CompareTag("Player"))
         {
-            QuestTracker.talkToComplete = false;
-            QuestTracker.grasslandsQuestCount = 8;
-            GameSavingInformation.whereAmI = "Jeralehar Desert";
-            GameSavingInformation.whereWasI = SceneManager.GetActiveScene().name;
-            SceneManager.LoadScene("Jeralehar Desert");
-            GameSavingInformation.playerX = 26.5f;
-            GameSavingInformation.playerY = 35f;
-            SaveSystem.SavePlayer(player);
-            SaveSystem.SaveGameInfo();
-            SaveSystem.SaveQuestInfo();
-            itemSaveManager.SaveEquipment(inventoryManager);
-            itemSaveManager.SaveInventory(inventoryManager);
+            if (GameSavingInformation.desertMazeComplete)
+            {
+                QuestTracker.talkToComplete = false;
+                QuestTracker.grasslandsQuestCount = 8;
+                GameSavingInformation.whereAmI = "Jeralehar Desert";
+                GameSavingInformation.whereWasI = SceneManager.GetActiveScene().name;
+                SceneManager.LoadScene("Jeralehar Desert");
+                GameSavingInformation.maxCurrency = 10;
+                GameSavingInformation.minCurrency = 5;
+                GameSavingInformation.playerX = 26.5f;
+                GameSavingInformation.playerY = 35f;
+                SaveSystem.SavePlayer(player);
+                SaveSystem.SaveGameInfo();
+                SaveSystem.SaveQuestInfo();
+                itemSaveManager.SaveEquipment(inventoryManager);
+                itemSaveManager.SaveInventory(inventoryManager);
+            }
+            else
+            {
+                QuestTracker.talkToComplete = false;
+                QuestTracker.grasslandsQuestCount = 8;
+                GameSavingInformation.whereAmI = "Desert Maze";
+                GameSavingInformation.whereWasI = SceneManager.GetActiveScene().name;
+                SceneManager.LoadScene("Desert Maze");
+                GameSavingInformation.maxCurrency = 10;
+                GameSavingInformation.minCurrency = 5;
+                GameSavingInformation.playerX = 185f;
+                GameSavingInformation.playerY = 225f;
+                SaveSystem.SavePlayer(player);
+                SaveSystem.SaveGameInfo();
+                SaveSystem.SaveQuestInfo();
+                itemSaveManager.SaveEquipment(inventoryManager);
+                itemSaveManager.SaveInventory(inventoryManager);
+            }
         }
     }
 }

@@ -60,6 +60,7 @@ public class SaveLoadButtonForMenu : MonoBehaviour
         GameSavingInformation.crystalsCount = data.crystalsCountS;
         GameSavingInformation.minCurrency = data.minCurrencyS;
         GameSavingInformation.maxCurrency = data.maxCurrencyS;
+        GameSavingInformation.bonusHealth = GIdata.bonusHealthS;
 
         GameSavingInformation.grassBossDefeated = GIdata.grassBossDefeatedS;
         GameSavingInformation.forestBossDefeated = GIdata.forestBossDefeatedS;
@@ -85,6 +86,7 @@ public class SaveLoadButtonForMenu : MonoBehaviour
         GameSavingInformation.forestQuest5Complete = GIdata.forestQuest5CompleteS;
 
         //Desert Quests
+        GameSavingInformation.desertMazeComplete = GIdata.desertMazeCompleteS;
         GameSavingInformation.desertQuest1Complete = GIdata.desertQuest1CompleteS;
         GameSavingInformation.desertQuest2Complete = GIdata.desertQuest2CompleteS;
         GameSavingInformation.desertQuest3Complete = GIdata.desertQuest3CompleteS;

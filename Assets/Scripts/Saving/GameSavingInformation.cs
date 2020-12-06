@@ -13,10 +13,38 @@ public static class GameSavingInformation
     public static string whereAmI;
     public static string whereWasI;
 
+    //difficulty modifier
+    public static int healthMulti;
+    public static int bonusHealth;
+
     //Currency
     public static int crystalsCount;
     public static int minCurrency;
     public static int maxCurrency;
+
+    public static int differenceNumber;
+
+    public static float tempPlayerX;
+    public static float tempPlayerY;
+
+    //Rubys
+    public static bool ruby1Collected;
+    public static bool ruby2Collected;
+    public static bool ruby3Collected;
+    public static bool ruby4Collected;
+    public static bool ruby5Collected;
+    public static bool ruby6Collected;
+    public static bool ruby7Collected;
+    public static bool ruby8Collected;
+    public static bool ruby9Collected;
+    public static bool ruby10Collected;
+
+    //Sapphires
+    public static bool sapphire1Collected;
+    public static bool sapphire2Collected;
+    public static bool sapphire3Collected;
+    public static bool sapphire4Collected;
+    public static bool sapphire5Collected;
 
     //Bonus Effects/Modifiers
     public static float dropChanceModifier;
@@ -40,6 +68,7 @@ public static class GameSavingInformation
     public static bool grassQuest7Complete;
 
     //Desert Quests
+    public static bool desertMazeComplete;
     public static bool desertQuest1Complete;
     public static bool desertQuest2Complete;
     public static bool desertQuest3Complete;

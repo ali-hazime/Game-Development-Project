@@ -52,6 +52,8 @@ public class QuestInfo
     public bool beginDesertQ3S;
     public bool allTotemsCollectedS;
     public bool allObjCompletedS;
+    public bool triggerOnceS;
+    public bool triggerOnce2S;
 
     public int killCountS;
     public int itemCountS;
@@ -85,6 +87,8 @@ public class QuestInfo
         beginDesertQ3S = QuestTracker.beginDesertQ3;
         allTotemsCollectedS = QuestTracker.allTotemsCollected;
         allObjCompletedS = QuestTracker.allObjCompleted;
+        triggerOnceS = QuestTracker.triggerOnce;
+        triggerOnce2S = QuestTracker.triggerOnce2;
 
         killCountS = QuestTracker.killCount;
         itemCountS = QuestTracker.itemCount;
@@ -117,6 +121,37 @@ public class InfoGameData
     public float playerYS;
     public string whereAmIS;
     public string whereWasIS;
+    public int healthMultiS;
+    public int bonusHealthS;
+
+    //Currency
+    public int crystalsCountS;
+    public int minCurrencyS;
+    public int maxCurrencyS;
+
+    public int differenceNumberS;
+
+    public float tempPlayerXS;
+    public float tempPlayerYS;
+
+    //Rubys
+    public bool ruby1CollectedS;
+    public bool ruby2CollectedS;
+    public bool ruby3CollectedS;
+    public bool ruby4CollectedS;
+    public bool ruby5CollectedS;
+    public bool ruby6CollectedS;
+    public bool ruby7CollectedS;
+    public bool ruby8CollectedS;
+    public bool ruby9CollectedS;
+    public bool ruby10CollectedS;
+
+    //Sapphires
+    public bool sapphire1CollectedS;
+    public bool sapphire2CollectedS;
+    public bool sapphire5CollectedS;
+    public bool sapphire3CollectedS;
+    public bool sapphire4CollectedS;
 
     //Bosses
     public bool grassBossDefeatedS;
@@ -143,6 +178,7 @@ public class InfoGameData
     public bool forestQuest5CompleteS; //Speak to shaman after boss
 
     //Desert Quests
+    public bool desertMazeCompleteS;
     public bool desertQuest1CompleteS; //Get to the town
     public bool desertQuest2CompleteS; //Missing townsfolk found
     public bool desertQuest3CompleteS; //Escort the missing townsfolk back to town
@@ -169,6 +205,35 @@ public class InfoGameData
         playerYS = GameSavingInformation.playerY;
         whereAmIS = GameSavingInformation.whereAmI;
         whereWasIS = GameSavingInformation.whereWasI;
+        healthMultiS = GameSavingInformation.healthMulti;
+        bonusHealthS = GameSavingInformation.bonusHealth;
+
+        //Currency
+        crystalsCountS = GameSavingInformation.crystalsCount;
+        minCurrencyS = GameSavingInformation.minCurrency;
+        maxCurrencyS = GameSavingInformation.maxCurrency;
+
+        differenceNumberS = GameSavingInformation.differenceNumber;
+
+        tempPlayerXS = GameSavingInformation.tempPlayerX;
+        tempPlayerYS = GameSavingInformation.tempPlayerY;
+
+        ruby1CollectedS = GameSavingInformation.ruby1Collected;
+        ruby2CollectedS = GameSavingInformation.ruby1Collected;
+        ruby3CollectedS = GameSavingInformation.ruby3Collected;
+        ruby4CollectedS = GameSavingInformation.ruby4Collected;
+        ruby5CollectedS = GameSavingInformation.ruby5Collected;
+        ruby6CollectedS = GameSavingInformation.ruby6Collected;
+        ruby7CollectedS = GameSavingInformation.ruby7Collected;
+        ruby8CollectedS = GameSavingInformation.ruby8Collected;
+        ruby9CollectedS = GameSavingInformation.ruby9Collected;
+        ruby10CollectedS = GameSavingInformation.ruby10Collected;
+
+        sapphire1CollectedS = GameSavingInformation.sapphire1Collected;
+        sapphire2CollectedS = GameSavingInformation.sapphire2Collected;
+        sapphire5CollectedS = GameSavingInformation.sapphire3Collected;
+        sapphire3CollectedS = GameSavingInformation.sapphire4Collected;
+        sapphire4CollectedS = GameSavingInformation.sapphire5Collected;
 
         //Bosses
         grassBossDefeatedS = GameSavingInformation.grassBossDefeated;
@@ -195,6 +260,7 @@ public class InfoGameData
         forestQuest5CompleteS = GameSavingInformation.forestQuest5Complete;
 
         //Desert Quests
+        desertMazeCompleteS = GameSavingInformation.desertMazeComplete;
         desertQuest1CompleteS = GameSavingInformation.desertQuest1Complete;
         desertQuest2CompleteS = GameSavingInformation.desertQuest2Complete;
         desertQuest3CompleteS = GameSavingInformation.desertQuest3Complete;

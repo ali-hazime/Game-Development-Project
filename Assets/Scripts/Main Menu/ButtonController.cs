@@ -8,12 +8,27 @@ public class ButtonController : MonoBehaviour
     public GameObject questCanvas;
     public SaveLoadButtonForMenu slButton;
     [SerializeField] QuestController questController;
+    public SelectDifficulty selectDifficulty;
+    public GameObject Music;
 
     private void Awake()
     {
         if (questController == null)
         {
             questController = FindObjectOfType<QuestController>();
+        }
+
+        if (selectDifficulty == null)
+        {
+            selectDifficulty = FindObjectOfType<SelectDifficulty>();
+        }
+    }
+
+    private void Start()
+    {
+        if (Music == null)
+        {
+            Music = GameObject.Find("Music");
         }
     }
     public void StartGame() 
@@ -26,10 +41,12 @@ public class ButtonController : MonoBehaviour
     {
         NewGame();
         SceneManager.LoadScene("Player House");
+        Destroy(Music);
     }
 
     public void ContinueGame()
     {
+        Destroy(Music);
         QuestInfo QIdata = SaveSystem.LoadQuestInfo();
         QuestTracker.questInProgress = QIdata.questInProgressS;
         QuestTracker.mainQuestCount = QIdata.mainQuestCountS;
@@ -37,6 +54,8 @@ public class ButtonController : MonoBehaviour
         QuestTracker.beginDesertQ3 = QIdata.beginDesertQ3S;
         QuestTracker.allTotemsCollected = QIdata.allTotemsCollectedS;
         QuestTracker.allObjCompleted = QIdata.allObjCompletedS;
+        QuestTracker.triggerOnce = QIdata.triggerOnceS;
+        QuestTracker.triggerOnce2 = QIdata.triggerOnce2S;
         QuestTracker.fQ2_Item1 = QIdata.fQ2_Item1S;
         QuestTracker.fQ2_Item2 = QIdata.fQ2_Item2S;
         QuestTracker.fQ2_Item3 = QIdata.fQ2_Item3S;
@@ -47,8 +66,10 @@ public class ButtonController : MonoBehaviour
         }
 
         InfoGameData GIdata = SaveSystem.LoadGameInfo();
+        GameSavingInformation.differenceNumber = GIdata.differenceNumberS;
         GameSavingInformation.whereAmI = GIdata.whereAmIS;
         GameSavingInformation.whereWasI = GIdata.whereWasIS;
+        GameSavingInformation.bonusHealth = GIdata.bonusHealthS;
         SceneManager.LoadScene(GameSavingInformation.whereAmI);
     }
 
@@ -64,10 +85,12 @@ public class ButtonController : MonoBehaviour
         QuestTracker.beginDesertQ3 = false;
         QuestTracker.allTotemsCollected = false;
         QuestTracker.allObjCompleted = true;
+        QuestTracker.triggerOnce = true;
+        QuestTracker.triggerOnce2 = true;
 
         QuestTracker.killCount = 0;
         QuestTracker.itemCount = 0;
-
+        GameSavingInformation.differenceNumber = Random.Range(1, 7);
         QuestTracker.fQ2_Item1 = true;
         QuestTracker.fQ2_Item2 = true;
         QuestTracker.fQ2_Item3 = true;
@@ -85,10 +108,28 @@ public class ButtonController : MonoBehaviour
         GameSavingInformation.playerY = 8f;
         GameSavingInformation.whereAmI = "Player House";
         GameSavingInformation.whereWasI = "";
-
+        GameSavingInformation.healthMulti = selectDifficulty.statBoost;
+        GameSavingInformation.bonusHealth = 100 * GameSavingInformation.healthMulti;
         GameSavingInformation.crystalsCount = 0;
         GameSavingInformation.minCurrency = 3;
         GameSavingInformation.maxCurrency = 7;
+
+        GameSavingInformation.ruby1Collected = false;
+        GameSavingInformation.ruby1Collected = false;
+        GameSavingInformation.ruby3Collected = false;
+        GameSavingInformation.ruby4Collected = false;
+        GameSavingInformation.ruby5Collected = false;
+        GameSavingInformation.ruby6Collected = false;
+        GameSavingInformation.ruby7Collected = false;
+        GameSavingInformation.ruby8Collected = false;
+        GameSavingInformation.ruby9Collected = false;
+        GameSavingInformation.ruby10Collected = false;
+
+        GameSavingInformation.sapphire1Collected = false;
+        GameSavingInformation.sapphire2Collected = false;
+        GameSavingInformation.sapphire3Collected = false;
+        GameSavingInformation.sapphire4Collected = false;
+        GameSavingInformation.sapphire5Collected = false;
 
         GameSavingInformation.dropChanceModifier = 0;
         GameSavingInformation.grassBossDefeated = false;
@@ -116,6 +157,7 @@ public class ButtonController : MonoBehaviour
         GameSavingInformation.forestQuest5Complete = false;
 
         //Desert Quests
+        GameSavingInformation.desertMazeComplete = false;
         GameSavingInformation.desertQuest1Complete = false;
         GameSavingInformation.desertQuest2Complete = false;
         GameSavingInformation.desertQuest3Complete = false;

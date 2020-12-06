@@ -34,6 +34,8 @@ public class EnterSnowCave : MonoBehaviour
             GameSavingInformation.whereAmI = "SnowCave";
             GameSavingInformation.whereWasI = SceneManager.GetActiveScene().name;
             SceneManager.LoadScene("SnowCave");
+            GameSavingInformation.maxCurrency = 19;
+            GameSavingInformation.minCurrency = 14;
             GameSavingInformation.playerX = 0f;
             GameSavingInformation.playerY = -1.25f;
             SaveSystem.SavePlayer(player);

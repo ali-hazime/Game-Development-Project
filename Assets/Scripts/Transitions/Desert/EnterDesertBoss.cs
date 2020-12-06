@@ -32,6 +32,8 @@ public class EnterDesertBoss : MonoBehaviour
             GameSavingInformation.whereAmI = "DesertBoss";
             GameSavingInformation.whereWasI = SceneManager.GetActiveScene().name;
             SceneManager.LoadScene("DesertBoss");
+            GameSavingInformation.maxCurrency = 30;
+            GameSavingInformation.minCurrency = 25;
             GameSavingInformation.playerX = 15f;
             GameSavingInformation.playerY = 0.5f;
             SaveSystem.SavePlayer(player);

@@ -20,7 +20,7 @@ public class ChargeE : MonoBehaviour
         if (other.collider.CompareTag("Player"))
         {
             player.TakeDamage(chargeDamage);
-            player.GetComponent<Rigidbody2D>().AddForce(other.transform.right * 5000f);
+            player.GetComponent<Rigidbody2D>().AddForce(other.transform.right * 2500f);
             player.StunPlayer(true, stunLength);
         }
     }

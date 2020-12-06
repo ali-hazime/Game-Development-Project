@@ -1,9 +1,93 @@
 fileFormatVersion: 2
 guid: 7323551cf3ea1104bb6c8c7603baae5b
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -581179432799570218
+    second: holy_0
+  - first:
+      213: 1917490058281776063
+    second: holy_1
+  - first:
+      213: -2983751637176519997
+    second: holy_2
+  - first:
+      213: 5330814012509892390
+    second: holy_3
+  - first:
+      213: -5083450885891385190
+    second: holy_4
+  - first:
+      213: 1483391789429068893
+    second: holy_4
+  - first:
+      213: -6804157135120863555
+    second: holy_4
+  - first:
+      213: -6279755225025695803
+    second: holy_4
+  - first:
+      213: -6215253024959631396
+    second: holy_8
+  - first:
+      213: -6427411749223431031
+    second: holy_9
+  - first:
+      213: 8989834239325696000
+    second: holy_10
+  - first:
+      213: 377762352282977482
+    second: holy_11
+  - first:
+      213: 1615454978461197422
+    second: holy_12
+  - first:
+      213: -8958896994975894189
+    second: holy_13
+  - first:
+      213: 1964093259200703922
+    second: holy_14
+  - first:
+      213: 3834846124845711543
+    second: holy_15
+  - first:
+      213: 660551628440971943
+    second: holy_16
+  - first:
+      213: 3416491610365819393
+    second: holy_17
+  - first:
+      213: 913335449648738987
+    second: holy_18
+  - first:
+      213: -5453203120085643721
+    second: holy_19
+  - first:
+      213: -4909346723948111387
+    second: holy_20
+  - first:
+      213: -1399969887525380674
+    second: holy_21
+  - first:
+      213: 1283027529737164421
+    second: holy_22
+  - first:
+      213: 1737682850712376672
+    second: holy_23
+  - first:
+      213: 7162539478147562053
+    second: holy_24
+  - first:
+      213: -4796002528308987096
+    second: holy_25
+  - first:
+      213: 4882416652070208723
+    second: holy_26
+  - first:
+      213: 6636103343307228774
+    second: holy_27
   externalObjects: {}
-  serializedVersion: 10
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -31,7 +115,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
+    filterMode: 0
     aniso: -1
     mipBias: -100
     wrapU: 1
@@ -40,12 +124,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -57,13 +141,26 @@ TextureImporter:
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  applyGammaDecoding: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 1024
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -72,7 +169,175 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: holy_0
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 86
+        width: 43
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d6f735926c3fe7f0800000000000000
+      internalID: -581179432799570218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: holy_1
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 86
+        width: 43
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb37a387c0b4c9a10800000000000000
+      internalID: 1917490058281776063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: holy_2
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 86
+        width: 43
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c27a10d1b59796d0800000000000000
+      internalID: -2983751637176519997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: holy_3
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 86
+        width: 43
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62fa35bb91bdaf940800000000000000
+      internalID: 5330814012509892390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: holy_5
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 22
+        width: 43
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a989c414a54f379b0800000000000000
+      internalID: -5083450885891385190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: holy_6
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 22
+        width: 43
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5496af19f0169410800000000000000
+      internalID: 1483391789429068893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: holy_7
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 22
+        width: 43
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dbe6e25b227c291a0800000000000000
+      internalID: -6804157135120863555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: holy_4
+      rect:
+        serializedVersion: 2
+        x: 267
+        y: 87
+        width: 43
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5cfa0f7f4e3d9d8a0800000000000000
+      internalID: -6279755225025695803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

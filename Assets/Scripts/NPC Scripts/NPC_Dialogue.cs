@@ -88,6 +88,11 @@ public class NPC_Dialogue : MonoBehaviour
     [SerializeField] GameObject[] NPC77_TB;
     [SerializeField] GameObject[] NPC78_TB;
     [SerializeField] GameObject[] NPC79_TB;
+    [SerializeField] GameObject[] NPC80_TB;
+    [SerializeField] GameObject[] NPC81_TB;
+    [SerializeField] GameObject[] NPC82_TB;
+    [SerializeField] GameObject[] NPC83_TB;
+    [SerializeField] GameObject[] NPC84_TB;
     [Space]
     public int pressed = 0;
     public int zCount = 0;
@@ -98,7 +103,7 @@ public class NPC_Dialogue : MonoBehaviour
 
     private void Awake()
     {
-        Boxes = new GameObject[80][]
+        Boxes = new GameObject[85][]
         {
             new GameObject[2]{NPC0_TB[0], NPC0_TB[1]}, //Player Wife = 0 - DONE
             new GameObject[1]{NPC1_TB[0]}, //Player Wife = 1 - DONE
@@ -179,7 +184,12 @@ public class NPC_Dialogue : MonoBehaviour
             new GameObject[1]{NPC76_TB[0]}, // First Sh,aman Interaction = 76
             new GameObject[2]{NPC77_TB[0], NPC77_TB[1]}, //NPC_Explainer = 77
             new GameObject[1]{NPC78_TB[0]}, //NPC_Explainer = 78
-            new GameObject[3]{NPC79_TB[0], NPC79_TB[1], NPC79_TB[2]} //Final Boss Text = 79
+            new GameObject[3]{NPC79_TB[0], NPC79_TB[1], NPC79_TB[2]}, //Final Boss Text = 79
+            new GameObject[2]{NPC80_TB[0], NPC80_TB[1]}, //Royal Guard = 80
+            new GameObject[2]{NPC81_TB[0], NPC81_TB[1]}, //Snow Vendor = 81
+            new GameObject[2]{NPC82_TB[0], NPC82_TB[1]}, //TEMP CREDITS = 82
+            new GameObject[1]{NPC83_TB[0]}, //Healer = 82
+            new GameObject[1]{NPC84_TB[0]} //Forest Shaman = 84
 
         };
 

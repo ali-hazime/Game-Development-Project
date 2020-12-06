@@ -27,12 +27,18 @@ public class EnterForestFromSnow : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D thing)
     {
+        if (QuestTracker.snowMountainQuestCount == 3)
+        {
+            QuestTracker.snowMountainQuestCount = 4;
+        }
         if (thing.CompareTag("Player"))
         {
             QuestTracker.talkToComplete = false;
             GameSavingInformation.whereAmI = "Thillan Forest";
             GameSavingInformation.whereWasI = SceneManager.GetActiveScene().name;
             SceneManager.LoadScene("Thillan Forest");
+            GameSavingInformation.maxCurrency = 12;
+            GameSavingInformation.minCurrency = 7;
             GameSavingInformation.playerX = 137f;
             GameSavingInformation.playerY = 84.5f;
             SaveSystem.SavePlayer(player);

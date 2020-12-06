@@ -40,9 +40,9 @@ public class staffProjectiles : MonoBehaviour
         else if (other.CompareTag("GLBoss"))
         {
 
-            GrassLandsBoss glBoss;
-            glBoss = other.gameObject.GetComponent<GrassLandsBoss>();
-            glBoss.BossHits();
+            GrassLandsBossHealth glBoss;
+            glBoss = other.gameObject.GetComponent<GrassLandsBossHealth>();
+            glBoss.DamageEnemy(playerDamage);
 
         }
         else if (other.CompareTag("DBoss"))
@@ -75,6 +75,30 @@ public class staffProjectiles : MonoBehaviour
         {
             VolcanoBossHealth enemy;
             enemy = other.gameObject.GetComponent<VolcanoBossHealth>();
+            enemy.DamageEnemy(playerDamage);
+        }
+        else if (other.CompareTag("FinalBoss"))
+        {
+            FinalBossHealth enemy;
+            enemy = other.gameObject.GetComponent<FinalBossHealth>();
+            enemy.DamageEnemy(playerDamage);
+        }
+        else if (other.CompareTag("FinalBossVoidRealm"))
+        {
+            FinalBossVoidRealmHealth enemy;
+            enemy = other.gameObject.GetComponent<FinalBossVoidRealmHealth>();
+            enemy.DamageEnemy(playerDamage);
+        }
+        else if (other.CompareTag("FinalBossMinion"))
+        {
+            MinionHealth enemy;
+            enemy = other.gameObject.GetComponent<MinionHealth>();
+            enemy.DamageEnemy(playerDamage);
+        }
+        else if (other.CompareTag("FinalBossClone"))
+        {
+            CloneHealth enemy;
+            enemy = other.gameObject.GetComponent<CloneHealth>();
             enemy.DamageEnemy(playerDamage);
         }
 

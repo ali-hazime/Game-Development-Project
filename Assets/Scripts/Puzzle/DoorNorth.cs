@@ -44,9 +44,12 @@ public class DoorNorth : MonoBehaviour
             else if (doorNumber == 0 && PuzzleController.overallCount == 6)
             {
                 PuzzleController.overallCount++;
+                
                 GameSavingInformation.whereAmI = "The Great Tower Boss";
                 GameSavingInformation.whereWasI = "The Great Tower Boss";
                 SceneManager.LoadScene("The Great Tower Boss");
+                GameSavingInformation.maxCurrency = 75;
+                GameSavingInformation.minCurrency = 60;
                 GameSavingInformation.playerX = 0f;
                 GameSavingInformation.playerY = -6.5f;
             }
@@ -62,6 +65,7 @@ public class DoorNorth : MonoBehaviour
             else if (doorNumber == 1 && PuzzleController.overallCount < 2)
             {
                 PuzzleController.overallCount--;
+                
                 GameSavingInformation.whereAmI = "Mount Herraweth";
                 GameSavingInformation.whereWasI = "Mount Herraweth";
                 SceneManager.LoadScene("Mount Herraweth");

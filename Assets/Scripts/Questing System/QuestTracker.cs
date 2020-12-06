@@ -13,6 +13,8 @@ public static class QuestTracker
     public static bool beginDesertQ3;
     public static bool allTotemsCollected;
     public static bool allObjCompleted;
+    public static bool triggerOnce;
+    public static bool triggerOnce2;
 
     public static int killCount;
     public static int itemCount;
@@ -35,5 +37,9 @@ public static class QuestTracker
     public static bool fQ2_Item1;
     public static bool fQ2_Item2;
     public static bool fQ2_Item3;
+
+    // Puzzle Counters (not to be saved)
+
+    public static int blocksWalked;
     
 }

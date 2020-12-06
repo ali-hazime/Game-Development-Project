@@ -5,6 +5,18 @@ using UnityEngine.UI;
 
 public class QuestScript : MonoBehaviour
 {
+    [SerializeField] SaveLoadButton SaveSystemObj;
+
+    private void Update()
+    {
+        if (SaveSystemObj == null)
+        {
+            if (GameObject.Find("SaveSystem") != null)
+            {
+                SaveSystemObj = GameObject.Find("SaveSystem").GetComponent<SaveLoadButton>();
+            }
+        }
+    }
 
     public Quest MyQuest { get; set; }
     public bool markedComplete = false;
@@ -27,7 +39,8 @@ public class QuestScript : MonoBehaviour
             return;
         }
         if (MyQuest.IsComplete && !markedComplete)
-        { 
+        {
+            QuestTracker.triggerOnce = true;
             markedComplete = true;
             GetComponent<Text>().text += "\n(Quest Completed)";
             QuestTracker.questInProgress = false;
@@ -58,7 +71,14 @@ public class QuestScript : MonoBehaviour
             if (QuestTracker.snowMountainQuestCount == 4 && QuestTracker.volcanoQuestCount < 6)
             {
                 QuestTracker.volcanoQuestCount++;
-            }  
+            }
+
+            Debug.Log("IsComplete");
+            if (QuestTracker.volcanoQuestCount < 1 && QuestTracker.forestQuestCount != 2)
+            {
+                SaveSystemObj.Save();
+            }
+
         }
         /*
         else if (!MyQuest.IsComplete)

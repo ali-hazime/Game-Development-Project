@@ -28,7 +28,12 @@ public class BossQuestTrigger : MonoBehaviour
             if (other.CompareTag("Player"))
             {
                 talkToQuest.UpdateTalkToQuest();
-                StartCoroutine(AcceptBossQuest());
+
+                if (QuestTracker.triggerOnce2)
+                {
+                    StartCoroutine(AcceptBossQuest());
+                    QuestTracker.triggerOnce2 = false;
+                } 
             }
         }
 
@@ -45,6 +50,8 @@ public class BossQuestTrigger : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         uiToggle.ToggleQuestLog();
+        QuestLog.MyInstance.HideQuests();
+        yield return new WaitForSeconds(0.2f);
         questController.StartQuest(QuestTracker.snowMountainQuestCount, "sM");
         QuestTracker.questType = "sM";
         yield return new WaitForSeconds(1f);

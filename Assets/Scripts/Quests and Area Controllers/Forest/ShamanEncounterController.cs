@@ -17,6 +17,9 @@ public class ShamanEncounterController : MonoBehaviour
     public GameObject totem2;
     public GameObject totem3;
     public GameObject poisonParent;
+    public GameObject ElkPrefab;
+    public GameObject TreePrefab;
+    public GameObject PlantPrefab;
     public bool inProgress = false;
 
     private void Awake()
@@ -78,11 +81,24 @@ public class ShamanEncounterController : MonoBehaviour
         
     }
 
+    private void Start()
+    {
+        if (QuestTracker.forestQuestCount == 1 && QuestTracker.allObjCompleted == false)
+        {
+            StartCoroutine(MoveShaman());
+        }
+    }
+
     private void FixedUpdate()
     {
         if (questController == null)
         {
             questController = FindObjectOfType<QuestController>();
+        }
+
+        if (QuestTracker.forestQuestCount >= 3)
+        {
+            poisonParent.SetActive(false);
         }
     }
 
@@ -90,7 +106,11 @@ public class ShamanEncounterController : MonoBehaviour
     {
         if (!inProgress)
         {
-            StartCoroutine(ShamanInteraction());
+            if (QuestTracker.triggerOnce2)
+            {
+                StartCoroutine(ShamanInteraction());
+                QuestTracker.triggerOnce2 = false;
+            }
         }  
     }
     public void SpeakWithShaman()
@@ -111,20 +131,23 @@ public class ShamanEncounterController : MonoBehaviour
 
     public void SpeakWithShaman3()
     {
-        uiToggle.ToggleQuestLog();
-        questController.StartQuest(QuestTracker.forestQuestCount, "fM"); // accepting boss quest
-        QuestTracker.questType = "fM";
+         uiToggle.ToggleQuestLog();
+         questController.StartQuest(QuestTracker.forestQuestCount, "fM"); // accepting boss quest
+         QuestTracker.questType = "fM";
     }
 
     public void SpeakWithShaman4()
     {
-        uiToggle.ToggleQuestLog();
-        talkToQuest.UpdateTalkToQuest();
+        if(QuestTracker.forestQuestCount == 4)
+        {
+            uiToggle.ToggleQuestLog();
+            talkToQuest.UpdateTalkToQuest();
+        }
     }
 
     IEnumerator TurnInTotems()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.1f);
         talkToQuest.UpdateTalkToQuest();
     }
 
@@ -166,7 +189,7 @@ public class ShamanEncounterController : MonoBehaviour
 
     IEnumerator AcceptTotemQuest()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(0.2f);
         uiToggle.ToggleQuestLog();
         questController.StartQuest(QuestTracker.forestQuestCount, "fM");
         QuestTracker.questType = "fM";
@@ -182,10 +205,28 @@ public class ShamanEncounterController : MonoBehaviour
 
     }
 
+    IEnumerator MoveShaman()
+    {
+        yield return new WaitForSeconds(3f);
+        QuestTracker.allObjCompleted = false;
+
+        if (!QuestTracker.allTotemsCollected)
+        {
+            StartCoroutine(ShamanFade());
+            forestShaman.GetComponent<Collider2D>().enabled = false;
+        }
+        yield return new WaitForSeconds(1.1f);
+        forestShaman.gameObject.transform.position = new Vector3(-123, 10, 0);
+        forestShaman.GetComponent<SpriteRenderer>().color = new Color(255f, 255f, 255f, 225f / 255f);
+        forestShaman.GetComponent<Collider2D>().enabled = true;
+    }
+
     IEnumerator AcceptProtectQuest()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(0.2f);
+        QuestLog.MyInstance.HideQuests();
         uiToggle.ToggleQuestLog();
+        yield return new WaitForSeconds(0.1f);
         questController.StartQuest(QuestTracker.forestQuestCount, "fM");
         QuestTracker.questType = "fM";
         forestShaman.faceSouth = true;
@@ -197,7 +238,14 @@ public class ShamanEncounterController : MonoBehaviour
     IEnumerator ForestQuest3Begin()
     {
         // script to spawn monsters
-        yield return new WaitForSeconds(60f);
+        GameObject Monster1 = Instantiate(TreePrefab, new Vector3(-117, 16, 0), transform.rotation);
+        yield return new WaitForSeconds(15f);
+        GameObject Monster2 = Instantiate(PlantPrefab, new Vector3(-121.5f, 17.5f, 0), transform.rotation);
+        yield return new WaitForSeconds(15f);
+        GameObject Monster3 = Instantiate(ElkPrefab, new Vector3(-127, 18.25f, 0), transform.rotation);
+        yield return new WaitForSeconds(15f);
+        GameObject Monster4 = Instantiate(TreePrefab, new Vector3(-127, 15, 0), transform.rotation);
+        yield return new WaitForSeconds(15f);
         // stop spawning monsters
         talkToQuest.UpdateTalkToQuest();
         //StartCoroutine(FadePoison());

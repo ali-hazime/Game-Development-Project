@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class FrostKingSoulTwo : MonoBehaviour
 {
     private GameObject playerTarget;
+    private PlayerChar player;
     private Animator anim;
     public SoulHealthTwo healthScript;
     public GameObject currentHP;
@@ -75,7 +76,13 @@ public class FrostKingSoulTwo : MonoBehaviour
     public GameObject PositionChecker;
     public Vector3 targetPos;
 
-
+    private void Awake()
+    {
+        if (player == null)
+        {
+            player = FindObjectOfType<PlayerChar>();
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -120,14 +127,14 @@ public class FrostKingSoulTwo : MonoBehaviour
 
                 if (wallCheck.collider != null && playerCheck.collider != null && Vector3.Distance(playerTarget.transform.position, transform.position) < 2)
                 {
-                    GameObject.FindWithTag("Player").GetComponent<PlayerChar>().PlayerPinned(true);
+                    player.PlayerPinned(true);
                     isPinned = true;
 
                     Debug.DrawLine(transform.position, offsetPos, Color.yellow);
                 }
                 else
                 {
-                    GameObject.FindWithTag("Player").GetComponent<PlayerChar>().PlayerPinned(false);
+                    player.PlayerPinned(false);
                     isPinned = false;
                     Debug.DrawLine(transform.position, offsetPos, Color.cyan);
                 }
@@ -489,9 +496,13 @@ public class FrostKingSoulTwo : MonoBehaviour
 
     IEnumerator StunIndicator()
     {
-        stunIndicator.SetActive(true);
-        yield return new WaitForSeconds(1f);
-        stunIndicator.SetActive(false);
+        if (isCharging)
+        {
+            stunIndicator.SetActive(true);
+            yield return new WaitForSeconds(1f);
+            stunIndicator.SetActive(false);
+            
+        }
     }
     private void OnCollisionExit2D(Collision2D collision)
     {

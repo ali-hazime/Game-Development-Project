@@ -45,6 +45,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GroundFirePrefab: {fileID: 9222483938695145114, guid: 841dbff7d8c99cf469caa63d4a18172c,
     type: 3}
+  AttacksParent: {fileID: 0}
+  ControllerScript: {fileID: 0}
 --- !u!1 &368397567460886957
 GameObject:
   m_ObjectHideFlags: 0
@@ -89,7 +91,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d0a9298b7f109042b1eed96d65ba26d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  damage: 100
   fireTime: 5
   fireDOTdmg: 1
 --- !u!58 &8550294177967525261

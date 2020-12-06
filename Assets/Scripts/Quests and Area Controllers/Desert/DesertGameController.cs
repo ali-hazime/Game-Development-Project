@@ -13,6 +13,13 @@ public class DesertGameController : MonoBehaviour
     [SerializeField] GameObject Path;
     [SerializeField] GameObject Sandstorm;
     [SerializeField] GameObject Corruption;
+    [SerializeField] GameObject Ruby3;
+    [SerializeField] GameObject Ruby4;
+    [SerializeField] GameObject Ruby5;
+    [SerializeField] GameObject Sapphire1;
+    [SerializeField] GameObject EnchanterEnterD1;
+    [SerializeField] GameObject EnchanterEnterD2;
+    [SerializeField] GameObject EnchanterEnterD3;
     public ParticleSystem storm;
     private bool triggerOnce = true;
     public float timer = 0;
@@ -67,10 +74,74 @@ public class DesertGameController : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        if (GameSavingInformation.ruby3Collected)
+        {
+            Ruby3.SetActive(false);
+        }
+        else
+        {
+            Ruby3.SetActive(true);
+        }
+
+        if (GameSavingInformation.ruby4Collected)
+        {
+            Ruby4.SetActive(false);
+        }
+        else
+        {
+            Ruby4.SetActive(true);
+        }
+
+        if (GameSavingInformation.ruby5Collected)
+        {
+            Ruby5.SetActive(false);
+        }
+        else
+        {
+            Ruby5.SetActive(true);
+        }
+
+        if (GameSavingInformation.sapphire1Collected)
+        {
+            Sapphire1.SetActive(false);
+        }
+        else
+        {
+            Sapphire1.SetActive(true);
+        }
+    }
+
     public void Update()
     {
+        if (GameSavingInformation.differenceNumber == 1 || GameSavingInformation.differenceNumber == 4)
+        {
+            EnchanterEnterD1.SetActive(true);
+        }
+        else
+        {
+            EnchanterEnterD1.SetActive(false);
+        }
 
-        
+        if (GameSavingInformation.differenceNumber == 2 || GameSavingInformation.differenceNumber == 5)
+        {
+            EnchanterEnterD2.SetActive(true);
+        }
+        else
+        {
+            EnchanterEnterD2.SetActive(false);
+        }
+
+        if (GameSavingInformation.differenceNumber == 3 || GameSavingInformation.differenceNumber == 6)
+        {
+            EnchanterEnterD3.SetActive(true);
+        }
+        else
+        {
+            EnchanterEnterD3.SetActive(false);
+        }
+
 
         if (QuestTracker.desertQuestCount >= 3)
         {
@@ -97,15 +168,15 @@ public class DesertGameController : MonoBehaviour
 
         var emissionS = storm.emission;
 
-        if (timer < 3)
+        if (timer < 10)
         {
             timer += Time.deltaTime;
-            emissionS.rateOverTime = timer * 1000;
+            emissionS.rateOverTime = timer * 100;
         }
         else
         {
-            timer = 3;
-            emissionS.rateOverTime = 3000;
+            timer = 10;
+            emissionS.rateOverTime = 1000;
         }
 
         if (QuestTracker.desertQuestCount == 3)

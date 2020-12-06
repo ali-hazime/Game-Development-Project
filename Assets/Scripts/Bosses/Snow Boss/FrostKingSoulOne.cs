@@ -24,6 +24,7 @@ public class FrostKingSoulOne : MonoBehaviour
     public GameObject Pillars;
     public GameObject Arrows;
     public SnowBossEnounter controller;
+    private PlayerChar player;
     [Space]
     public float phase2Start = 0.4f;
     public float bossSpeed = 1.0f;
@@ -54,7 +55,13 @@ public class FrostKingSoulOne : MonoBehaviour
     public float randomX3;
     public float randomY3;
 
-
+    private void Awake()
+    {
+        if (player == null)
+        {
+            player = FindObjectOfType<PlayerChar>();
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -99,14 +106,14 @@ public class FrostKingSoulOne : MonoBehaviour
 
                 if (wallCheck.collider != null && playerCheck.collider != null && Vector3.Distance(playerTarget.transform.position, transform.position) < 2)
                 {
-                    GameObject.FindWithTag("Player").GetComponent<PlayerChar>().PlayerPinned(true);
+                    player.PlayerPinned(true);
                     isPinned = true;
 
                     Debug.DrawLine(transform.position, offsetPos, Color.yellow);
                 }
                 else
                 {
-                    GameObject.FindWithTag("Player").GetComponent<PlayerChar>().PlayerPinned(false);
+                    player.PlayerPinned(false);
                     isPinned = false;
                     Debug.DrawLine(transform.position, offsetPos, Color.cyan);
                 }

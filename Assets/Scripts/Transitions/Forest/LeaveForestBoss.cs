@@ -34,6 +34,8 @@ public class LeaveForestBoss : MonoBehaviour
             GameSavingInformation.whereAmI = "Thillan Forest";
             GameSavingInformation.whereWasI = SceneManager.GetActiveScene().name;
             SceneManager.LoadScene("Thillan Forest");
+            GameSavingInformation.maxCurrency = 12;
+            GameSavingInformation.minCurrency = 7;
             GameSavingInformation.playerX = -100.5f;
             GameSavingInformation.playerY = -13.75f;
             SaveSystem.SavePlayer(player);

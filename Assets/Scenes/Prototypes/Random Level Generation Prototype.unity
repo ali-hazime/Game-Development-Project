@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -130,8 +130,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 163409200}
+  - component: {fileID: 163409201}
   m_Layer: 0
-  m_Name: Pos (11)
+  m_Name: Pos 10
   m_TagString: Untagged
   m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -149,8 +150,24 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &163409201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 163409199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f98704b7a2f139c4d847d0561c590d3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whatIsRoom:
+    serializedVersion: 2
+    m_Bits: 8388608
+  levelGen: {fileID: 818567104}
 --- !u!1 &231762995
 GameObject:
   m_ObjectHideFlags: 0
@@ -160,8 +177,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 231762996}
+  - component: {fileID: 231762997}
   m_Layer: 0
-  m_Name: Pos (10)
+  m_Name: Pos 9
   m_TagString: Untagged
   m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -179,8 +197,24 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &231762997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 231762995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f98704b7a2f139c4d847d0561c590d3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whatIsRoom:
+    serializedVersion: 2
+    m_Bits: 8388608
+  levelGen: {fileID: 818567104}
 --- !u!1 &270272084
 GameObject:
   m_ObjectHideFlags: 0
@@ -190,8 +224,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 270272085}
+  - component: {fileID: 270272086}
   m_Layer: 0
-  m_Name: Pos (7)
+  m_Name: Pos 7
   m_TagString: Untagged
   m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -211,6 +246,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &270272086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 270272084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f98704b7a2f139c4d847d0561c590d3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whatIsRoom:
+    serializedVersion: 2
+    m_Bits: 8388608
+  levelGen: {fileID: 818567104}
 --- !u!1 &531511625
 GameObject:
   m_ObjectHideFlags: 0
@@ -220,8 +271,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 531511626}
+  - component: {fileID: 531511627}
   m_Layer: 0
-  m_Name: Pos (12)
+  m_Name: Pos 12
   m_TagString: Untagged
   m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -241,6 +293,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &531511627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 531511625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f98704b7a2f139c4d847d0561c590d3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whatIsRoom:
+    serializedVersion: 2
+    m_Bits: 8388608
+  levelGen: {fileID: 818567104}
 --- !u!1 &533560845
 GameObject:
   m_ObjectHideFlags: 0
@@ -250,8 +318,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 533560846}
+  - component: {fileID: 533560847}
   m_Layer: 0
-  m_Name: Pos (16)
+  m_Name: Pos 13
   m_TagString: Untagged
   m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -269,8 +338,24 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &533560847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 533560845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f98704b7a2f139c4d847d0561c590d3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whatIsRoom:
+    serializedVersion: 2
+    m_Bits: 8388608
+  levelGen: {fileID: 818567104}
 --- !u!1 &584614285
 GameObject:
   m_ObjectHideFlags: 0
@@ -280,8 +365,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 584614286}
+  - component: {fileID: 584614287}
   m_Layer: 0
-  m_Name: Pos (13)
+  m_Name: Pos 11
   m_TagString: Untagged
   m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -295,12 +381,28 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 584614285}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.5, y: 15, z: 0}
+  m_LocalPosition: {x: 5, y: 15, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &584614287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 584614285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f98704b7a2f139c4d847d0561c590d3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whatIsRoom:
+    serializedVersion: 2
+    m_Bits: 8388608
+  levelGen: {fileID: 818567104}
 --- !u!1 &776047852
 GameObject:
   m_ObjectHideFlags: 0
@@ -310,8 +412,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 776047853}
+  - component: {fileID: 776047854}
   m_Layer: 0
-  m_Name: Pos (14)
+  m_Name: Pos 15
   m_TagString: Untagged
   m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -329,8 +432,24 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &776047854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 776047852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f98704b7a2f139c4d847d0561c590d3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whatIsRoom:
+    serializedVersion: 2
+    m_Bits: 8388608
+  levelGen: {fileID: 818567104}
 --- !u!1 &818567103
 GameObject:
   m_ObjectHideFlags: 0
@@ -382,8 +501,30 @@ MonoBehaviour:
   - {fileID: 3229418781804464479, guid: b00c483436f6a1040ae200f9aa59e08d, type: 3}
   - {fileID: 2146301552672012989, guid: 827c8001fc6d0b54eb38a69931cc31c0, type: 3}
   - {fileID: 6438540076640813263, guid: 325d80bb0faafa747893017488ce7fc2, type: 3}
+  pathRooms:
+  - {fileID: 3059531981414742241, guid: 2e82572dcb409c3419dcdffcd1c54fb6, type: 3}
+  - {fileID: 2994335944794067327, guid: 44c5221b6055b9c4dbd800bcfa3611fb, type: 3}
+  - {fileID: 1894234365690168294, guid: 7d965aaad82821f4d9921e078ca6bcbd, type: 3}
+  - {fileID: 2510104370810774261, guid: efaac18a4131a204bbd58b43381beaa4, type: 3}
+  - {fileID: 3223956047489283711, guid: 1b44f35303c515942917d43914a37e4a, type: 3}
+  - {fileID: 2482316488156747939, guid: 109b696b9b15f394a88b350d0fe1a9b8, type: 3}
+  - {fileID: 4788598007680247953, guid: e2eae51b9326dfa4c8ff640f9a461550, type: 3}
+  - {fileID: 7430207914523236482, guid: 06e6b8233370de94c84ad26e83f295ea, type: 3}
+  randRooms:
+  - {fileID: 2004279710209445377, guid: 97b6c2cbe3d06d24e9e7dade26ca997e, type: 3}
+  - {fileID: 1319604188491260605, guid: 89179d89cd8dab64eb6be2c262128c49, type: 3}
+  - {fileID: 3165902430762739842, guid: 6014d940492eaaa4a97b54476acea640, type: 3}
+  - {fileID: 6361873529087020395, guid: cbbe798d71a5544478a0fb325a086e75, type: 3}
   moveAmount: 10
   startTimeBtwRoom: 0.25
+  minX: -15
+  maxX: 15
+  minY: 5
+  stopGeneration: 0
+  room:
+    serializedVersion: 2
+    m_Bits: 8388608
+  downCounter: 0
 --- !u!4 &818567105
 Transform:
   m_ObjectHideFlags: 0
@@ -407,8 +548,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 834195048}
+  - component: {fileID: 834195049}
   m_Layer: 0
-  m_Name: Pos (15)
+  m_Name: Pos 16
   m_TagString: Untagged
   m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -426,8 +568,24 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &834195049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 834195047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f98704b7a2f139c4d847d0561c590d3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whatIsRoom:
+    serializedVersion: 2
+    m_Bits: 8388608
+  levelGen: {fileID: 818567104}
 --- !u!1 &977435614
 GameObject:
   m_ObjectHideFlags: 0
@@ -437,8 +595,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 977435615}
+  - component: {fileID: 977435616}
   m_Layer: 0
-  m_Name: Pos (5)
+  m_Name: Pos 4
   m_TagString: Untagged
   m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -456,8 +615,24 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &977435616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 977435614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f98704b7a2f139c4d847d0561c590d3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whatIsRoom:
+    serializedVersion: 2
+    m_Bits: 8388608
+  levelGen: {fileID: 818567104}
 --- !u!1 &1148131162
 GameObject:
   m_ObjectHideFlags: 0
@@ -467,8 +642,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1148131163}
+  - component: {fileID: 1148131164}
   m_Layer: 0
-  m_Name: Pos (8)
+  m_Name: Pos 6
   m_TagString: Untagged
   m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -486,8 +662,24 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1148131164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1148131162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f98704b7a2f139c4d847d0561c590d3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whatIsRoom:
+    serializedVersion: 2
+    m_Bits: 8388608
+  levelGen: {fileID: 818567104}
 --- !u!1 &1246013702
 GameObject:
   m_ObjectHideFlags: 0
@@ -497,8 +689,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1246013703}
+  - component: {fileID: 1246013704}
   m_Layer: 0
-  m_Name: Pos (3)
+  m_Name: Pos 2
   m_TagString: Untagged
   m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -516,8 +709,24 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1246013704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1246013702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f98704b7a2f139c4d847d0561c590d3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whatIsRoom:
+    serializedVersion: 2
+    m_Bits: 8388608
+  levelGen: {fileID: 818567104}
 --- !u!1 &1318315666
 GameObject:
   m_ObjectHideFlags: 0
@@ -527,8 +736,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1318315667}
+  - component: {fileID: 1318315668}
   m_Layer: 0
-  m_Name: Pos (4)
+  m_Name: Pos 3
   m_TagString: Untagged
   m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -546,8 +756,24 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1318315668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1318315666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f98704b7a2f139c4d847d0561c590d3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whatIsRoom:
+    serializedVersion: 2
+    m_Bits: 8388608
+  levelGen: {fileID: 818567104}
 --- !u!1 &1487145869
 GameObject:
   m_ObjectHideFlags: 0
@@ -557,8 +783,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1487145870}
+  - component: {fileID: 1487145871}
   m_Layer: 0
-  m_Name: Pos (1)
+  m_Name: Pos 14
   m_TagString: Untagged
   m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -576,8 +803,24 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1487145871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1487145869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f98704b7a2f139c4d847d0561c590d3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whatIsRoom:
+    serializedVersion: 2
+    m_Bits: 8388608
+  levelGen: {fileID: 818567104}
 --- !u!1 &1580642422
 GameObject:
   m_ObjectHideFlags: 0
@@ -589,6 +832,7 @@ GameObject:
   - component: {fileID: 1580642425}
   - component: {fileID: 1580642424}
   - component: {fileID: 1580642423}
+  - component: {fileID: 1580642426}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -661,6 +905,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1580642426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1580642422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
 --- !u!1 &1681088757
 GameObject:
   m_ObjectHideFlags: 0
@@ -670,8 +945,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1681088758}
+  - component: {fileID: 1681088759}
   m_Layer: 0
-  m_Name: Pos (6)
+  m_Name: Pos 8
   m_TagString: Untagged
   m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -689,8 +965,24 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1681088759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1681088757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f98704b7a2f139c4d847d0561c590d3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whatIsRoom:
+    serializedVersion: 2
+    m_Bits: 8388608
+  levelGen: {fileID: 818567104}
 --- !u!1 &1786734179
 GameObject:
   m_ObjectHideFlags: 0
@@ -700,8 +992,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1786734180}
+  - component: {fileID: 1786734181}
   m_Layer: 0
-  m_Name: Pos (2)
+  m_Name: Pos 1
   m_TagString: Untagged
   m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -719,8 +1012,24 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1786734181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1786734179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f98704b7a2f139c4d847d0561c590d3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whatIsRoom:
+    serializedVersion: 2
+    m_Bits: 8388608
+  levelGen: {fileID: 818567104}
 --- !u!1 &2047950992
 GameObject:
   m_ObjectHideFlags: 0
@@ -730,8 +1039,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2047950993}
+  - component: {fileID: 2047950994}
   m_Layer: 0
-  m_Name: Pos (9)
+  m_Name: Pos 5
   m_TagString: Untagged
   m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -749,8 +1059,24 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2047950994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2047950992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f98704b7a2f139c4d847d0561c590d3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whatIsRoom:
+    serializedVersion: 2
+    m_Bits: 8388608
+  levelGen: {fileID: 818567104}
 --- !u!1001 &8991191033009078690
 PrefabInstance:
   m_ObjectHideFlags: 0

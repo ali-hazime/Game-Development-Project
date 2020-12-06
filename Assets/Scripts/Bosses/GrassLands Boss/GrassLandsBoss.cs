@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class GrassLandsBoss : MonoBehaviour
 {
-    private Transform playerTarget;
+    private GameObject playerTarget;
     public Vector3 myLocation;
     public Vector3 centerPos = new Vector3(0, 3.5f, 0);
     private Animator anim;
     public GameObject me;
+    public GrassLandsBossHealth theBossHealth;
+    public GameObject rockProjectile;
     public int hitsTaken = 0;
     public float aggroMaxRange;
     public float aggroMinRange;
@@ -16,97 +18,154 @@ public class GrassLandsBoss : MonoBehaviour
     public float countDown;
     public float getBack = 0;
     public float reset = 0;
+    public bool dead = false;
     public bool isCentered = false;
     public bool isJumping = false;
     public bool isPunching = false;
+    public bool isPinned = false;
+    private Vector3 dir;
+    private Vector3 offsetPos;
     public KillBoss killBoss;
+    public bool phase3 = false;
+    public bool phase2 = false;
+    public float direction = 1.0f;
+    public bool doingSomething = false;
+    public float bossSpeed = 1.0f;
+    private PlayerChar player;
+    public bool started = false;
+    public bool rockOnCD;
+    public float rockCD;
 
 
     //private int maxHealth = 100;
     //public int attackDamage = 25;
     // Start is called before the first frame update
+    private void Awake()
+    {
+        if (player == null)
+        {
+            player = FindObjectOfType<PlayerChar>();
+        }
+    }
+
     void Start()
     {
+        theBossHealth = GetComponent<GrassLandsBossHealth>();
         anim = GetComponent<Animator>();
-        playerTarget = FindObjectOfType<PlayerChar>().transform;
+        playerTarget = GameObject.FindWithTag("Player");
         //punch.SetActive(false);
     }
 
+    private void Update()
+    {
+        dir = (playerTarget.transform.position - transform.position).normalized;
+        offsetPos = playerTarget.transform.position + (dir * 2f);
+    }
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        //Increases the counter for boss slam
-        countDown += Time.deltaTime;
-        reset += Time.deltaTime;
+        if(started)
+        {
+            //Increases the counter for boss slam
+            countDown += Time.deltaTime;
+            reset += Time.deltaTime;
 
-        
-        //This vector 3 is essentially aggro range
-        if (Vector3.Distance(playerTarget.position, transform.position) <= aggroMaxRange && Vector3.Distance(playerTarget.position, transform.position) >= aggroMinRange)
-        {
-            FollowPlayer();
-            aggroMaxRange = 10;
-        }
-        else
-        {
-            anim.SetBool("isAggro", false);
-            aggroMaxRange = 4;
-        }
+            RaycastHit2D wallCheck = Physics2D.Linecast(transform.position, offsetPos, 1 << 15);
+            RaycastHit2D playerCheck = Physics2D.Linecast(transform.position, offsetPos, 1 << 8);
 
-        //Determine Phase
-        if (hitsTaken < 3)
-        {
-            GLBossPhaseOne();
-        }
-        else if (hitsTaken < 6)
-        {
-            GLBossPhaseTwo();
-        }
-        else if (hitsTaken < 8)
-        {
-            GLBossPhaseThree();
-        }
-        else
-        {
-            GLBossDeath();
-        }
+            if (wallCheck.collider != null && playerCheck.collider != null && Vector3.Distance(playerTarget.transform.position, transform.position) < 2)
+            {
+                player.PlayerPinned(true);
+                isPinned = true;
 
-        myLocation = new Vector3(me.transform.position.x, me.transform.position.y);
+                Debug.DrawLine(transform.position, offsetPos, Color.yellow);
+            }
+            else
+            {
+                player.PlayerPinned(false);
+                isPinned = false;
+                Debug.DrawLine(transform.position, offsetPos, Color.cyan);
+            }
 
-        if (reset > 5)
-        {
-            anim.SetBool("isPunching", false);
-            isPunching = false;
-            anim.SetBool("isJumping", false);
-            isJumping = false;
-            reset = 0;
+            if (doingSomething == false && isPinned == false && dead == false)
+            {
+                anim.SetBool("isMoving", true);
+                transform.position = Vector3.MoveTowards(transform.position, playerTarget.transform.position, bossSpeed * Time.fixedDeltaTime);
+            }
+            else
+            {
+                anim.SetBool("isMoving", false);
+            }
+
+            if (Mathf.Abs(playerTarget.transform.position.y - transform.position.y) > Mathf.Abs(playerTarget.transform.position.x - transform.position.x))
+            {
+                anim.SetFloat("moveX", 0f);
+                anim.SetFloat("moveY", (playerTarget.transform.position.y - transform.position.y));
+                anim.SetBool("moveVert", true);
+                direction = playerTarget.transform.position.y - transform.position.y;
+            }
+            else
+            {
+                anim.SetFloat("moveX", (playerTarget.transform.position.x - transform.position.x));
+                anim.SetFloat("moveY", 0f);
+                anim.SetBool("moveVert", false);
+                direction = playerTarget.transform.position.x - transform.position.x;
+            }
+
+            if (theBossHealth.currentHealth < 1)
+            {
+                GLBossDeath();
+            }
+            else if (theBossHealth.currentHealth < theBossHealth.maxHealth * 0.3)
+            {
+                phase3 = true;
+            }
+            else if (theBossHealth.currentHealth < theBossHealth.maxHealth * 0.6)
+            {
+                phase2 = true;
+            }
+
+            if (rockOnCD == false)
+            {
+                rockOnCD = true;
+                StartCoroutine(Shoot());
+            }
+
+            if (phase2)
+            {
+                GLBossPhaseTwo();
+            }
+            if (phase3)
+            {
+                GLBossPhaseThree();
+            }
+
+            anim.SetFloat("speed", direction);
+            myLocation = new Vector3(me.transform.position.x, me.transform.position.y);
+
+            if (reset > 5)
+            {
+                anim.SetBool("isPunching", false);
+                isPunching = false;
+                anim.SetBool("isJumping", false);
+                isJumping = false;
+                reset = 0;
+            }
         }
     }
 
-    public void FollowPlayer()
+    IEnumerator Shoot()
     {
-        //transform to follow player
-        if (isPunching == false && isJumping == false && isCentered == false)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, playerTarget.position, speed * Time.deltaTime);
-        }
-        anim.SetBool("isAggro", true);
-        //allows the enemy to turn and face player
-        anim.SetFloat("moveX", (playerTarget.position.x - transform.position.x));
-        anim.SetFloat("moveY", (playerTarget.position.y - transform.position.y));
-
-        //punching
-
+        shootRock();
+        yield return new WaitForSeconds(rockCD);
+        rockOnCD = false;
     }
 
-    //Boss health
-    public void BossHits()
+    void shootRock()
     {
-        hitsTaken++;
-    }
-
-    public void GLBossPhaseOne()
-    {
-        bossPunch();
+        GameObject rock = Instantiate(rockProjectile, this.transform.position, this.transform.rotation);
+        Rigidbody2D rb = rock.GetComponent<Rigidbody2D>();
+        rb.velocity = (playerTarget.transform.position - transform.position).normalized * 5f;
     }
 
     public void GLBossPhaseTwo()
@@ -114,92 +173,37 @@ public class GrassLandsBoss : MonoBehaviour
         if (countDown > 7)
         {
             bossSlam();
-        }
-        else 
-        {
-            bossPunch();
-        }      
+        }     
     }
 
     public void GLBossPhaseThree()
     {
         if (isCentered == false)
         {
-            anim.SetBool("onPhaseThree", true);
             WalkToCenter();
         }
         else 
         {
-            bossSlam();
+            anim.SetBool("onPhaseThree", true);
+            doingSomething = true;
         }
     }
 
     public void GLBossDeath()
     {
+        gameObject.GetComponent<ItemDropScript>().DropItem(true);
         killBoss.UpdateBossStatus();
-        Destroy(me);
-    }
-
-    public void bossPunch()
-    {
-        if (((playerTarget.position.y - transform.position.y) < 0 && Mathf.Abs(playerTarget.position.y - transform.position.y) > Mathf.Abs(playerTarget.position.x - transform.position.x)) && Vector3.Distance(playerTarget.position, transform.position) <= 2.5)
-        {
-            //Punching Down
-            anim.SetBool("isPunching", true);
-            anim.SetBool("isPunchingDown", true);
-            anim.SetBool("isPunchingUp", false);
-            anim.SetBool("isPunchingRight", false);
-            anim.SetBool("isPunchingLeft", false);
-            isPunching = true;
-
-        }
-        else if (((playerTarget.position.y - transform.position.y) > 0 && Mathf.Abs(playerTarget.position.y - transform.position.y) > Mathf.Abs(playerTarget.position.x - transform.position.x)) && Vector3.Distance(playerTarget.position, transform.position) <= 2.5)
-        {
-            //Punching Up
-            anim.SetBool("isPunching", true);
-            anim.SetBool("isPunchingUp", true);
-            anim.SetBool("isPunchingDown", false);
-            anim.SetBool("isPunchingRight", false);
-            anim.SetBool("isPunchingLeft", false);
-            isPunching = true;
-        }
-        else if (((playerTarget.position.x - transform.position.x) > 0 && Mathf.Abs(playerTarget.position.y - transform.position.y) < Mathf.Abs(playerTarget.position.x - transform.position.x)) && Vector3.Distance(playerTarget.position, transform.position) <= 2.5)
-        {
-            //Punching Right
-            anim.SetBool("isPunching", true);
-            anim.SetBool("isPunchingRight", true);
-            anim.SetBool("isPunchingDown", false);
-            anim.SetBool("isPunchingUp", false);
-            anim.SetBool("isPunchingLeft", false);
-            isPunching = true;
-        }
-        else if (((playerTarget.position.x - transform.position.x) < 0 && Mathf.Abs(playerTarget.position.y - transform.position.y) < Mathf.Abs(playerTarget.position.x - transform.position.x)) && Vector3.Distance(playerTarget.position, transform.position) <= 2.5)
-        {
-            //Punching Left
-            anim.SetBool("isPunching", true);
-            anim.SetBool("isPunchingLeft", true);
-            anim.SetBool("isPunchingDown", false);
-            anim.SetBool("isPunchingUp", false);
-            anim.SetBool("isPunchingRight", false);
-            isPunching = true;
-        }
-        else
-        {
-            anim.SetBool("isPunching", false);
-            anim.SetBool("isPunchingDown", false);
-            anim.SetBool("isPunchingUp", false);
-            anim.SetBool("isPunchingRight", false);
-            anim.SetBool("isPunchingLeft", false);
-            isPunching = false;
-        }
+        dead = true;
+        //Destroy(me);
     }
 
     public void bossSlam()
     {
-        if (Vector3.Distance(playerTarget.position, transform.position) <= 4)
+        if (Vector3.Distance(playerTarget.transform.position, transform.position) <= 4)
         {
             anim.SetBool("isJumping", true);
             isJumping = true;
+            StartCoroutine(Jumping());
             countDown = 0;
 
         }
@@ -210,6 +214,13 @@ public class GrassLandsBoss : MonoBehaviour
         }   
     }
 
+    IEnumerator Jumping()
+    {
+        doingSomething = true;
+        yield return new WaitForSeconds(3);
+        doingSomething = false;
+    }
+
     public void WalkToCenter()
     {
         getBack += Time.deltaTime;
@@ -218,4 +229,18 @@ public class GrassLandsBoss : MonoBehaviour
         isCentered = true;
         
     }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.collider.CompareTag("Player"))
+        {
+            anim.SetBool("isMoving", false);
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        anim.SetBool("isMoving", true);
+    }
+
 }

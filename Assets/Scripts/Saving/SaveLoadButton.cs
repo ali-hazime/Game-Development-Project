@@ -5,13 +5,19 @@ using UnityEngine.SceneManagement;
 
 public class SaveLoadButton : MonoBehaviour
 {
-    private PlayerChar player;
+    [SerializeField] PlayerChar player;
     [SerializeField] ItemSaveManager itemSaveManager;
     [SerializeField] InventoryManager inventoryManager;
     [SerializeField] GameObject pauseMenu;
     [SerializeField] UIToggle uiToggle;
     //private EnemyHealth eh;
-
+    private void Awake()
+    {
+        if (player == null)
+        {
+            player = FindObjectOfType<PlayerChar>();
+        }
+    }
     public void Start()
     {
         if (itemSaveManager == null)
@@ -33,13 +39,27 @@ public class SaveLoadButton : MonoBehaviour
         {
             pauseMenu = FindObjectOfType<PauseGame>().gameObject;
         }
-        player = FindObjectOfType<PlayerChar>();
-       // eh = FindObjectOfType<EnemyHealth>();
-       // ehO = FindObjectOfType<>
+        // eh = FindObjectOfType<EnemyHealth>();
+        // ehO = FindObjectOfType<>
     }
+    /*
+    private void Update()
+    {
+        if (player == null)
+        {
+            player = FindObjectOfType<PlayerChar>();
+        }
+    }*/
 
     public void Save()
     {
+        StartCoroutine(SaveTheGame());
+    }
+
+    IEnumerator SaveTheGame()
+    {
+        yield return new WaitForSeconds(0.1f);
+        Debug.Log("SAVED");
         GameSavingInformation.playerX = player.gameObject.transform.position.x;
         GameSavingInformation.playerY = player.gameObject.transform.position.y;
         SaveSystem.SavePlayer(player);
@@ -83,6 +103,7 @@ public class SaveLoadButton : MonoBehaviour
             GameSavingInformation.crystalsCount = data.crystalsCountS;
             GameSavingInformation.minCurrency = data.minCurrencyS;
             GameSavingInformation.maxCurrency = data.maxCurrencyS;
+            GameSavingInformation.bonusHealth = GIdata.bonusHealthS;
 
             QuestInfo questStuff = SaveSystem.LoadQuestInfo();
 
@@ -95,6 +116,8 @@ public class SaveLoadButton : MonoBehaviour
             QuestTracker.beginDesertQ3 = questStuff.beginDesertQ3S;
             QuestTracker.allTotemsCollected = questStuff.allTotemsCollectedS;
             QuestTracker.allObjCompleted = questStuff.allObjCompletedS;
+            QuestTracker.triggerOnce = questStuff.triggerOnceS;
+            QuestTracker.triggerOnce2 = questStuff.triggerOnce2S;
             QuestTracker.fQ2_Item1 = questStuff.fQ2_Item1S;
             QuestTracker.fQ2_Item2 = questStuff.fQ2_Item2S;
             QuestTracker.fQ2_Item3 = questStuff.fQ2_Item3S;
@@ -107,6 +130,24 @@ public class SaveLoadButton : MonoBehaviour
             QuestTracker.volcanoQuestCount = questStuff.volcanoQuestCountS;
 
             GameSavingInformation.isNewGame = GIdata.isNewGameS;
+
+            GameSavingInformation.differenceNumber = GIdata.differenceNumberS;
+            GameSavingInformation.ruby1Collected = GIdata.ruby1CollectedS;
+            GameSavingInformation.ruby1Collected = GIdata.ruby2CollectedS;
+            GameSavingInformation.ruby3Collected = GIdata.ruby3CollectedS;
+            GameSavingInformation.ruby4Collected = GIdata.ruby4CollectedS;
+            GameSavingInformation.ruby5Collected = GIdata.ruby5CollectedS;
+            GameSavingInformation.ruby6Collected = GIdata.ruby6CollectedS;
+            GameSavingInformation.ruby7Collected = GIdata.ruby7CollectedS;
+            GameSavingInformation.ruby8Collected = GIdata.ruby8CollectedS;
+            GameSavingInformation.ruby9Collected = GIdata.ruby9CollectedS;
+            GameSavingInformation.ruby10Collected = GIdata.ruby10CollectedS;
+
+            GameSavingInformation.sapphire1Collected = GIdata.sapphire1CollectedS;
+            GameSavingInformation.sapphire2Collected = GIdata.sapphire2CollectedS;
+            GameSavingInformation.sapphire3Collected = GIdata.sapphire3CollectedS;
+            GameSavingInformation.sapphire4Collected = GIdata.sapphire4CollectedS;
+            GameSavingInformation.sapphire5Collected = GIdata.sapphire5CollectedS;
 
             GameSavingInformation.playerX = GIdata.playerXS;
             GameSavingInformation.playerY = GIdata.playerYS;
@@ -138,6 +179,7 @@ public class SaveLoadButton : MonoBehaviour
             GameSavingInformation.forestQuest5Complete = GIdata.forestQuest5CompleteS;
 
             //Desert Quests
+            GameSavingInformation.desertMazeComplete = GIdata.desertMazeCompleteS;
             GameSavingInformation.desertQuest1Complete = GIdata.desertQuest1CompleteS;
             GameSavingInformation.desertQuest2Complete = GIdata.desertQuest2CompleteS;
             GameSavingInformation.desertQuest3Complete = GIdata.desertQuest3CompleteS;

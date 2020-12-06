@@ -32,7 +32,8 @@ public class EnterGrasslands : MonoBehaviour
             GameSavingInformation.whereAmI = "Cereloth Grasslands";
             GameSavingInformation.whereWasI = SceneManager.GetActiveScene().name;
             SceneManager.LoadScene("Cereloth Grasslands");
-
+            GameSavingInformation.maxCurrency = 7;
+            GameSavingInformation.minCurrency = 3;
             GameSavingInformation.playerX = 39.5f;
             GameSavingInformation.playerY = -74f;
             SaveSystem.SavePlayer(player);

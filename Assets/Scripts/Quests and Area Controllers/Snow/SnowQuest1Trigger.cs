@@ -21,11 +21,12 @@ public class SnowQuest1Trigger : MonoBehaviour
     }
     public void OnTriggerEnter2D(Collider2D other)
     {
-        if (QuestTracker.snowMountainQuestCount == 0)
+        if (QuestTracker.snowMountainQuestCount == 0 && QuestTracker.triggerOnce2)
         {
             if (other.CompareTag("Player"))
             {
                 StartCoroutine(ToggleQuest());
+                QuestTracker.triggerOnce2 = false;
             }
         }
     }

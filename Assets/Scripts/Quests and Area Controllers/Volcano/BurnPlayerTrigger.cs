@@ -33,8 +33,8 @@ public class BurnPlayerTrigger : MonoBehaviour
         {
             if (other.CompareTag("Player"))
             {
-                player.BurnPlayer(true, 120f, 1);
-                player.TakeDamage(1);
+                player.BurnPlayer(true, 120f, 5);
+                player.TakeDamage(5);
             }
         }
     }
@@ -54,13 +54,15 @@ public class BurnPlayerTrigger : MonoBehaviour
     IEnumerator AcceptQuest2()
     {
         yield return new WaitForSeconds(1f);
-        if (triggerOnce)
+        if (triggerOnce && QuestTracker.triggerOnce2)
         {
+            QuestLog.MyInstance.HideQuests();
             uiToggle.ToggleQuestLog();
             yield return new WaitForSeconds(0.3f);
             questController.StartQuest(QuestTracker.volcanoQuestCount, "vM");
             QuestTracker.questType = "vM";
             triggerOnce = false;
+            QuestTracker.triggerOnce2 = false;
         }
     }
 }

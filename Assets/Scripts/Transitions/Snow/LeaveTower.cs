@@ -33,6 +33,8 @@ public class LeaveTower : MonoBehaviour
             GameSavingInformation.whereAmI = "Mount Herraweth";
             GameSavingInformation.whereWasI = "Mount Herraweth";
             SceneManager.LoadScene("Mount Herraweth");
+            GameSavingInformation.maxCurrency = 19;
+            GameSavingInformation.minCurrency = 14;
             GameSavingInformation.playerX = 194.5f;
             GameSavingInformation.playerY = 91.5f;
             SaveSystem.SavePlayer(player);

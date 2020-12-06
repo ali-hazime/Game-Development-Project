@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 6079236620763747711}
   - component: {fileID: 3849496214065064759}
   - component: {fileID: 8728824939302303486}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: outside 1_646 (1)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46,6 +46,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -119,9 +120,9 @@ GameObject:
   - component: {fileID: 3606936876076209401}
   - component: {fileID: 7622819618816922004}
   - component: {fileID: 1150353156221422914}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: outside 1_649
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -154,6 +155,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -227,9 +229,9 @@ GameObject:
   - component: {fileID: 8816468035520865156}
   - component: {fileID: 8368449417156911718}
   - component: {fileID: 509734161947533664}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: outside 1_688 (1)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -262,6 +264,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -332,9 +335,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8174064585512300971}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: cookingPot2
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -371,9 +374,9 @@ GameObject:
   - component: {fileID: 5270912835199393229}
   - component: {fileID: 4926885020567433878}
   - component: {fileID: 8437621661035375209}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: outside 1_686 (1)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -406,6 +409,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -479,9 +483,9 @@ GameObject:
   - component: {fileID: 7520376628544588408}
   - component: {fileID: 754107581897923244}
   - component: {fileID: 2943605512971815415}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: outside 1_648 (1)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -514,6 +518,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -587,9 +592,9 @@ GameObject:
   - component: {fileID: 2910667865068250259}
   - component: {fileID: 6973142573286609468}
   - component: {fileID: 3360899069562637214}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: outside 1_689
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -622,6 +627,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -750,6 +756,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: bonfire2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4451114681977448924, guid: 31176947f79e6fc498167a07434cd74b,
+        type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31176947f79e6fc498167a07434cd74b, type: 3}

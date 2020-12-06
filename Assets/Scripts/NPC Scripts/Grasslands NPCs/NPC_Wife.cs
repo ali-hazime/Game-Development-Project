@@ -85,6 +85,7 @@ public class NPC_Wife : MonoBehaviour
 
             if (once3 && QuestTracker.grasslandsQuestCount == 0)
             {
+                GameSavingInformation.isNewGame = false;
                 if (!QuestTracker.questInProgress)
                 {
                     uiToggle.ToggleQuestLog();

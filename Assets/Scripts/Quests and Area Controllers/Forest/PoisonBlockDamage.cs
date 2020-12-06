@@ -17,8 +17,8 @@ public class PoisonBlockDamage : MonoBehaviour
     {
         if (thing.CompareTag("Player"))
         {
-            player.PoisonPlayer(1f);
-            player.TakeDamage(1);
+            player.PoisonPlayer(5f);
+            player.TakeDamage(5);
         }
     }
 }

@@ -118,6 +118,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chargeDamage: 45
   stunLength: 1
+  player: {fileID: 0}
 --- !u!1 &1973009752182914370
 GameObject:
   m_ObjectHideFlags: 0
@@ -190,6 +191,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chargeDamage: 45
   stunLength: 1
+  player: {fileID: 0}
 --- !u!1 &1973009752507087201
 GameObject:
   m_ObjectHideFlags: 0
@@ -493,7 +495,7 @@ MonoBehaviour:
   PositionChecker: {fileID: 1973009752072409996}
   rageIndicator: {fileID: 3303694595469087502}
   stunIndicator: {fileID: 5735045209251876406}
-  aggroMaxRange: 10.5
+  aggroMaxRange: 9
   aggroMinRange: 0
   countingTime: 0
   speed: 3
@@ -571,7 +573,7 @@ Rigidbody2D:
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 7
 --- !u!114 &-8989483936403611191
@@ -614,7 +616,7 @@ MonoBehaviour:
   - {fileID: 6159992186057606492, guid: f05a8499481ecff44b86614e3ee407bf, type: 3}
   currencyObject: {fileID: 6913540734416617568, guid: f2f412f6bbbd62542959ec430c5ed1b7,
     type: 3}
-  dropChance: 20
+  dropChance: 30
   legendaryItemDropChance: 0
   rareItemDropChance: 15
   currencyDropChance: 40
@@ -768,6 +770,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chargeDamage: 45
   stunLength: 1
+  player: {fileID: 0}
 --- !u!1 &1973009753626069875
 GameObject:
   m_ObjectHideFlags: 0
@@ -840,6 +843,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chargeDamage: 45
   stunLength: 1
+  player: {fileID: 0}
 --- !u!1 &3303694595469087502
 GameObject:
   m_ObjectHideFlags: 0

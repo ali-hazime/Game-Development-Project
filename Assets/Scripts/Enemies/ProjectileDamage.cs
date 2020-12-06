@@ -26,8 +26,16 @@ public class ProjectileDamage : MonoBehaviour
         else if (other.collider.CompareTag("Player"))
         {
             player.TakeDamage(projectileDamage);
-            player.PoisonPlayer(poisonTime);
-            player.StunPlayer(true, stunTime);
+
+            if (poisonTime > 0)
+            {
+                player.PoisonPlayer(poisonTime);  
+            }
+
+            if (stunTime > 0)
+            { 
+                player.StunPlayer(true, stunTime);
+            }
             Destroy(this.gameObject);
         }
     }

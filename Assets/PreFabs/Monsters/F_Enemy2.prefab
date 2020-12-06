@@ -114,6 +114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poisonDmg: 20
+  player: {fileID: 0}
 --- !u!1 &6101439491601509419
 GameObject:
   m_ObjectHideFlags: 0
@@ -481,7 +482,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poisonObj: {fileID: 3772545831073280477}
-  aggroMaxRange: 6
+  aggroMaxRange: 10
   aggroMinRange: 0
   aggroAttackRange: 12
   direction: 0
@@ -494,6 +495,7 @@ MonoBehaviour:
   isAwake: 0
   isColliding: 0
   isPinned: 0
+  player: {fileID: 0}
 --- !u!114 &6101439493090172036
 MonoBehaviour:
   m_ObjectHideFlags: 0

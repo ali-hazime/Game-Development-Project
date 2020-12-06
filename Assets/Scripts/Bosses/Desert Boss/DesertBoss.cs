@@ -76,7 +76,7 @@ public class DesertBoss : MonoBehaviour
                 dot += Time.deltaTime;
                 if (dot > 1)
                 {
-                    if (endGame != 5000)
+                    if (endGame != 1000)
                     {
                         playerScript.TakeDamage(stormInitialDmg);
                     }
@@ -87,13 +87,13 @@ public class DesertBoss : MonoBehaviour
                     dot = 0;
                 }
 
-                if (sandStormIntense < 15)
+                if (sandStormIntense < 10)
                 {
                     endGame = Mathf.Pow(sandStormIntense, 3);
                 }
                 else
                 {
-                    endGame = 5000;
+                    endGame = 1000;
                 }
 
             }
@@ -123,7 +123,7 @@ public class DesertBoss : MonoBehaviour
                     anim.SetFloat("moveY", 0f);
                 }
 
-                if (biteCoolDown > 1.3f && Mathf.Abs(transform.position.y - playerTarget.position.y) + Mathf.Abs(transform.position.x - playerTarget.position.x) < 3)
+                if (biteCoolDown > 2.5f && Mathf.Abs(transform.position.y - playerTarget.position.y) + Mathf.Abs(transform.position.x - playerTarget.position.x) < 3)
                 {
                     bite = true;
                     anim.SetBool("bite", true);
@@ -159,7 +159,7 @@ public class DesertBoss : MonoBehaviour
                     anim.SetBool("bite", false);
                 }
 
-                if (shootCoolDown > 2.5f && shootOnCD == true)
+                if (shootCoolDown > 4.5f && shootOnCD == true)
                 {
                     shootOnCD = false;
                 }
@@ -177,7 +177,7 @@ public class DesertBoss : MonoBehaviour
                 }
             }
         }
-
+        Debug.Log(bossStats.currentHealth);
         if (bossStats.currentHealth <= 0)
         {
             killBoss.UpdateBossStatus();

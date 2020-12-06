@@ -5,17 +5,21 @@ using UnityEngine;
 public class GrassLandsBossEncounter : MonoBehaviour
 {
     public GameObject player;
+    private PlayerChar PlayerScript;
     public GameObject normalLadder;
     public GameObject brokenLadder;
     public GrassLandsBoss bossScript;
     public bool GLStart = false;
     public bool GLEnd = false;
+    [SerializeField] GameObject DoorGate;
     [SerializeField] QuestController questController;
     [SerializeField] UIToggle uiToggle;
     [SerializeField] bool toggleOnce = true;
     public TalkToQuest talkToQuest;
+    public AudioSource Music;
+    public bool once = true;
 
-     void Awake()
+    void Awake()
      {
         if (questController == null)
         {
@@ -28,46 +32,74 @@ public class GrassLandsBossEncounter : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        if (PlayerScript == null)
+        {
+            PlayerScript = FindObjectOfType<PlayerChar>();
+        }
+    }
+
     void Start()
     {
         if (GameSavingInformation.grassBossDefeated == true)
         {
             bossScript.gameObject.SetActive(false);
+            DoorGate.SetActive(false);
         }
         else
         {
             bossScript.gameObject.SetActive(true);
+            DoorGate.SetActive(true);
         }
 
-        if(QuestTracker.grasslandsQuestCount == 4)
+       /* if(QuestTracker.grasslandsQuestCount == 4 && QuestTracker.triggerOnce2)
         {
-            talkToQuest.UpdateTalkToQuest();
-            StartCoroutine(DefeatBossQuest());
-        }
+            StartCoroutine(QuestStall());
+            QuestTracker.triggerOnce2 = false;
+            
+        }*/
     }
 
+   /* IEnumerator QuestStall()
+    {
+        yield return new WaitForSeconds(0.5f);
+        talkToQuest.UpdateTalkToQuest();
+        StartCoroutine(DefeatBossQuest());
+    }
     IEnumerator DefeatBossQuest()
     {
         yield return new WaitForSeconds(1f);
         uiToggle.ToggleQuestLog();
+        
         questController.StartQuest(QuestTracker.grasslandsQuestCount, "gM");
+        
         QuestTracker.questType = "gM";
-    }
+    }*/
 
     void Update()
     {
         if (GLStart == false && GLEnd == false)
         {
             WallCheck();
-        } else if (bossScript.hitsTaken == 8)
+        } else if (bossScript.dead == true)
         {
             EndGLBossFight();
+        }
+
+        if (GameSavingInformation.grassBossDefeated == true)
+        {
+            DoorGate.SetActive(false);
+        }
+        else
+        {
+            DoorGate.SetActive(true);
         }
     }
 
     void WallCheck()
     {
-        if (player.transform.position.y > 0)
+        if (player.transform.position.y > 0 && !GameSavingInformation.grassBossDefeated)
         {
             GLStart = true;
             StartGLBossFight();
@@ -78,6 +110,8 @@ public class GrassLandsBossEncounter : MonoBehaviour
 
     void StartGLBossFight()
     {
+        Music.Play();
+        bossScript.started = true;
         MakeBarrier();
     }
 
@@ -96,6 +130,10 @@ public class GrassLandsBossEncounter : MonoBehaviour
         GameSavingInformation.grassBossDefeated = true;
         BreakBarrier();
         StartCoroutine(StartTurnInBossQuest());
+        if (bossScript)
+        {
+            Destroy(bossScript.gameObject);
+        }
     }
 
     IEnumerator StartTurnInBossQuest()
@@ -103,12 +141,16 @@ public class GrassLandsBossEncounter : MonoBehaviour
         yield return new WaitForSeconds(1f);
         if (toggleOnce)
         {
+            PlayerScript.playerCurrentHealth += PlayerScript.playerMaxHealth;
             uiToggle.ToggleQuestLog();
             toggleOnce = false;
         }
-        
-        questController.StartQuest(QuestTracker.grasslandsQuestCount, "gM");
-        QuestTracker.questType = "gM";
+        if (once)
+        {
+            questController.StartQuest(QuestTracker.grasslandsQuestCount, "gM");
+            QuestTracker.questType = "gM";
+            once = false;
+        }
     }
 
    void BreakBarrier()

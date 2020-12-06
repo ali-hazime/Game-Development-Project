@@ -34,6 +34,8 @@ public class EnterForestFromVolcano: MonoBehaviour
             GameSavingInformation.whereAmI = "Thillan Forest";
             GameSavingInformation.whereWasI = SceneManager.GetActiveScene().name;
             SceneManager.LoadScene("Thillan Forest");
+            GameSavingInformation.maxCurrency = 12;
+            GameSavingInformation.minCurrency = 7;
             GameSavingInformation.playerX = -154f;
             GameSavingInformation.playerY = -35f;
             SaveSystem.SavePlayer(player);

@@ -118,6 +118,11 @@ public class VolcanoBoss : MonoBehaviour
                 anim.SetBool("moveVert", false);
                 speed = playerTarget.position.x - transform.position.x;
             }
+
+            if (bossStats.currentHealth < 1)
+            {
+                dead = true;
+            }
         }
     }
 

@@ -12,7 +12,6 @@ public class ItemPickup : MonoBehaviour
     public bool isCollectEquipItem = false;
     public ItemDropScript itemDropScript;
     public CollectObjective collectObjective;
-    public bool inRange;
 
 
     public int currencyDrop;
@@ -34,14 +33,6 @@ public class ItemPickup : MonoBehaviour
     void Update()
     {
 
-        if (inRange && !isQuestOnlyItem && !isCurrency)
-        {
-            if (inventory.AddItem(item.GetCopy()))
-            {
-                CheckItem();
-                Destroy(this.gameObject);
-            }
-        }
     }
 
     void CheckItem()
@@ -56,15 +47,15 @@ public class ItemPickup : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
 
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && !isQuestOnlyItem && !isCurrency)
         {
-            inRange = true;
+            if (inventory.AddItem(item.GetCopy()))
+            {
+                CheckItem();
+                Destroy(this.gameObject);
+            }
         }
-        else
-        {
-            inRange = false;
-        }
-        
+     
         if (isQuestOnlyItem)
         {
             if (other.CompareTag("Player"))

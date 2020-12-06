@@ -5,6 +5,7 @@ using UnityEngine;
 public class DesertBossEncounter : MonoBehaviour
 {
     private GameObject player;
+    private PlayerChar PlayerScript;
     public GameObject rocks;
     public DesertBoss bossScript;
     public GameObject sandStorm;
@@ -14,11 +15,14 @@ public class DesertBossEncounter : MonoBehaviour
     public bool dStart = false;
     public bool dEnd = false;
     public float endTimer = 5;
+    public KillBoss killBoss;
+    public bool once = true;
     [Space]
     [SerializeField] QuestController questController;
     [SerializeField] UIToggle uiToggle;
     [SerializeField] bool toggleOnce = true;
     public TalkToQuest talkToQuest;
+    public AudioSource Music;
 
     // Start is called before the first frame update
     void Awake()
@@ -34,15 +38,40 @@ public class DesertBossEncounter : MonoBehaviour
         {
             uiToggle = FindObjectOfType<UIToggle>();
         }
+
+    }
+
+    private void OnEnable()
+    {
+        if (PlayerScript == null)
+        {
+            PlayerScript = FindObjectOfType<PlayerChar>();
+        }
     }
 
     void Start()
     {
-        if (QuestTracker.desertQuestCount == 3)
+        if (GameSavingInformation.desertBossDefeated == true)
         {
-            talkToQuest.UpdateTalkToQuest();
-            StartCoroutine(DefeatBossQuest());
+            bossScript.gameObject.SetActive(false);
         }
+        else
+        {
+            bossScript.gameObject.SetActive(true);
+        }
+
+        if (QuestTracker.desertQuestCount == 3 && QuestTracker.triggerOnce2)
+        {
+            StartCoroutine(QuestStuff());
+        }
+    }
+
+    IEnumerator QuestStuff()
+    {
+        yield return new WaitForSeconds(0.5f);
+        talkToQuest.UpdateTalkToQuest();
+        StartCoroutine(DefeatBossQuest());
+        QuestTracker.triggerOnce2 = false;
     }
 
     IEnumerator DefeatBossQuest()
@@ -58,12 +87,13 @@ public class DesertBossEncounter : MonoBehaviour
     {
         if (dStart == false && dEnd == false)
         {
-            if (player.transform.position.y > 35)
+            if (player.transform.position.y > 35 && !GameSavingInformation.desertBossDefeated)
             {
                 startDBossFight();
             }
         }
-        else if (bossScript.dead == true)
+        
+        if (bossScript.dead == true)
         {
             EndDBossFight();
         }
@@ -72,6 +102,7 @@ public class DesertBossEncounter : MonoBehaviour
 
     void startDBossFight()
     {
+        Music.Play();
         dStart = true;
         rocks.SetActive(true);
         bossScript.started = true;
@@ -85,16 +116,16 @@ public class DesertBossEncounter : MonoBehaviour
         if (endTimer > 0)
         {
             endTimer -= Time.deltaTime;
-            emissionR.rateOverTime = endTimer * 1000;
-            emissionL.rateOverTime = endTimer * 1000;
+            emissionR.rateOverTime = endTimer * 200;
+            emissionL.rateOverTime = endTimer * 200;
         }
         else
         {
             sandStorm.SetActive(false);
             rocks.SetActive(false);
         }
-
         Destroy(theBoss);
+        //killBoss.UpdateBossStatus();
         GameSavingInformation.desertBossDefeated = true;
         StartCoroutine(StartTurnInBossQuest());
     }
@@ -104,11 +135,15 @@ public class DesertBossEncounter : MonoBehaviour
         yield return new WaitForSeconds(1f);
         if (toggleOnce)
         {
+            PlayerScript.playerCurrentHealth += PlayerScript.playerMaxHealth;
             uiToggle.ToggleQuestLog();
             toggleOnce = false;
         }
-
-        questController.StartQuest(QuestTracker.desertQuestCount, "dM");
-        QuestTracker.questType = "dM";
+        if (once)
+        {
+            questController.StartQuest(QuestTracker.desertQuestCount, "dM");
+            QuestTracker.questType = "dM";
+            once = false;
+        }
     }
 }

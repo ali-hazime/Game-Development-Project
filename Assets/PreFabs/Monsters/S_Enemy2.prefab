@@ -176,6 +176,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   biteDamage: 25
   biteForce: -2500
+  player: {fileID: 0}
 --- !u!1 &9092060580647880168
 GameObject:
   m_ObjectHideFlags: 0
@@ -318,6 +319,7 @@ MonoBehaviour:
   biteCD: 2
   isPinned: 0
   isColliding: 0
+  player: {fileID: 0}
 --- !u!61 &9092060580647880173
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -426,7 +428,7 @@ MonoBehaviour:
   - {fileID: 6159992186057606492, guid: c49bcb088445a4f43807f29782e716bf, type: 3}
   currencyObject: {fileID: 6913540734416617568, guid: f2f412f6bbbd62542959ec430c5ed1b7,
     type: 3}
-  dropChance: 20
+  dropChance: 30
   legendaryItemDropChance: 0
   rareItemDropChance: 15
   currencyDropChance: 40
@@ -511,6 +513,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   biteDamage: 25
   biteForce: -2500
+  player: {fileID: 0}
 --- !u!1 &9092060581211124920
 GameObject:
   m_ObjectHideFlags: 0
@@ -969,6 +972,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   biteDamage: 25
   biteForce: 2500
+  player: {fileID: 0}
 --- !u!1 &9092060581964746273
 GameObject:
   m_ObjectHideFlags: 0
@@ -1045,6 +1049,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   biteDamage: 25
   biteForce: 2500
+  player: {fileID: 0}
 --- !u!1 &9092060582016054026
 GameObject:
   m_ObjectHideFlags: 0

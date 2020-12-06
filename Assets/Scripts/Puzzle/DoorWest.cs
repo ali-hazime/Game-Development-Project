@@ -26,6 +26,7 @@ public class DoorWest : MonoBehaviour
         {
             player = FindObjectOfType<PlayerChar>();
         }
+
     }
 
     private void OnTriggerEnter2D(Collider2D thing)
@@ -47,6 +48,8 @@ public class DoorWest : MonoBehaviour
                 GameSavingInformation.whereAmI = "The Great Tower Boss";
                 GameSavingInformation.whereWasI = "The Great Tower Boss";
                 SceneManager.LoadScene("The Great Tower Boss");
+                GameSavingInformation.maxCurrency = 75;
+                GameSavingInformation.minCurrency = 60;
                 GameSavingInformation.playerX = 0f;
                 GameSavingInformation.playerY = -6.5f;
             }

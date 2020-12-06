@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 2004859891778791959}
   - component: {fileID: 1579028309106618604}
   - component: {fileID: 54766007121978617}
-  m_Layer: 0
+  - component: {fileID: 18490691772517271}
+  m_Layer: 21
   m_Name: Enchanter
-  m_TagString: Untagged
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -119,3 +120,51 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1.0625, y: 1.75}
   m_Direction: 0
+--- !u!114 &18490691772517271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3945886430527399729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d263d258b3fb1e94aadb21801f31dd33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NPC_Number: 0
+  isTalkingNPC: 0
+  NPCtextbox: {fileID: 0}
+  Dialogue: {fileID: 0}
+  player: {fileID: 0}
+  enchantingWindow: {fileID: 0}
+  inventory: {fileID: 0}
+  currencyUI: {fileID: 0}
+  tooltipUI: {fileID: 0}
+  vendorPriceUI: {fileID: 0}
+  sellPriceUI: {fileID: 0}
+  playerStuff: {fileID: 0}
+  countingTime: 0
+  speed: 1
+  direction: 1
+  moveVert: 0
+  isMoving: 1
+  touchingPlayer: 0
+  disableMovement: 0
+  uiToggle: {fileID: 0}
+  startPos: {x: 0, y: 0, z: 0}
+  dest0: 0
+  dest1: 1
+  dest2: 0
+  dest3: 0
+  dest4: 0
+  dest5: 0
+  nextDirection: 0
+  whenNext: 0
+  once: 1
+  once2: 1
+  newPlace: 0
+  faceNorth: 0
+  faceSouth: 0
+  faceEast: 0
+  faceWest: 0

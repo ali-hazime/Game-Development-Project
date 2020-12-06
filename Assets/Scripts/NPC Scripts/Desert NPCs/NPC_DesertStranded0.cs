@@ -43,6 +43,7 @@ public class NPC_DesertStranded0 : MonoBehaviour
     [SerializeField] QuestController questController;
     public int questNumber;
     [SerializeField] UIToggle uiToggle;
+    private bool triggerOnce = true;
 
     private void OnEnable()
     {
@@ -89,9 +90,13 @@ public class NPC_DesertStranded0 : MonoBehaviour
 
             if (QuestTracker.desertQuestCount == 1 && QuestTracker.beginDesertQ3)
             {
-                uiToggle.ToggleQuestLog();
-                talkToQuest.UpdateTalkToQuest();
-                StartCoroutine(AcceptEscortQuest());
+                if (triggerOnce)
+                {
+                    uiToggle.ToggleQuestLog();
+                    talkToQuest.UpdateTalkToQuest();
+                    StartCoroutine(AcceptEscortQuest());
+                    triggerOnce = false;
+                }
             }
         }
     }

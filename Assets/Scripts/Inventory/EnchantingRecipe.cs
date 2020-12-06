@@ -28,7 +28,7 @@ public class EnchantingRecipe : ScriptableObject
         {
             if (itemContainer.ItemCount(itemAmount.Item.ID) < itemAmount.Amount)
             {
-                Debug.LogWarning("Insufficient materials to enchant.");
+                Debug.Log("Insufficient materials to enchant.");
                 return false;
             }
         }

@@ -8,6 +8,7 @@ public class DesertQuest3End : MonoBehaviour
     public EscortQuest escortQuest;
     [SerializeField] QuestController questController;
     [SerializeField] NPC_DesertStranded0 strandedNPC;
+    private bool triggerOnce = true;
 
     void Awake()
     {
@@ -32,17 +33,22 @@ public class DesertQuest3End : MonoBehaviour
         {
             if (other.CompareTag("Player"))
             {
-                uiToggle.ToggleQuestLog();
-                escortQuest.UpdateEscortQuest();
-                strandedNPC.startFollow = false;
-                StartCoroutine(AcceptTombQuest());
+                if (triggerOnce)
+                {
+                    uiToggle.ToggleQuestLog();
+                    escortQuest.UpdateEscortQuest();
+                    strandedNPC.startFollow = false;
+                    StartCoroutine(AcceptTombQuest());
+                    triggerOnce = false;
+                }
+                
             }
         }
     }
 
     IEnumerator AcceptTombQuest()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(0.1f);
         questController.StartQuest(QuestTracker.desertQuestCount, "dM");
         QuestTracker.questType = "dM";
 

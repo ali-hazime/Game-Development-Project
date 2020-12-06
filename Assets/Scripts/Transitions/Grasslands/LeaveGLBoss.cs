@@ -32,9 +32,10 @@ public class LeaveGLBoss : MonoBehaviour
             GameSavingInformation.whereAmI = "Cereloth Grasslands";
             GameSavingInformation.whereWasI = SceneManager.GetActiveScene().name;
             SceneManager.LoadScene("Cereloth Grasslands");
+            GameSavingInformation.maxCurrency = 7;
+            GameSavingInformation.minCurrency = 3;
             GameSavingInformation.playerX = 151f;
             GameSavingInformation.playerY = 38.5f;
-            
             SaveSystem.SavePlayer(player);
             SaveSystem.SaveGameInfo();
             SaveSystem.SaveQuestInfo();

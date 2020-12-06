@@ -224,8 +224,17 @@ public class D_Enemy3_Behaviour : MonoBehaviour
     {
         if (other.collider.CompareTag("Player"))
         {
+            anim.SetBool("isMoving", false);
             touchingPlayer = true;
             StartCoroutine(Go());
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("Player"))
+        {
+            anim.SetBool("isMoving", true);
         }
     }
 }

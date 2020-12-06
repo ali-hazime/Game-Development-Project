@@ -73,28 +73,35 @@ public class PlayerChar : MonoBehaviour
     public bool facingDown;
     public bool collidingWithWall = false;
     public bool breakFreeze = false;
-
     private void Start()
     {
+        
         this.transform.position = new Vector3(GameSavingInformation.playerX, GameSavingInformation.playerY, 0f);
 
         rb = GetComponent<Rigidbody2D>();
         poisonIndicator.SetActive(false);
         slowIndicator.SetActive(false);
         burnIndicator.SetActive(false);
-        InvokeRepeating("DebugPrints", 0, 5f);
+        //InvokeRepeating("DebugPrints", 0, 1f);
     }
 
     void DebugPrints() // for build tests
     {
-
+      /*  Debug.Log("GL Quest Count: " + QuestTracker.grasslandsQuestCount);
+        Debug.Log("D Quest Count: " + QuestTracker.desertQuestCount);
+        Debug.Log("F Quest Count: " + QuestTracker.forestQuestCount);
+        Debug.Log("S Quest Count: " + QuestTracker.snowMountainQuestCount);
+        Debug.Log("V Quest Count: " + QuestTracker.volcanoQuestCount);
+        Debug.Log("triggerOnce: " + QuestTracker.triggerOnce);
+        Debug.Log("triggerOnce2: " + QuestTracker.triggerOnce2);
+        Debug.Log("allObjectives Completed: " + QuestTracker.allObjCompleted);*/
+        
     }
-
-
 
     private void Update()
     {
-        Debug.Log("S Quest Count: " + QuestTracker.snowMountainQuestCount);
+        
+        // Debug.Log("V Quest Count: " + QuestTracker.volcanoQuestCount);
         if (playerCurrentHealth > playerMaxHealth)
         {
             playerCurrentHealth = playerMaxHealth;
@@ -291,6 +298,14 @@ public class PlayerChar : MonoBehaviour
             SaveSystem.SaveGameInfo();
             SceneManager.LoadScene(GameSavingInformation.whereWasI);
         }
+        else if (GameSavingInformation.whereAmI == "Void Realm")
+        {
+            GameSavingInformation.whereAmI = "Cereloth Grasslands";
+            GameSavingInformation.playerX = 3f;
+            GameSavingInformation.playerY = 10f;
+            SaveSystem.SaveGameInfo();
+            SceneManager.LoadScene(GameSavingInformation.whereWasI);
+        }
         else
         {
             SceneManager.LoadScene(GameSavingInformation.whereAmI);
@@ -465,12 +480,14 @@ public class PlayerChar : MonoBehaviour
 
     public void RestrictMovementUntilTrue()
     {
+        //Debug.Log("RESTRICTED");
         animator.enabled = false;
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
     }
 
     public void breakTheFreeze()
     {
+        //Debug.Log("UN - RESTRICTED");
         rb.constraints &= ~RigidbodyConstraints2D.FreezePosition;
         animator.enabled = true;
     }

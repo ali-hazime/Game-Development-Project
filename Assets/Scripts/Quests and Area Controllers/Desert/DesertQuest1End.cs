@@ -9,6 +9,7 @@ public class DesertQuest1End : MonoBehaviour
     [SerializeField] PlayerChar player;
     [SerializeField] GameObject standingNPC;
     public TalkToQuest talkToQuest;
+    private bool triggerOnce = true;
 
     void Awake()
     {
@@ -28,9 +29,13 @@ public class DesertQuest1End : MonoBehaviour
         {
             if (other.CompareTag("Player"))
             {
-                StartCoroutine(CameraPan());
-                uiToggle.ToggleQuestLog();
-                talkToQuest.UpdateTalkToQuest();
+                if (triggerOnce)
+                {
+                    StartCoroutine(CameraPan());
+                    uiToggle.ToggleQuestLog();
+                    talkToQuest.UpdateTalkToQuest();
+                    triggerOnce = false;
+                }    
             }
         }
     }

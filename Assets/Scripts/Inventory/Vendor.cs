@@ -23,15 +23,17 @@ public class Vendor : ItemContainer
             itemSlots[i].OnPointerExitEvent += slot => OnPointerExitEvent(slot);
             itemSlots[i].OnRightClickEvent += slot => OnRightClickEvent(slot);
             itemSlots[i].OnLeftClickEvent += slot => OnLeftClickEvent(slot);
+
+            if (itemsParent != null)
+            {
+                itemSlots = itemsParent.GetComponentsInChildren<ItemSlots>();
+            } 
         }
-
-        SetStartingItems();
     }
-    private void OnValidate()
+   
+    
+    private void Start()
     {
-        if (itemsParent != null)
-            itemSlots = itemsParent.GetComponentsInChildren<ItemSlots>();
-
         SetStartingItems();
     }
 

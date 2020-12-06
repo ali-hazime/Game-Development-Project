@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -10788,6 +10788,7 @@ MonoBehaviour:
   slowIndicator: {fileID: 1193537458}
   burnIndicator: {fileID: 1445999982}
   statusIndicatorPoint: {fileID: 1291177016}
+  move: {x: 0, y: 0}
   animator: {fileID: 327488345}
   isAttacking: 0
   swordEquipped: 0
@@ -10822,6 +10823,13 @@ MonoBehaviour:
   isPoisoned: 0
   isSlowed: 0
   _isPinned: 0
+  lockInput: 0
+  facingRight: 0
+  facingLeft: 0
+  facingUp: 0
+  facingDown: 0
+  collidingWithWall: 0
+  breakFreeze: 0
 --- !u!212 &327488348
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -39941,6 +39949,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbc1c5c24fa818f44911716a8624b80e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   itemSaveManager: {fileID: 0}
   inventoryManager: {fileID: 0}
   pauseMenu: {fileID: 878994084}
@@ -48231,8 +48240,15 @@ MonoBehaviour:
   pauseMenu: {fileID: 878994084}
   questUI: {fileID: 0}
   TextboxUI: {fileID: 1196601648}
+  controlsUI: {fileID: 0}
+  mapUI: {fileID: 0}
   isPaused: 0
   questLogOpen: 0
+  PlayerIconGL: {fileID: 0}
+  PlayerIconD: {fileID: 0}
+  PlayerIconF: {fileID: 0}
+  PlayerIconS: {fileID: 0}
+  PlayerIconV: {fileID: 0}
 --- !u!114 &1666178587
 MonoBehaviour:
   m_ObjectHideFlags: 0

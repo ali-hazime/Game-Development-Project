@@ -13,8 +13,15 @@ public class UIToggle : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject questUI;
     public GameObject TextboxUI;
+    public GameObject controlsUI;
+    public GameObject mapUI;
     public bool isPaused = false;
     public bool questLogOpen = false;
+    [SerializeField] GameObject PlayerIconGL;
+    [SerializeField] GameObject PlayerIconD;
+    [SerializeField] GameObject PlayerIconF;
+    [SerializeField] GameObject PlayerIconS;
+    [SerializeField] GameObject PlayerIconV;
 
     private void Awake()
     {
@@ -22,6 +29,7 @@ public class UIToggle : MonoBehaviour
         {
             TextboxUI = FindObjectOfType<NPC_Dialogue>().gameObject;
         }
+        
     }
     // Start is called before the first frame update
     void Start()
@@ -35,6 +43,7 @@ public class UIToggle : MonoBehaviour
         inventoryUI.SetActive(false);
         currencyUI.SetActive(false);
         pauseMenu.SetActive(false);
+        mapUI.SetActive(false);
         //questUI.GetComponent<CanvasGroup>().alpha = 0;
         //questUI.GetComponent<CanvasGroup>().interactable = false;
     }
@@ -58,6 +67,7 @@ public class UIToggle : MonoBehaviour
                 equipmentAndStatsUI.SetActive(false);
                 inventoryUI.SetActive(false);
                 currencyUI.SetActive(false);
+                mapUI.SetActive(false);
                 questUI.GetComponent<CanvasGroup>().alpha = 0;
                 questUI.GetComponent<CanvasGroup>().interactable = false;
                 questLogOpen = false;
@@ -70,6 +80,10 @@ public class UIToggle : MonoBehaviour
             {
                 pauseMenu.SetActive(false);
                 isPaused = false;
+                if (controlsUI.activeSelf)
+                {
+                    controlsUI.SetActive(false);
+                } 
             }   
         }
 
@@ -96,6 +110,19 @@ public class UIToggle : MonoBehaviour
                 tooltipUI.SetActive(false);
                 sellPriceUI.SetActive(false);
                 vendorPriceUI.SetActive(false);
+                mapUI.SetActive(false);
+            }
+
+            if (Input.GetButtonDown("Map"))
+            {
+                PlayerIcon();
+                mapUI.SetActive(!mapUI.activeSelf);
+                equipmentAndStatsUI.SetActive(false);
+                inventoryUI.SetActive(false);
+                currencyUI.SetActive(false);
+                tooltipUI.SetActive(false);
+                sellPriceUI.SetActive(false);
+                vendorPriceUI.SetActive(false);
             }
 
             if (inventoryUI.activeSelf && equipmentAndStatsUI.activeSelf)
@@ -108,6 +135,7 @@ public class UIToggle : MonoBehaviour
                     tooltipUI.SetActive(false);
                     sellPriceUI.SetActive(false);
                     vendorPriceUI.SetActive(false);
+                    mapUI.SetActive(false);
                 }
             }
 
@@ -119,6 +147,7 @@ public class UIToggle : MonoBehaviour
                     tooltipUI.SetActive(false);
                     sellPriceUI.SetActive(false);
                     vendorPriceUI.SetActive(false);
+                    mapUI.SetActive(false);
                 }
             }
 
@@ -132,6 +161,7 @@ public class UIToggle : MonoBehaviour
                     tooltipUI.SetActive(false);
                     sellPriceUI.SetActive(false);
                     vendorPriceUI.SetActive(false);
+                    mapUI.SetActive(false);
                 }
             }
 
@@ -143,16 +173,73 @@ public class UIToggle : MonoBehaviour
                     tooltipUI.SetActive(false);
                     sellPriceUI.SetActive(false);
                     vendorPriceUI.SetActive(false);
+                    mapUI.SetActive(false);
                 }
             }
         }
         
-    } 
+    }
+
+    public void PlayerIcon()
+    {
+        if (GameSavingInformation.whereAmI == "Cereloth Grasslands" || GameSavingInformation.whereAmI == "Elder House" || GameSavingInformation.whereAmI == "GrasslandsBoss" || GameSavingInformation.whereAmI == "Inside Castle" || GameSavingInformation.whereAmI == "Player House" || GameSavingInformation.whereAmI == "Vendor House")
+        {
+            PlayerIconGL.SetActive(true);
+            PlayerIconD.SetActive(false);
+            PlayerIconF.SetActive(false);
+            PlayerIconS.SetActive(false);
+            PlayerIconV.SetActive(false);
+        }
+        else if (GameSavingInformation.whereAmI == "Jeralehar Desert" || GameSavingInformation.whereAmI == "Desert Vendor House" || GameSavingInformation.whereAmI == "DesertBoss")
+        {
+            PlayerIconGL.SetActive(false);
+            PlayerIconD.SetActive(true);
+            PlayerIconF.SetActive(false);
+            PlayerIconS.SetActive(false);
+            PlayerIconV.SetActive(false);
+        }
+        else if (GameSavingInformation.whereAmI == "Thillan Forest" || GameSavingInformation.whereAmI == "ForestBoss" || GameSavingInformation.whereAmI == "ForestVendor")
+        {
+            PlayerIconGL.SetActive(false);
+            PlayerIconD.SetActive(false);
+            PlayerIconF.SetActive(true);
+            PlayerIconS.SetActive(false);
+            PlayerIconV.SetActive(false);
+        }
+        else if (GameSavingInformation.whereAmI == "Mount Herraweth" || GameSavingInformation.whereAmI == "Snow Vendor" || GameSavingInformation.whereAmI == "SnowCave" || GameSavingInformation.whereAmI == "The Great Tower Boss" || GameSavingInformation.whereAmI == "The Great Tower Puzzle")
+        {
+            PlayerIconGL.SetActive(false);
+            PlayerIconD.SetActive(false);
+            PlayerIconF.SetActive(false);
+            PlayerIconS.SetActive(true);
+            PlayerIconV.SetActive(false);
+        }
+        else if (GameSavingInformation.whereAmI == "Mount Mortae" || GameSavingInformation.whereAmI == "Volcanic Boss Area" || GameSavingInformation.whereAmI == "Volcanic Caves 1")
+        {
+            PlayerIconGL.SetActive(false);
+            PlayerIconD.SetActive(false);
+            PlayerIconF.SetActive(false);
+            PlayerIconS.SetActive(false);
+            PlayerIconV.SetActive(true);
+        }
+    }
 
     public void ToggleQuestLog()
     {
         questUI.GetComponent<CanvasGroup>().alpha = 1;
         questUI.GetComponent<CanvasGroup>().interactable = true;
         questLogOpen = true;
+    }
+
+    public void ToggleQuestLogOff()
+    {
+        questUI.GetComponent<CanvasGroup>().alpha = 0;
+        questUI.GetComponent<CanvasGroup>().interactable = false;
+        questLogOpen = false;
+    }
+
+    public void ToggleControls()
+    {
+        controlsUI.SetActive(true);
     }
 }

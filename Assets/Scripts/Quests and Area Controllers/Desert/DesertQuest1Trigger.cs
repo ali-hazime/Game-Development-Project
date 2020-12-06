@@ -8,6 +8,7 @@ public class DesertQuest1Trigger : MonoBehaviour
 {
     [SerializeField] UIToggle uiToggle;
     [SerializeField] QuestController questController;
+    private bool triggerOnce = true;
 
     void Awake()
     {
@@ -21,15 +22,20 @@ public class DesertQuest1Trigger : MonoBehaviour
             uiToggle = FindObjectOfType<UIToggle>();
         }
     }
+
     public void OnTriggerEnter2D(Collider2D other)
     {
         if (QuestTracker.desertQuestCount == 0)
-        {
+        {   
             if (other.CompareTag("Player"))
             {
-                uiToggle.ToggleQuestLog();
-                questController.StartQuest(QuestTracker.desertQuestCount, "dM");
-                QuestTracker.questType = "dM";
+                if (triggerOnce)
+                {
+                    uiToggle.ToggleQuestLog();
+                    questController.StartQuest(QuestTracker.desertQuestCount, "dM");
+                    QuestTracker.questType = "dM";
+                    triggerOnce = false;
+                }
             }
         }
     }

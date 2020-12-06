@@ -33,6 +33,8 @@ public class EnterVolcanoCave : MonoBehaviour
             GameSavingInformation.whereAmI = "Volcanic Caves 1";
             GameSavingInformation.whereWasI = SceneManager.GetActiveScene().name;
             SceneManager.LoadScene("Volcanic Caves 1");
+            GameSavingInformation.maxCurrency = 30;
+            GameSavingInformation.minCurrency = 24;
             GameSavingInformation.playerX = 0f;
             GameSavingInformation.playerY = -1.5f;
             SaveSystem.SavePlayer(player);

@@ -9,8 +9,8 @@ public class QuestManager : MonoBehaviour
   
     void Start()
     {
-        GameSavingInformation.minCurrency = 3;
-        GameSavingInformation.maxCurrency = 7;
+        //GameSavingInformation.minCurrency = 3;
+        //GameSavingInformation.maxCurrency = 7;
         InvokeRepeating("UpdateCounters", 0f, 1f);
     }
 
@@ -57,6 +57,7 @@ public class QuestManager : MonoBehaviour
                 GameSavingInformation.grassQuest7Complete = true;
                 QuestTracker.mainQuestCount = 0;
                 QuestLog.MyInstance.HideQuests();
+                QuestTracker.triggerOnce2 = true;
                 break;
         }
 
@@ -89,6 +90,7 @@ public class QuestManager : MonoBehaviour
                 GameSavingInformation.desertQuest6Complete = true;
                 QuestTracker.mainQuestCount = 0;
                 QuestLog.MyInstance.HideQuests();
+                QuestTracker.triggerOnce2 = true;
                 break;
         }
 
@@ -109,6 +111,7 @@ public class QuestManager : MonoBehaviour
             case 3: // Quest 4
                 QuestTracker.talkToComplete = false;
                 GameSavingInformation.forestQuest3Complete = true;
+                QuestTracker.triggerOnce2 = true;
                 break;
             case 4: // Quest 5
                 QuestTracker.bossKilled = false;
@@ -120,6 +123,8 @@ public class QuestManager : MonoBehaviour
                 GameSavingInformation.forestQuest5Complete = true;
                 QuestTracker.mainQuestCount = 0;
                 QuestLog.MyInstance.HideQuests();
+                QuestTracker.triggerOnce2 = true;
+                QuestTracker.allObjCompleted = true;
                 break;
              
         }
@@ -131,6 +136,7 @@ public class QuestManager : MonoBehaviour
             case 1: // Quest 2
                 QuestTracker.talkToComplete = false;
                 GameSavingInformation.snowQuest1Complete = true;
+                QuestTracker.triggerOnce2 = true;
                 break;
             case 2: // Quest 3
                 QuestTracker.talkToComplete = false;
@@ -140,7 +146,9 @@ public class QuestManager : MonoBehaviour
                 QuestTracker.bossKilled = false;
                 QuestTracker.talkToComplete = false;
                 GameSavingInformation.snowQuest3Complete = true;
+                QuestTracker.mainQuestCount = 0;
                 QuestLog.MyInstance.HideQuests();
+                QuestTracker.triggerOnce2 = true;
                 break;
         }
         
@@ -155,10 +163,12 @@ public class QuestManager : MonoBehaviour
             case 2: // Quest 3
                 QuestTracker.talkToComplete = false;
                 GameSavingInformation.volcanoQuest2Complete = true;
+                QuestTracker.triggerOnce2 = true;
                 break;
             case 3: // Quest 3
                 QuestTracker.bossKilled = false;
                 GameSavingInformation.volcanoQuest3Complete = true;
+                QuestTracker.triggerOnce2 = true;
                 break;
             case 4: // Quest 4
                 QuestTracker.talkToComplete = false;

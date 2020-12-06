@@ -33,6 +33,8 @@ public class EnterForestBoss : MonoBehaviour
             GameSavingInformation.whereAmI = "ForestBoss";
             GameSavingInformation.whereWasI = SceneManager.GetActiveScene().name;
             SceneManager.LoadScene("ForestBoss");
+            GameSavingInformation.maxCurrency = 40;
+            GameSavingInformation.minCurrency = 30;
             GameSavingInformation.playerX = 3f;
             GameSavingInformation.playerY = -7.5f;
             SaveSystem.SavePlayer(player);

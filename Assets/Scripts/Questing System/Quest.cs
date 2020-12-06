@@ -196,6 +196,7 @@ public abstract class Objective
                 return QuestTracker.talkToComplete;
             }
 
+
             return false;
 
             //return MyCurrentAmount >= MyAmount;

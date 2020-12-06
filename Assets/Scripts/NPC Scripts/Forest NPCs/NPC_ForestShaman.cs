@@ -79,8 +79,6 @@ public class NPC_ForestShaman : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("NPC Number: " + NPC_Number);
-        Debug.Log("allItemCollected: " + QuestTracker.allTotemsCollected);
         if (QuestTracker.forestQuestCount == 0 && triggerOnce && !QuestTracker.questInProgress)
         {
             enCtrlr.FirstShamanInteraction();
@@ -130,6 +128,7 @@ public class NPC_ForestShaman : MonoBehaviour
 
         else if (QuestTracker.forestQuestCount == 1 && !QuestTracker.allTotemsCollected) // if you speak with her without all totems
         {
+            QuestTracker.allObjCompleted = false;
             NPC_Number = 50;
         }
 
@@ -148,9 +147,14 @@ public class NPC_ForestShaman : MonoBehaviour
             NPC_Number = 53;
         }
 
-        else if (QuestTracker.forestQuestCount >= 4) // if you speak with her after boss killed
+        else if (QuestTracker.forestQuestCount >= 4 && QuestTracker.snowMountainQuestCount < 2) // if you speak with her after boss killed before snow
         {
             NPC_Number = 54;
+        }
+
+        else if (QuestTracker.forestQuestCount >= 4 && QuestTracker.snowMountainQuestCount > 1) // if you speak with her after boss killed after/during snow
+        {
+            NPC_Number = 84;
         }
     }
 

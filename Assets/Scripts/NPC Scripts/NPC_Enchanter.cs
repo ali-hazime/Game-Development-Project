@@ -26,6 +26,7 @@ public class NPC_Enchanter : MonoBehaviour
     public bool moveVert = false;
     public bool isMoving = true;
     public bool touchingPlayer = false;
+    public bool disableMovement;
     [SerializeField] UIToggle uiToggle;
 
 
@@ -45,6 +46,11 @@ public class NPC_Enchanter : MonoBehaviour
     public bool once2 = true;
 
     public float newPlace;
+    [Space]
+    public bool faceNorth = false;
+    public bool faceSouth = false;
+    public bool faceEast = false;
+    public bool faceWest = false;
 
     private void OnEnable()
     {
@@ -63,7 +69,9 @@ public class NPC_Enchanter : MonoBehaviour
         anim = GetComponent<Animator>();
         playerTarget = FindObjectOfType<PlayerChar>().transform;
         anim.SetBool("moveVert", false);
-        anim.SetBool("isMoving", true);
+        anim.SetBool("isMoving", false);
+        anim.SetFloat("moveY", -1f);
+        startPos = this.gameObject.transform.position;
 
         if (uiToggle == null)
         {
@@ -71,297 +79,9 @@ public class NPC_Enchanter : MonoBehaviour
         }
     }
 
-    void Update()
+    private void Update()
     {
-
-        if (touchingPlayer == false)
-        {
-
-            //Any movement stuff
-            countingTime += Time.deltaTime;
-            if (dest0 == true)
-            {
-                anim.SetBool("isMoving", true);
-                anim.SetBool("moveVert", false);
-                direction = -1.0f;
-
-                if (once2 == true)
-                {
-                    newPlace = transform.position.x - 1;
-                    once2 = false;
-                }
-
-                transform.position = Vector3.MoveTowards(transform.position, new Vector3(newPlace, transform.position.y, 0), 0.03f);
-
-                if (transform.position.x == newPlace)
-                {
-                    if (once == true)
-                    {
-                        countingTime = 0;
-                        if (startPos.x + transform.position.x == 0)
-                        {
-                            nextDirection = Random.Range(0, 2);
-                        }
-                        else
-                        {
-                            nextDirection = Random.Range(1, 4);
-                        }
-
-                        whenNext = Random.Range(3, 8);
-                        once = false;
-                    }
-
-                    anim.SetBool("isMoving", false);
-
-                    if (countingTime > whenNext)
-                    {
-                        dest0 = false;
-                        switch (nextDirection)
-                        {
-                            case 0:
-                                dest2 = true;
-                                break;
-                            case 1:
-                                dest1 = true;
-                                break;
-                            case 2:
-                                dest4 = true;
-                                break;
-                            case 3:
-                                dest0 = true;
-                                break;
-                        }
-                        once2 = true;
-                        once = true;
-                    }
-                }
-            }
-            else if (dest1 == true)
-            {
-                anim.SetBool("isMoving", true);
-                anim.SetBool("moveVert", false);
-                direction = 1.0f;
-
-                if (once2 == true)
-                {
-                    newPlace = transform.position.x + 1;
-                    once2 = false;
-                }
-
-                transform.position = Vector3.MoveTowards(transform.position, new Vector3(newPlace, transform.position.y, 0), 0.03f);
-
-                if (transform.position.x == newPlace)
-                {
-                    if (once == true)
-                    {
-                        countingTime = 0;
-                        if (startPos.x + transform.position.x == 2)
-                        {
-                            nextDirection = Random.Range(0, 2);
-                        }
-                        else
-                        {
-                            nextDirection = Random.Range(1, 4);
-                        }
-                        whenNext = Random.Range(3, 8);
-                        once = false;
-                    }
-
-                    anim.SetBool("isMoving", false);
-                    if (countingTime > whenNext)
-                    {
-                        dest1 = false;
-                        switch (nextDirection)
-                        {
-                            case 0:
-                                dest3 = true;
-                                break;
-                            case 1:
-                                dest0 = true;
-                                break;
-                            case 2:
-                                dest4 = true;
-                                break;
-                            case 3:
-                                dest1 = true;
-                                break;
-                        }
-                        once2 = true;
-                        once = true;
-                    }
-                }
-            }
-            else if (dest2 == true)
-            {
-                anim.SetBool("isMoving", true);
-                anim.SetBool("moveVert", false);
-                direction = 1.0f;
-                if (once2 == true)
-                {
-                    newPlace = transform.position.x + 2;
-                    once2 = false;
-                }
-
-                transform.position = Vector3.MoveTowards(transform.position, new Vector3(newPlace, transform.position.y, 0), 0.03f);
-
-                if (transform.position.x == newPlace)
-                {
-                    if (once == true)
-                    {
-                        countingTime = 0;
-                        nextDirection = Random.Range(0, 2);
-                        whenNext = Random.Range(3, 8);
-                        once = false;
-                    }
-
-
-                    // nextDirection = Random.Range(0, 2);
-
-
-                    anim.SetBool("isMoving", false);
-                    if (countingTime > whenNext)
-                    {
-                        switch (nextDirection)
-                        {
-                            case 0:
-                                dest0 = true;
-                                break;
-                            case 1:
-                                dest3 = true;
-                                break;
-                        }
-                        once2 = true;
-                        once = true;
-                        dest2 = false;
-                    }
-                }
-            }
-            else if (dest3 == true)
-            {
-                anim.SetBool("isMoving", true);
-                anim.SetBool("moveVert", false);
-                direction = -1.0f;
-
-                if (once2 == true)
-                {
-                    newPlace = transform.position.x - 2;
-                    once2 = false;
-                }
-
-                transform.position = Vector3.MoveTowards(transform.position, new Vector3(newPlace, transform.position.y, 0), 0.03f);
-
-                if (transform.position.x == newPlace)
-                {
-                    if (once == true)
-                    {
-                        countingTime = 0;
-                        nextDirection = Random.Range(0, 2);
-                        whenNext = Random.Range(3, 8);
-                        once = false;
-                    }
-
-                    anim.SetBool("isMoving", false);
-
-                    if (countingTime > whenNext)
-                    {
-                        switch (nextDirection)
-                        {
-                            case 0:
-                                dest1 = true;
-                                break;
-                            case 1:
-                                dest2 = true;
-                                break;
-                        }
-                        once2 = true;
-                        once = true;
-                        dest3 = false;
-                    }
-                }
-            }
-            else if (dest4 == true)
-            {
-                anim.SetBool("isMoving", true);
-                anim.SetBool("moveVert", true);
-                direction = -1.0f;
-
-                if (once2 == true)
-                {
-                    newPlace = transform.position.y - 1;
-                    once2 = false;
-                }
-
-                transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, newPlace, 0), 0.03f);
-
-                if (transform.position.y == newPlace)
-                {
-                    if (once == true)
-                    {
-                        countingTime = 0;
-                        whenNext = Random.Range(3, 8);
-                        once = false;
-                    }
-
-                    anim.SetBool("isMoving", false);
-
-                    if (countingTime > whenNext)
-                    {
-                        dest5 = true;
-
-                        once2 = true;
-                        once = true;
-                        dest4 = false;
-                    }
-                }
-            }
-            else if (dest5 == true)
-            {
-                anim.SetBool("isMoving", true);
-                anim.SetBool("moveVert", true);
-                direction = 1.0f;
-
-                if (once2 == true)
-                {
-                    newPlace = transform.position.y + 1;
-                    once2 = false;
-                }
-
-                transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, newPlace, 0), 0.03f);
-
-                if (transform.position.y == newPlace)
-                {
-                    if (once == true)
-                    {
-                        countingTime = 0;
-                        nextDirection = Random.Range(0, 2);
-                        whenNext = Random.Range(3, 8);
-                        once = false;
-                    }
-
-                    anim.SetBool("isMoving", false);
-
-                    if (countingTime > whenNext)
-                    {
-                        switch (nextDirection)
-                        {
-                            case 0:
-                                dest0 = true;
-                                break;
-                            case 1:
-                                dest1 = true;
-                                break;
-                        }
-
-                        once2 = true;
-                        once = true;
-                        dest5 = false;
-                    }
-                }
-            }
-
-            anim.SetFloat("speed", direction);
-        }
-        else if (touchingPlayer == true && Input.GetKeyDown(KeyCode.Z))
+        if (touchingPlayer == true && Input.GetKeyDown(KeyCode.Z))
         {
             enchantingWindow.SetActive(true);
             playerStuff.SetActive(true);
@@ -373,18 +93,392 @@ public class NPC_Enchanter : MonoBehaviour
         {
             enchantingWindow.SetActive(false);
         }
+    }
 
-        //anim.SetFloat("moveY", (playerTarget.position.y - transform.position.y));
+    void FixedUpdate()
+    {
 
-        if (Mathf.Abs(playerTarget.position.y - transform.position.y) > Mathf.Abs(playerTarget.position.x - transform.position.x))
+        if (faceSouth)
         {
+            anim.SetBool("isMoving", false);
             anim.SetFloat("moveX", 0f);
-            anim.SetFloat("moveY", (playerTarget.position.y - transform.position.y));
+            anim.SetFloat("moveY", -1f);
         }
-        else
+        else if (faceNorth)
         {
-            anim.SetFloat("moveX", (playerTarget.position.x - transform.position.x));
+            anim.SetBool("isMoving", false);
+            anim.SetFloat("moveX", 0f);
+            anim.SetFloat("moveY", 1f);
+        }
+        else if (faceWest)
+        {
+            anim.SetBool("isMoving", false);
+            anim.SetFloat("moveX", -1f);
             anim.SetFloat("moveY", 0f);
+        }
+        else if (faceEast)
+        {
+            anim.SetBool("isMoving", false);
+            anim.SetFloat("moveX", 1f);
+            anim.SetFloat("moveY", 0f);
+        }
+        else if (disableMovement == false)
+        {
+            if (touchingPlayer == false)
+            {
+
+                //Any movement stuff
+                countingTime += Time.fixedDeltaTime;
+                if (dest0 == true)
+                {
+                    anim.SetBool("isMoving", true);
+                    anim.SetBool("moveVert", false);
+                    anim.SetFloat("moveX", -1f);
+                    anim.SetFloat("moveY", (0f));
+                    anim.SetFloat("speed", direction);
+
+                    direction = -1.0f;
+
+                    if (once2 == true)
+                    {
+                        newPlace = transform.position.x - 1;
+                        once2 = false;
+                    }
+
+                    transform.position = Vector3.MoveTowards(transform.position, new Vector3(newPlace, transform.position.y, 0), 3 * Time.fixedDeltaTime);
+
+                    if (transform.position.x == newPlace)
+                    {
+                        if (once == true)
+                        {
+                            countingTime = 0;
+                            if (transform.position.x == startPos.x + 1)
+                            {
+                                nextDirection = Random.Range(1, 4);
+                            }
+                            else
+                            {
+                                nextDirection = Random.Range(0, 2);
+                            }
+
+                            whenNext = Random.Range(3, 8);
+                            once = false;
+                        }
+
+                        anim.SetBool("isMoving", false);
+                        anim.SetFloat("moveX", -1f);
+                        anim.SetFloat("moveY", (0f));
+                        // anim.SetBool("moveVert", false);
+
+
+                        if (countingTime > whenNext)
+                        {
+                            dest0 = false;
+                            switch (nextDirection)
+                            {
+                                case 0:
+                                    dest2 = true;
+                                    break;
+                                case 1:
+                                    dest1 = true;
+                                    break;
+                                case 2:
+                                    dest4 = true;
+                                    break;
+                                case 3:
+                                    dest0 = true;
+                                    break;
+                            }
+                            once2 = true;
+                            once = true;
+                        }
+                    }
+                }
+                else if (dest1 == true)
+                {
+                    anim.SetBool("isMoving", true);
+                    anim.SetBool("moveVert", false);
+                    anim.SetFloat("moveX", 1f);
+                    anim.SetFloat("moveY", (0f));
+                    anim.SetFloat("speed", direction);
+
+                    direction = 1.0f;
+
+                    if (once2 == true)
+                    {
+                        newPlace = transform.position.x + 1;
+                        once2 = false;
+                    }
+
+                    transform.position = Vector3.MoveTowards(transform.position, new Vector3(newPlace, transform.position.y, 0), 3 * Time.fixedDeltaTime);
+
+                    if (transform.position.x == newPlace)
+                    {
+                        if (once == true)
+                        {
+                            countingTime = 0;
+                            if (transform.position.x == startPos.x + 1)
+                            {
+                                nextDirection = Random.Range(1, 4);
+                            }
+                            else
+                            {
+                                nextDirection = Random.Range(0, 2);
+                            }
+                            whenNext = Random.Range(3, 8);
+                            once = false;
+                        }
+
+                        anim.SetBool("isMoving", false);
+                        anim.SetFloat("moveX", 1f);
+                        anim.SetFloat("moveY", (0f));
+                        // anim.SetBool("moveVert", false);
+
+                        if (countingTime > whenNext)
+                        {
+                            dest1 = false;
+                            switch (nextDirection)
+                            {
+                                case 0:
+                                    dest3 = true;
+                                    break;
+                                case 1:
+                                    dest0 = true;
+                                    break;
+                                case 2:
+                                    dest4 = true;
+                                    break;
+                                case 3:
+                                    dest1 = true;
+                                    break;
+                            }
+                            once2 = true;
+                            once = true;
+                        }
+                    }
+                }
+                else if (dest2 == true)
+                {
+                    anim.SetBool("isMoving", true);
+                    anim.SetBool("moveVert", false);
+                    anim.SetFloat("moveX", 1f);
+                    anim.SetFloat("moveY", (0f));
+                    anim.SetFloat("speed", direction);
+
+                    direction = 1.0f;
+                    if (once2 == true)
+                    {
+                        newPlace = transform.position.x + 2;
+                        once2 = false;
+                    }
+
+                    transform.position = Vector3.MoveTowards(transform.position, new Vector3(newPlace, transform.position.y, 0), 3 * Time.fixedDeltaTime);
+
+                    if (transform.position.x == newPlace)
+                    {
+                        if (once == true)
+                        {
+                            countingTime = 0;
+                            nextDirection = Random.Range(0, 2);
+                            whenNext = Random.Range(3, 8);
+                            once = false;
+                        }
+
+
+                        // nextDirection = Random.Range(0, 2);
+
+
+                        anim.SetBool("isMoving", false);
+                        anim.SetFloat("moveX", 1f);
+                        anim.SetFloat("moveY", (0f));
+                        // anim.SetBool("moveVert", false);
+
+                        if (countingTime > whenNext)
+                        {
+                            switch (nextDirection)
+                            {
+                                case 0:
+                                    dest0 = true;
+                                    break;
+                                case 1:
+                                    dest3 = true;
+                                    break;
+                            }
+                            once2 = true;
+                            once = true;
+                            dest2 = false;
+                        }
+                    }
+                }
+                else if (dest3 == true)
+                {
+                    anim.SetBool("isMoving", true);
+                    anim.SetBool("moveVert", false);
+                    anim.SetFloat("moveX", -1f);
+                    anim.SetFloat("moveY", (0f));
+                    anim.SetFloat("speed", direction);
+
+                    direction = -1.0f;
+
+                    if (once2 == true)
+                    {
+                        newPlace = transform.position.x - 2;
+                        once2 = false;
+                    }
+
+                    transform.position = Vector3.MoveTowards(transform.position, new Vector3(newPlace, transform.position.y, 0), 3 * Time.fixedDeltaTime);
+
+                    if (transform.position.x == newPlace)
+                    {
+                        if (once == true)
+                        {
+                            countingTime = 0;
+                            nextDirection = Random.Range(0, 2);
+                            whenNext = Random.Range(3, 8);
+                            once = false;
+                        }
+
+                        anim.SetBool("isMoving", false);
+                        anim.SetFloat("moveX", -1f);
+                        anim.SetFloat("moveY", (0f));
+                        // anim.SetBool("moveVert", false);
+
+                        if (countingTime > whenNext)
+                        {
+                            switch (nextDirection)
+                            {
+                                case 0:
+                                    dest1 = true;
+                                    break;
+                                case 1:
+                                    dest2 = true;
+                                    break;
+                            }
+                            once2 = true;
+                            once = true;
+                            dest3 = false;
+                        }
+                    }
+                }
+                else if (dest4 == true)
+                {
+                    anim.SetBool("isMoving", true);
+                    anim.SetBool("moveVert", true);
+                    anim.SetFloat("moveX", 0f);
+                    anim.SetFloat("moveY", (-1f));
+                    anim.SetFloat("speed", direction);
+
+                    direction = -1.0f;
+
+                    if (once2 == true)
+                    {
+                        newPlace = transform.position.y - 1;
+                        once2 = false;
+                    }
+
+                    transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, newPlace, 0), 3 * Time.fixedDeltaTime);
+
+                    if (transform.position.y == newPlace)
+                    {
+                        if (once == true)
+                        {
+                            countingTime = 0;
+                            whenNext = Random.Range(3, 8);
+                            once = false;
+                        }
+
+                        anim.SetBool("isMoving", false);
+                        anim.SetFloat("moveX", 0f);
+                        anim.SetFloat("moveY", (-1f));
+                        // anim.SetBool("moveVert", false);
+
+                        if (countingTime > whenNext)
+                        {
+                            dest5 = true;
+
+                            once2 = true;
+                            once = true;
+                            dest4 = false;
+                        }
+                    }
+                }
+                else if (dest5 == true)
+                {
+                    anim.SetBool("isMoving", true);
+                    anim.SetBool("moveVert", true);
+                    anim.SetFloat("moveX", 0f);
+                    anim.SetFloat("moveY", (1f));
+                    anim.SetFloat("speed", direction);
+
+                    direction = 1.0f;
+
+                    if (once2 == true)
+                    {
+                        newPlace = transform.position.y + 1;
+                        once2 = false;
+                    }
+
+                    transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, newPlace, 0), 3 * Time.fixedDeltaTime);
+
+                    if (transform.position.y == newPlace)
+                    {
+                        if (once == true)
+                        {
+                            countingTime = 0;
+                            nextDirection = Random.Range(0, 2);
+                            whenNext = Random.Range(3, 8);
+                            once = false;
+                        }
+
+                        anim.SetBool("isMoving", false);
+                        anim.SetFloat("moveX", 0f);
+                        anim.SetFloat("moveY", (1f));
+                        //anim.SetBool("moveVert", false);
+
+                        if (countingTime > whenNext)
+                        {
+                            switch (nextDirection)
+                            {
+                                case 0:
+                                    dest0 = true;
+                                    break;
+                                case 1:
+                                    dest1 = true;
+                                    break;
+                            }
+
+                            once2 = true;
+                            once = true;
+                            dest5 = false;
+                        }
+                    }
+                }
+
+                anim.SetFloat("speed", direction);
+            }
+
+        }
+        else if (disableMovement)
+        {
+            anim.SetBool("isMoving", false);
+        }
+
+        if (touchingPlayer)
+        {
+            if (Mathf.Abs(playerTarget.position.y - transform.position.y) > Mathf.Abs(playerTarget.position.x - transform.position.x))
+            {
+                anim.SetFloat("moveX", 0f);
+                anim.SetFloat("moveY", (playerTarget.position.y - transform.position.y));
+                anim.SetBool("moveVert", true);
+                speed = playerTarget.position.y - transform.position.y;
+            }
+            else
+            {
+                anim.SetFloat("moveX", (playerTarget.position.x - transform.position.x));
+                anim.SetFloat("moveY", 0f);
+                anim.SetBool("moveVert", false);
+                speed = playerTarget.position.x - transform.position.x;
+            }
         }
     }
 
@@ -402,7 +496,7 @@ public class NPC_Enchanter : MonoBehaviour
     {
         touchingPlayer = false;
         isMoving = false;
-        anim.SetBool("isMoving", true);
+        //anim.SetBool("isMoving", true);
 
         if (collision.collider.CompareTag("Player"))
         {

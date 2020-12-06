@@ -76,10 +76,10 @@ public class NPC_Script : MonoBehaviour
                 Dialogue.once = true;
             }
         }
-        if (QuestTracker.snowMountainQuestCount > 2)
+        /*if (QuestTracker.snowMountainQuestCount > 2)
         {
             NPC_Number = 78;
-        }
+        }*/
     }
 
     void FixedUpdate()

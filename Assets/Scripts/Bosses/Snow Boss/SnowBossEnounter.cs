@@ -5,6 +5,7 @@ using UnityEngine;
 public class SnowBossEnounter : MonoBehaviour
 {
     private GameObject player;
+    private PlayerChar PlayerScript;
     public GameObject blockUp;
     public GameObject blockDown;
     //public GameObject soul;
@@ -24,15 +25,44 @@ public class SnowBossEnounter : MonoBehaviour
     [SerializeField] bool toggleOnce = true;
     [SerializeField] GameObject venkarsCrown;
     public KillBoss killBoss;
+    public AudioSource Music;
 
    
     void Start()
     {
-        player = GameObject.FindWithTag("Player");
+        if (GameSavingInformation.snowBossDefeated == true)
+        {
+            theBossSoulOne.SetActive(false);
+            theBossSoulTwo.SetActive(false);
+        }
+        else
+        {
+            theBossSoulOne.SetActive(true);
+            theBossSoulTwo.SetActive(true);
+        }
 
+        if (player == null)
+        {
+            player = FindObjectOfType<PlayerChar>().gameObject;
+        }
+        
         if (uiToggle == null)
         {
             uiToggle = FindObjectOfType<UIToggle>();
+        }
+
+        if (!GameSavingInformation.snowBossDefeated && QuestTracker.snowMountainQuestCount > 2)
+        {
+            QuestTracker.allObjCompleted = false;
+        }
+        
+    }
+
+    private void OnEnable()
+    {
+        if (PlayerScript == null)
+        {
+            PlayerScript = FindObjectOfType<PlayerChar>();
         }
     }
 
@@ -42,7 +72,7 @@ public class SnowBossEnounter : MonoBehaviour
         
         if (sStart == false && sEnd == false)
         {
-            if (player.transform.position.y > 62)
+            if (player.transform.position.y > 62 && !GameSavingInformation.snowBossDefeated)
             {
                 StartSBossFight();
             }
@@ -60,6 +90,7 @@ public class SnowBossEnounter : MonoBehaviour
 
     void StartSBossFight()
     {
+        Music.Play();
         sStart = true;
         blockDown.SetActive(true);
         blockUp.SetActive(false);
@@ -88,7 +119,6 @@ public class SnowBossEnounter : MonoBehaviour
     {
         
         blockDown.SetActive(false);
-
         Destroy(theBossSoulTwo);
         GameSavingInformation.snowBossDefeated = true;
         StartCoroutine(EndBossQuest());
@@ -99,6 +129,7 @@ public class SnowBossEnounter : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         if (toggleOnce)
         {
+            PlayerScript.playerCurrentHealth += PlayerScript.playerMaxHealth;
             killBoss.UpdateBossStatus();
             yield return new WaitForSeconds(1f);
             uiToggle.ToggleQuestLog();

@@ -34,6 +34,8 @@ public class EnterForestWest : MonoBehaviour
             GameSavingInformation.whereAmI = "Thillan Forest";
             GameSavingInformation.whereWasI = SceneManager.GetActiveScene().name;
             SceneManager.LoadScene("Thillan Forest");
+            GameSavingInformation.maxCurrency = 12;
+            GameSavingInformation.minCurrency = 7;
             GameSavingInformation.playerX = -96.5f;
             GameSavingInformation.playerY = -39f;
             SaveSystem.SavePlayer(player);

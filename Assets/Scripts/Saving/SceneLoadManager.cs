@@ -11,10 +11,12 @@ public class SceneLoadManager : MonoBehaviour
 
     private void Start()
     {
+        player.playerMaxHealth += GameSavingInformation.bonusHealth;
+
         if (GameSavingInformation.isNewGame == true)
         {
             StartCoroutine(GetGone());
-            player.playerCurrentHealth = 100;
+            player.playerCurrentHealth = 100 + GameSavingInformation.bonusHealth;
             GameSavingInformation.crystalsCount = 0;
             GameSavingInformation.isNewGame = false;
         }
@@ -22,7 +24,6 @@ public class SceneLoadManager : MonoBehaviour
 
     private void Awake()
     {
-
         if (itemSaveManager == null)
         {
             itemSaveManager = FindObjectOfType<ItemSaveManager>();
@@ -42,8 +43,15 @@ public class SceneLoadManager : MonoBehaviour
 
         PlayerGameData data = SaveSystem.LoadPlayer();
 
-        player.playerCurrentHealth = data.healthS;
-
+        if (!GameSavingInformation.isNewGame)
+        {
+            player.playerCurrentHealth = data.healthS;
+            GameSavingInformation.dropChanceModifier = data.dropChanceModifierS;
+            GameSavingInformation.crystalsCount = data.crystalsCountS;
+            GameSavingInformation.minCurrency = data.minCurrencyS;
+            GameSavingInformation.maxCurrency = data.maxCurrencyS;
+        }
+        
         QuestInfo questStuff = SaveSystem.LoadQuestInfo();
 
         QuestTracker.questInProgress = questStuff.questInProgressS;
@@ -55,6 +63,8 @@ public class SceneLoadManager : MonoBehaviour
         QuestTracker.beginDesertQ3 = questStuff.beginDesertQ3S;
         QuestTracker.allTotemsCollected = questStuff.allTotemsCollectedS;
         QuestTracker.allObjCompleted = questStuff.allObjCompletedS;
+        QuestTracker.triggerOnce = questStuff.triggerOnceS;
+        QuestTracker.triggerOnce2 = questStuff.triggerOnce2S;
         QuestTracker.fQ2_Item1 = questStuff.fQ2_Item1S;
         QuestTracker.fQ2_Item2 = questStuff.fQ2_Item2S;
         QuestTracker.fQ2_Item3 = questStuff.fQ2_Item3S;
@@ -75,10 +85,26 @@ public class SceneLoadManager : MonoBehaviour
         GameSavingInformation.whereAmI = GIdata.whereAmIS;
         GameSavingInformation.whereWasI = GIdata.whereWasIS;
 
-        GameSavingInformation.dropChanceModifier = data.dropChanceModifierS;
-        GameSavingInformation.crystalsCount = data.crystalsCountS;
-        GameSavingInformation.minCurrency = data.minCurrencyS;
-        GameSavingInformation.maxCurrency = data.maxCurrencyS;
+
+        
+        
+
+        GameSavingInformation.ruby1Collected = GIdata.ruby1CollectedS;
+        GameSavingInformation.ruby1Collected = GIdata.ruby2CollectedS;
+        GameSavingInformation.ruby3Collected = GIdata.ruby3CollectedS;
+        GameSavingInformation.ruby4Collected = GIdata.ruby4CollectedS;
+        GameSavingInformation.ruby5Collected = GIdata.ruby5CollectedS;
+        GameSavingInformation.ruby6Collected = GIdata.ruby6CollectedS;
+        GameSavingInformation.ruby7Collected = GIdata.ruby7CollectedS;
+        GameSavingInformation.ruby8Collected = GIdata.ruby8CollectedS;
+        GameSavingInformation.ruby9Collected = GIdata.ruby9CollectedS;
+        GameSavingInformation.ruby10Collected = GIdata.ruby10CollectedS;
+
+        GameSavingInformation.sapphire1Collected = GIdata.sapphire1CollectedS;
+        GameSavingInformation.sapphire2Collected = GIdata.sapphire2CollectedS;
+        GameSavingInformation.sapphire3Collected = GIdata.sapphire3CollectedS;
+        GameSavingInformation.sapphire4Collected = GIdata.sapphire4CollectedS;
+        GameSavingInformation.sapphire5Collected = GIdata.sapphire5CollectedS;
 
         GameSavingInformation.grassBossDefeated = GIdata.grassBossDefeatedS;
         GameSavingInformation.forestBossDefeated = GIdata.forestBossDefeatedS;
@@ -104,6 +130,7 @@ public class SceneLoadManager : MonoBehaviour
         GameSavingInformation.forestQuest5Complete = GIdata.forestQuest5CompleteS;
 
         //Desert Quests
+        GameSavingInformation.desertMazeComplete = GIdata.desertMazeCompleteS;
         GameSavingInformation.desertQuest1Complete = GIdata.desertQuest1CompleteS;
         GameSavingInformation.desertQuest2Complete = GIdata.desertQuest2CompleteS;
         GameSavingInformation.desertQuest3Complete = GIdata.desertQuest3CompleteS;

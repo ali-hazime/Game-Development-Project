@@ -32,7 +32,8 @@ public class EnterGLBoss : MonoBehaviour
             GameSavingInformation.whereAmI = "GrasslandsBoss";
             GameSavingInformation.whereWasI = SceneManager.GetActiveScene().name;
             SceneManager.LoadScene("GrasslandsBoss");
-
+            GameSavingInformation.maxCurrency = 20;
+            GameSavingInformation.minCurrency = 15;
             GameSavingInformation.playerX = -29f;
             GameSavingInformation.playerY = -26.5f;
             SaveSystem.SavePlayer(player);

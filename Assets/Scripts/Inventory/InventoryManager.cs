@@ -115,12 +115,15 @@ public class InventoryManager : MonoBehaviour
     {
         BuyItem(itemSlots);
     }
+
     private void BuyItem(BaseItemSlots itemSlots)
     {
 
         if (itemSlots.Item is ConsumableItem)
         {
+           
             ConsumableItem consumableItem = (ConsumableItem)itemSlots.Item;
+            
             if (GameSavingInformation.crystalsCount >= consumableItem.ItemPrice)
             {
 

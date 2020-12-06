@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class GrasslandsGameController : MonoBehaviour
 {
+    [SerializeField] GameObject GLBossGate;
+    [SerializeField] GameObject GLBossTransition;
     [SerializeField] GameObject DesertBlock;
+    [SerializeField] GameObject theFinalBoss;
     [SerializeField] GameObject ForestTopRightBlock;
     [SerializeField] GameObject ForestTopLeftBlock;
     [SerializeField] GameObject Corruption;
@@ -35,15 +38,18 @@ public class GrasslandsGameController : MonoBehaviour
     [SerializeField] QuestController questController;
     [SerializeField] UIToggle uiToggle;
     [SerializeField] bool toggleOnce = true;
+    [SerializeField] GameObject Ruby1;
+    [SerializeField] GameObject Ruby2;
+    public AudioSource Music;
     void Awake()
     {
-        
+
         if (QuestTracker.grasslandsQuestCount == 2)
         {
             SpawnMonsters();
         }
 
-        if (QuestTracker.grasslandsQuestCount >= 3 && QuestTracker.volcanoQuestCount != 2)
+        if (QuestTracker.grasslandsQuestCount >= 3 && QuestTracker.volcanoQuestCount != 3)
         {
             Destroy(InvadingMonstersParent);
         }
@@ -53,7 +59,7 @@ public class GrasslandsGameController : MonoBehaviour
              StartCoroutine(SpawnHelpNPCs());
         }
 
-        if (QuestTracker.grasslandsQuestCount >= 6 && QuestTracker.volcanoQuestCount != 2)
+        if (QuestTracker.grasslandsQuestCount >= 6 && QuestTracker.volcanoQuestCount < 3)
         {
              StartCoroutine(SpawnVillageNPCs());
         }
@@ -68,52 +74,88 @@ public class GrasslandsGameController : MonoBehaviour
             uiToggle = FindObjectOfType<UIToggle>();
         }
 
+
     }
 
- 
+    private void Start()
+    {
+        if (GameSavingInformation.ruby1Collected)
+        {
+            Ruby1.SetActive(false);
+        }
+        else
+        {
+            Ruby1.SetActive(true);
+        }
+
+        if (GameSavingInformation.ruby2Collected)
+        {
+            Ruby2.SetActive(false);
+        }
+        else
+        {
+            Ruby2.SetActive(true);
+        }
+        
+    }
+
+
     // Update is called once per frame
     void Update()
     {
+        if (GameSavingInformation.grassBossDefeated == true)
+        {
+            GLBossGate.SetActive(true);
+            GLBossTransition.SetActive(false);
+        }
+        else
+        {
+            GLBossGate.SetActive(false);
+            GLBossTransition.SetActive(true);
+        }
+
         if (QuestTracker.grasslandsQuestCount == 3)
         {
             if (toggleOnce)
             {
                 uiToggle.ToggleQuestLog();
                 toggleOnce = false;
+                questController.StartQuest(QuestTracker.grasslandsQuestCount, "gM");
+                QuestTracker.questType = "gM";
             }
             
 
-            questController.StartQuest(QuestTracker.grasslandsQuestCount, "gM");
-            QuestTracker.questType = "gM";
         }
 
-        if (QuestTracker.forestQuestCount > 4 && QuestTracker.volcanoQuestCount != 2)
+        if (QuestTracker.forestQuestCount > 2 && QuestTracker.volcanoQuestCount < 3)
         {
             Corruption.SetActive(false);
             DesertBlock.SetActive(false);
             ForestTopRightBlock.SetActive(false);
             ForestTopLeftBlock.SetActive(false);
         }
-        else if (QuestTracker.desertQuestCount > 5 && QuestTracker.volcanoQuestCount != 2)
+        else if (QuestTracker.desertQuestCount > 5 && QuestTracker.volcanoQuestCount < 3)
         {
             Corruption.SetActive(false);
             DesertBlock.SetActive(false);
             ForestTopRightBlock.SetActive(false);
         }
-        else if (QuestTracker.grasslandsQuestCount > 6 && QuestTracker.volcanoQuestCount != 2)
+        else if (QuestTracker.grasslandsQuestCount > 6 && QuestTracker.volcanoQuestCount < 3)
         {
             Corruption.SetActive(false);
             DesertBlock.SetActive(false);
         }
-        else if (QuestTracker.grasslandsQuestCount > 5 && QuestTracker.volcanoQuestCount != 2)
+        else if (QuestTracker.grasslandsQuestCount > 5 && QuestTracker.volcanoQuestCount < 3)
         {
             Corruption.SetActive(false);
         }
-        else if (QuestTracker.volcanoQuestCount == 2)
+        else if (QuestTracker.volcanoQuestCount > 2)
         {
+            Music.volume = 0.01f;
             Nguard.SetActive(false);
             Sguard.SetActive(false);
             FBon.SetActive(true);
+            theFinalBoss.SetActive(true);
             FBoff.SetActive(false);
             DesertBlock.SetActive(false);
             ForestTopLeftBlock.SetActive(false);

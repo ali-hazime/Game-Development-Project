@@ -6,6 +6,7 @@ public class ForestBoss : MonoBehaviour
 {
 
     private Transform playerTarget;
+    private PlayerChar player;
     private Animator anim;
     public ForestBossHealth bossStats;
 
@@ -48,6 +49,7 @@ public class ForestBoss : MonoBehaviour
     public bool once2P2 = true;
     public bool once3P2 = true;
     public bool once4P2 = true;
+    public bool touchingPlayer = false;
     [Space]
     //phases3
     public GameObject cloudsParent;
@@ -60,6 +62,13 @@ public class ForestBoss : MonoBehaviour
     private Vector3 dir;
     private Vector3 offsetPos;
 
+    private void Awake()
+    {
+        if (player == null)
+        {
+            player = FindObjectOfType<PlayerChar>();
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -69,6 +78,7 @@ public class ForestBoss : MonoBehaviour
 
     void Update()
     {
+
         dir = (playerTarget.position - transform.position).normalized;
         offsetPos = playerTarget.position + (dir * 1.5f);
     }
@@ -77,7 +87,7 @@ public class ForestBoss : MonoBehaviour
     {
         if (started)
         {
-            if(phase2)
+            if (phase2)
             {
                 phase2CD -= Time.deltaTime;
             }
@@ -167,7 +177,7 @@ public class ForestBoss : MonoBehaviour
             }
 
 
-            if (slashCoolDown > 2f && Mathf.Abs(transform.position.y - playerTarget.position.y) + Mathf.Abs(transform.position.x - playerTarget.position.x) < 3 && doingPhase2 == false)
+            if (slashCoolDown > 3f && Mathf.Abs(transform.position.y - playerTarget.position.y) + Mathf.Abs(transform.position.x - playerTarget.position.x) < 3 && doingPhase2 == false)
             {
                 doingSomething = true;
                 slash = true;
@@ -206,9 +216,10 @@ public class ForestBoss : MonoBehaviour
                 slash = false;
             }
 
-            if (doingSomething == false && doingPhase2 == false && isPinned == false)
-            { 
-                transform.position = Vector3.MoveTowards(transform.position, playerTarget.position, 5.0f * Time.deltaTime);
+            if (doingSomething == false && doingPhase2 == false && isPinned == false && touchingPlayer == false)
+            {
+                anim.SetBool("isMoving", true);
+                transform.position = Vector3.MoveTowards(transform.position, playerTarget.position, 4.5f * Time.deltaTime);
             }
 
 
@@ -235,13 +246,13 @@ public class ForestBoss : MonoBehaviour
         {
             isPinned = true;
             anim.SetBool("isMoving", false);
-            GameObject.FindWithTag("Player").GetComponent<PlayerChar>().PlayerPinned(true);
+            player.PlayerPinned(true);
             //Debug.DrawLine(transform.position, offsetPos, Color.yellow);
         }
         else
         {
             isPinned = false;
-            GameObject.FindWithTag("Player").GetComponent<PlayerChar>().PlayerPinned(false);
+            player.PlayerPinned(false);
             //Debug.DrawLine(transform.position, offsetPos, Color.cyan);
         }
 
@@ -332,5 +343,19 @@ public class ForestBoss : MonoBehaviour
                 makeCloud = true;
             }
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.collider.CompareTag("Player"))
+        {
+            touchingPlayer = true;
+            anim.SetBool("isMoving", false);
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        touchingPlayer = false;
     }
 }
